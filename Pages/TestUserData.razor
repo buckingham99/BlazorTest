@@ -1,0 +1,28 @@
+@page "/testuserdata"
+@using BlazorTest.Data;
+@using System.Collections.Generic;
+@using System.Linq;
+@using Telerik.Blazor.Components.Grid;
+@using System.Text;
+@inject NamesService namesService;
+@inject IJSRuntime JSRuntime
+<h1>Test User Data</h1>
+
+<div style="border-color:aqua;">
+    <p>This component demonstrates fetching data from a service via local CSV file using a HTML Grid.</p>
+</div>
+
+<div style="border-color:black;">
+
+
+    <div>
+        <p>Data within this Div is a hand made component</p>
+    </div>
+    <div style="border-color:aqua;">
+        <DataGrid />
+    </div>
+</div>
+
+@functions {
+
+}

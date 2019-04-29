@@ -1,0 +1,56 @@
+@page "/userdata"
+@using BlazorTest.Data;
+@using System.Collections.Generic;
+@using System.Linq;
+@using Telerik.Blazor.Components.Grid;
+
+@inject NamesService namesService;
+
+<h1>User Data</h1>
+
+<p>This component demonstrates fetching data from a service via local CSV file using a Telerik Grid.</p>
+
+@if (users == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+        <TelerikGrid Data=@users Pageable=true PageSize=50 Sortable=true>
+            <TelerikGridColumns>
+                <TelerikGridColumn Field=@nameof(User.Surname) Title="Last Name" />
+                <TelerikGridColumn Field=@nameof(User.GivenName) Title="First Name" />
+                <TelerikGridColumn Field=@nameof(User.StreetAddress) Title="Address" />
+                <TelerikGridColumn Field=@nameof(User.City) Title="City" />
+                <TelerikGridColumn Field=@nameof(User.State) Title="State"/>
+                <TelerikGridColumn Field=@nameof(User.ZipCode) Title="Zip Code" />
+                <TelerikGridColumn Field=@nameof(User.TelephoneNumber) Title="Phone" />
+            </TelerikGridColumns>
+         </TelerikGrid>
+    }
+
+@functions {
+    //int recordsToReturn = 200;
+    List<User> users = new List<User>();
+    //int namesCount = 0;
+    string SortField = "Id";
+    bool SortDesc = false;
+    string SurnameSort = String.Empty;
+    string GivenNameSort = String.Empty;
+    string StreetAddressSort = String.Empty;
+    string CitySort = String.Empty;
+    string StateSort = String.Empty;
+    string ZipCodeSort = String.Empty;
+
+
+    protected override async Task OnInitAsync()
+    {
+        users = await namesService.GetNamesDataAsync(SortField, SortDesc);
+    }
+    //protected override async Task OnAfterRenderAsync()
+    //{
+    //    users = await namesService.GetNamesDataAsync(SortField, SortDesc);
+    //    ShouldRender();
+    //    //users = namesService.GetNamesData(SortField, SortDesc);
+    //}
+}
