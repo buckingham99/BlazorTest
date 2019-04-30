@@ -66,37 +66,36 @@
                 <table>
                     <thead>
                         <tr class="table-hover">
-
                             <th>
                                 <div></div>
                             </th>
                             <th>
-                                <div><a href="javascript:void(0)" title="Last Name Sort" onclick="@( () => SortData("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
+                                <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => SortData("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
                             </th>
                             <th>
-                                <div><a href="javascript:void(0)" onclick="@( () => SortData("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
+                                <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => SortData("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
                             </th>
                             <th>
-                                <div><a href="javascript:void(0)" onclick="@( () => SortData("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
+                                <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => SortData("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
                             </th>
                             <th>
-                                <div><a href="javascript:void(0)" onclick="@( () => SortData("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
+                                <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => SortData("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
                             </th>
                             <th>
-                                <div><a href="javascript:void(0)" onclick="@( () => SortData("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
+                                <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => SortData("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
                             </th>
                             <th>
-                                <div><a href="javascript:void(0)" onclick="@( () => SortData("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
+                                <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => SortData("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
                             </th>
                             <th>
-                                <div><a href="javascript:void(0)" onclick="@( () => SortData("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
+                                <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => SortData("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var u in @users)
                         {
-                            <tr onclick="@( () => EditUser(@u))">
+                            <tr onclick="@( () => EditUser(@u))" title="Click on Magnifying- Glass or anywhere on the Row to edit">
                                 <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span class="oi oi-magnifying-glass"></span></a></td>
                                 <td>@u.Surname</td>
                                 <td>@u.GivenName</td>
