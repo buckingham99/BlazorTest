@@ -11,11 +11,12 @@
     <div class="row">
         <h3>Users DataGrid Component</h3>
     </div>
-    <div  class="row">
+    <div class="row">
         <b>Users count:  (@namesCount)</b>
     </div>
 </div>
 <div class="row">
+    <div class="loader" style="display:none"></div>
     <div class="tableFixHead" style="height: 600px;">
         @if (users == null)
         {
@@ -73,244 +74,264 @@
     </div>
 </div>
 
-    <!-- Modal -->
-    @if (SelectedUser != null)
-    {
-        <div class="container">
-            <div id="myModal" class="modal col-xs-6 col-sm-12 col-md-12" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-dialog-centered col-md-12 col-md-offset-3" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+<!-- Modal -->
+@if (SelectedUser != null)
+{
+
+    <div class="container">
+        <div id="editUserModal" class="modal col-xs-6 col-sm-12 col-md-12" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered col-md-12 col-md-offset-3" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modalBody" class="modal-body">
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="first_name">First Name</label>
+                                            <input type="text" name="first_name" id="first_name" class="form-control input-sm" bind="@SelectedUser.GivenName" placeholder="First Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="last_name">Last Name</label>
+                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind="@SelectedUser.Surname" placeholder="Last Name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="address">Street Address</label>
+                                            <input type="text" name="address" id="streetAddress" class="form-control input-sm" bind="@SelectedUser.StreetAddress" placeholder="Street Address" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input type="text" name="city" id="city" class="form-control input-sm" bind="@SelectedUser.City" placeholder="City" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <input type="text" name="state" id="state" class="form-control input-sm" bind="@SelectedUser.State" placeholder="State" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="zipCode">Zip Code</label>
+                                            <input type="text" name="zipCode" id="zipCode" class="form-control input-sm" bind="@SelectedUser.ZipCode" placeholder="Zip Code" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="telephone">Telephone</label>
+                                            <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="zodiacSign">Zodiac Sign</label>
+                                            <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="birthdate">Birth Day</label>
+                                            <input type="text" name="birthdate" id="birthdate" class="form-control input-sm" bind="@SelectedUser.Birthday" placeholder="Birthday" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="company">Company</label>
+                                            <input type="text" name="company" id="company" class="form-control input-sm" bind="@SelectedUser.Company" placeholder="Company" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="occupation">Occupation</label>
+                                            <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind="@SelectedUser.Occupation" placeholder="Occupation" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="username">User Name</label>
+                                            <input type="text" name="username" id="username" class="form-control input-sm" bind="@SelectedUser.Username" placeholder="User Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="text" name="password" id="password" class="form-control input-sm" bind="@SelectedUser.Password" placeholder="Password" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="bloodType">Blood Type</label>
+                                            <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind="@SelectedUser.BloodType" placeholder="Blood Type" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="pounds">Weight</label>
+                                            <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind="@SelectedUser.Pounds" placeholder="Weight" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div id="modalBody" class="modal-body">
-                            <div class="panel-body">
-                                <form role="form">
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="first_name">First Name</label>
-                                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" bind="@SelectedUser.GivenName" placeholder="First Name" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="last_name">Last Name</label>
-                                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind="@SelectedUser.Surname" placeholder="Last Name" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="address">Street Address</label>
-                                                <input type="text" name="address" id="streetAddress" class="form-control input-sm" bind="@SelectedUser.StreetAddress" placeholder="Street Address" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="city">City</label>
-                                                <input type="text" name="city" id="city" class="form-control input-sm" bind="@SelectedUser.City" placeholder="City" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="state">State</label>
-                                                <input type="text" name="state" id="state" class="form-control input-sm" bind="@SelectedUser.State" placeholder="State" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="zipCode">Zip Code</label>
-                                                <input type="text" name="zipCode" id="zipCode" class="form-control input-sm" bind="@SelectedUser.ZipCode" placeholder="Zip Code" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="telephone">Telephone</label>
-                                                <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="zodiacSign">Zodiac Sign</label>
-                                                <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="birthdate">Birth Day</label>
-                                                <input type="text" name="birthdate" id="birthdate" class="form-control input-sm" bind="@SelectedUser.Birthday" placeholder="Birthday" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="company">Company</label>
-                                                <input type="text" name="company" id="company" class="form-control input-sm" bind="@SelectedUser.Company" placeholder="Company" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="occupation">Occupation</label>
-                                                <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind="@SelectedUser.Occupation" placeholder="Occupation" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="username">User Name</label>
-                                                <input type="text" name="username" id="username" class="form-control input-sm" bind="@SelectedUser.Username" placeholder="User Name" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="password">Password</label>
-                                                <input type="text" name="password" id="password" class="form-control input-sm" bind="@SelectedUser.Password" placeholder="Password" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="bloodType">Blood Type</label>
-                                                <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind="@SelectedUser.BloodType" placeholder="Blood Type" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="pounds">Weight</label>
-                                                <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind="@SelectedUser.Pounds" placeholder="Weight" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" onclick="@( () => SaveUser(SelectedUser))">Save changes</button>
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="@( () => SaveUser(SelectedUser))">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+}
+
+
+@functions {
+    int recordsToReturn = 200;
+    List<User> users = new List<User>();
+    int namesCount = 0;
+    string SortField = "Id";
+    bool SortDesc = false;
+    string SurnameSort = String.Empty;
+    string GivenNameSort = String.Empty;
+    string StreetAddressSort = String.Empty;
+    string CitySort = String.Empty;
+    string StateSort = String.Empty;
+    string ZipCodeSort = String.Empty;
+    string PhoneSort = String.Empty;
+
+    // Edit Dialog Entries
+    User SelectedUser;
+
+    protected async override void OnInit()
+    {
+        //ToggleSpinner(true);
+        this.StateHasChanged();
+        await ReadData();
+        ToggleSpinner(false);
     }
-
-
-    @functions {
-        int recordsToReturn = 200;
-        List<User> users = new List<User>();
-        int namesCount = 0;
-        string SortField = "Id";
-        bool SortDesc = false;
-        string SurnameSort = String.Empty;
-        string GivenNameSort = String.Empty;
-        string StreetAddressSort = String.Empty;
-        string CitySort = String.Empty;
-        string StateSort = String.Empty;
-        string ZipCodeSort = String.Empty;
-        string PhoneSort = String.Empty;
-
-        // Edit Dialog Entries
-        string element;
-        User SelectedUser;
-
-        protected override async Task OnInitAsync()
+    private async Task ReadData()
+    {
+        BlankDirectionIcons();
+        users = await NamesService.GetNamesDataAsync(SortField, SortDesc);
+        namesCount = users.Count;
+    }
+    private async void ToggleSpinner(bool spinnerOn)
+    {
+        if (spinnerOn == false)
         {
-            await ReadData();
+          await JSRuntime.InvokeAsync<string>(
+                 "appFunctions.hideSpinner", "");
         }
-        async Task ReadData()
+        else
         {
-            BlankDirectionIcons();
-            users = await NamesService.GetNamesDataAsync(SortField, SortDesc);
-            namesCount = users.Count;
-        }
-
-        async Task SortData(string szSortField)
-        {
-            BlankDirectionIcons();
-            SortField = szSortField;
-            SortDesc = !SortDesc;
-            CalcIconDirection(SortField);
-            users = await NamesService.SortNamesDataAsync(SortField, SortDesc, users);
-        }
-
-        string CalcIconDirection(string SortField)
-        {
-            string szDirection = SortDesc == true ? "oi oi-arrow-thick-bottom" : "oi oi-arrow-thick-top";
-            switch (SortField)
-            {
-                case "Surname":
-                    SurnameSort = szDirection;
-                    return SurnameSort;
-                case "GivenName":
-                    GivenNameSort = szDirection;
-                    return GivenNameSort;
-                case "StreetAddress":
-                    StreetAddressSort = szDirection;
-                    return StreetAddressSort;
-                case "City":
-                    CitySort = szDirection;
-                    return CitySort;
-                case "State":
-                    StateSort = szDirection;
-                    return StateSort;
-                case "TelephoneNumber":
-                    PhoneSort = szDirection;
-                    return PhoneSort;
-                case "ZipCode":
-                    ZipCodeSort = szDirection;
-                    return ZipCodeSort;
-                default:
-                    return String.Empty;
-            }
-        }
-        void BlankDirectionIcons()
-        {
-            SurnameSort = "";
-            GivenNameSort = "";
-            StreetAddressSort = "";
-            CitySort = "";
-            StateSort = "";
-            ZipCodeSort = "";
-            PhoneSort = "";
-        }
-
-        void PopulateUserDialog(User myUser)
-        {
-            SelectedUser = myUser;
-        }
-        public async void EditUser(User myUser)
-        {
-            SelectedUser = myUser;
-
-            PopulateUserDialog(myUser);
-            element = await JSRuntime.InvokeAsync<string>(
-               "appFunctions.showModal", myUser);
-
-        }
-        public async Task<List<User>> SaveUser(User SelectedUser)
-        {
-            element = await JSRuntime.InvokeAsync<string>(
-               "appFunctions.hideModal", SelectedUser);
-
-            users = await NamesService.SaveUserAsync(SortField, SortDesc, users, SelectedUser);
-            this.StateHasChanged();
-            return users;
+            await JSRuntime.InvokeAsync<string>(
+                 "appFunctions.showSpinner", "");
         }
     }
+    async Task SortData(string szSortField)
+    {
+        ToggleSpinner(true);
+
+        BlankDirectionIcons();
+        SortField = szSortField;
+        SortDesc = !SortDesc;
+        CalcIconDirection(SortField);
+        users = await NamesService.SortNamesDataAsync(SortField, SortDesc, users);
+
+        ToggleSpinner(false);
+    }
+
+    string CalcIconDirection(string SortField)
+    {
+        string szDirection = SortDesc == true ? "oi oi-arrow-thick-bottom" : "oi oi-arrow-thick-top";
+        switch (SortField)
+        {
+            case "Surname":
+                SurnameSort = szDirection;
+                return SurnameSort;
+            case "GivenName":
+                GivenNameSort = szDirection;
+                return GivenNameSort;
+            case "StreetAddress":
+                StreetAddressSort = szDirection;
+                return StreetAddressSort;
+            case "City":
+                CitySort = szDirection;
+                return CitySort;
+            case "State":
+                StateSort = szDirection;
+                return StateSort;
+            case "TelephoneNumber":
+                PhoneSort = szDirection;
+                return PhoneSort;
+            case "ZipCode":
+                ZipCodeSort = szDirection;
+                return ZipCodeSort;
+            default:
+                return String.Empty;
+        }
+    }
+    void BlankDirectionIcons()
+    {
+        SurnameSort = "";
+        GivenNameSort = "";
+        StreetAddressSort = "";
+        CitySort = "";
+        StateSort = "";
+        ZipCodeSort = "";
+        PhoneSort = "";
+    }
+
+    private void PopulateUserDialog(User myUser)
+    {
+        SelectedUser = myUser;
+    }
+
+    private async void EditUser(User myUser)
+    {
+        SelectedUser = myUser;
+        await  JSRuntime.InvokeAsync<string>(
+                 "appFunctions.showEditUserModal", "");
+        //PopulateUserDialog(myUser);
+    }
+    private async Task<List<User>> SaveUser(User SelectedUser)
+    {
+        ToggleSpinner(false);
+
+        users = await NamesService.SaveUserAsync(SortField, SortDesc, users, SelectedUser);
+
+        ToggleSpinner(true);
+
+        this.StateHasChanged();
+        return users;
+    }
+}
 

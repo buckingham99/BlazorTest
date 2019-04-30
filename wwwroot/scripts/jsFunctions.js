@@ -16,13 +16,20 @@
         return dotnetHelper.invokeMethodAsync('SayHello')
             .then(r => console.log(r));
     },
-    showModal: function (myUser) {
-        $('#myModal').modal('show'); 
+    showEditUserModal: function (myModal) {
+        $('#editUserModal').modal('show'); 
     },
-    hideModal: function (myUser) {
-        $('#myModal').modal('hide');
+    hideEditUserModal: function (myModal) {
+        $('#editUserModal').modal('hide');
     },
     setFocus: function (element) {
         element.focus();
+    },
+    showSpinner: function (element) {
+        $('.loader').css('display', 'block');
+    },
+    hideSpinner: function () {
+        $('.loader').css('display', 'none');
     }
+
 };
