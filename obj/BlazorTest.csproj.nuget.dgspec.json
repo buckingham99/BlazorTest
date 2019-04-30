@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Develop\\BlazorTest\\BlazorTest\\BlazorTest.csproj": {}
+    "C:\\Develop\\GitHub\\BlazorTest\\BlazorTest.csproj": {}
   },
   "projects": {
-    "C:\\Develop\\BlazorTest\\BlazorTest\\BlazorTest.csproj": {
+    "C:\\Develop\\GitHub\\BlazorTest\\BlazorTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Develop\\BlazorTest\\BlazorTest\\BlazorTest.csproj",
+        "projectUniqueName": "C:\\Develop\\GitHub\\BlazorTest\\BlazorTest.csproj",
         "projectName": "BlazorTest",
-        "projectPath": "C:\\Develop\\BlazorTest\\BlazorTest\\BlazorTest.csproj",
+        "projectPath": "C:\\Develop\\GitHub\\BlazorTest\\BlazorTest.csproj",
         "packagesPath": "C:\\Users\\markb\\.nuget\\packages\\",
-        "outputPath": "C:\\Develop\\BlazorTest\\BlazorTest\\obj\\",
+        "outputPath": "C:\\Develop\\GitHub\\BlazorTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
