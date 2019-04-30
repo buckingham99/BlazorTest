@@ -6,19 +6,16 @@
 @using System.Text;
 @inject NamesService namesService;
 @inject IJSRuntime JSRuntime
-<h1>Test User Data</h1>
 
-<div style="border-color:aqua;">
-    <p>This component demonstrates fetching data from a service via local CSV file using a HTML Grid.</p>
-</div>
-
-<div style="border-color:black;">
-
-
-    <div>
-        <p>Data within this Div is a hand made component</p>
+<h3>Test User Data Page</h3>
+<div class="container">
+    <div class="row">
+        <p>This component demonstrates fetching & editing data from a service via local CSV file using a HTML Grid.</p>
     </div>
-    <div style="border-color:aqua;">
+    <div  class="row">
+       <p>Data shown below is a component</p>
+    </div>
+    <div class="row">
         <DataGrid />
     </div>
 </div>
