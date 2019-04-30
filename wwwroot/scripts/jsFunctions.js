@@ -1,4 +1,4 @@
-﻿window.exampleJsFunctions = {
+﻿window.appFunctions = {
     showPrompt: function (text) {
         return prompt(text, 'Type your name here');
     },
@@ -21,5 +21,8 @@
     },
     hideModal: function (myUser) {
         $('#myModal').modal('hide');
+    },
+    setFocus: function (element) {
+        element.focus();
     }
 };
