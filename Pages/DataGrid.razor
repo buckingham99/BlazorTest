@@ -341,13 +341,13 @@
 
         PopulateUserDialog(myUser);
         element = await JSRuntime.InvokeAsync<string>(
-           "exampleJsFunctions.showModal", myUser);
+           "appFunctions.showModal", myUser);
 
     }
     public async Task<List<User>> SaveUser(User SelectedUser)
     {
         element = await JSRuntime.InvokeAsync<string>(
-           "exampleJsFunctions.hideModal", SelectedUser);
+           "appFunctions.hideModal", SelectedUser);
 
         users = await NamesService.SaveUserAsync(SortField, SortDesc, users, SelectedUser);
         this.StateHasChanged();
