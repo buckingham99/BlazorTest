@@ -24,8 +24,7 @@
             <thead>
                 <tr class="table-hover">
                     <th>
-
-                        <div></div>
+                        <div><a href="javascript:void(0)" title="Default Sort" onclick="@( () => SortData("Id"))"><b> </b></a><span style="background-color:ActiveBorder;" class="oi oi-target" title="Default Sort" onclick="@( () => SortData("Id"))"></span></div>
                     </th>
                     <th>
                         <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => SortData("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
@@ -330,8 +329,8 @@
         }
         
 
-        //SelectedUser = null;
-        //UnModifiedUser = null;
+        SelectedUser = null;
+        UnModifiedUser = null;
 
         await JSRuntime.InvokeAsync<string>(
             "appFunctions.hideEditUserModal", "");

@@ -12,20 +12,6 @@ namespace BlazorTest.Data
     public class NamesService : INamesService
     {
         private const string CacheKey = "users";
-        public async Task<List<User>> GetNamesDataAsync(string SortField, bool SortDesc)
-        {
-            ObjectCache cache = MemoryCache.Default;
-            if (cache.Contains(CacheKey))
-                return await Task.FromResult((List<User>)cache.Get(CacheKey));
-            else
-            {
-                List<User> users = await ReadCSVFileAsync();
-                CacheItemPolicy cacheItemPolicy = await CacheItemPolicyAsync(users);
-                users = await SortNamesDataAsync(SortField, SortDesc, users);
-
-                return await Task.FromResult(users.ToList());
-            }
-        }
         public List<User> GetNamesData(string SortField, bool SortDesc)
         {
             ObjectCache cache = MemoryCache.Default;
@@ -40,88 +26,41 @@ namespace BlazorTest.Data
                 return users;
             }
         }
-        public CacheItemPolicy CacheItemPolicy(List<User> users)
+        public async Task<List<User>> GetNamesDataAsync(string SortField, bool SortDesc)
         {
             ObjectCache cache = MemoryCache.Default;
-            CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
-            cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddHours(6.0);
-            cache.Add(CacheKey, users, cacheItemPolicy);
-            return cacheItemPolicy;
-        }
-        public async Task<CacheItemPolicy> CacheItemPolicyAsync(List<User> users)
-        {
-            ObjectCache cache = MemoryCache.Default;
-            CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
-            cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddHours(6.0);
-            cache.Add(CacheKey, users, cacheItemPolicy);
-            return await Task.FromResult(cacheItemPolicy);
-        }
-        public async Task<List<User>> SortNamesDataAsync(string SortField, bool SortDesc, List<User> users)
-        {
-            List<User> tmpUser = users;
-            if (SortDesc == false)
-            {
-                tmpUser = users.OrderBy(s => s.GetType().GetProperty(SortField).GetValue(s)).ToList();
-            }
+            if (cache.Contains(CacheKey))
+                return await Task.FromResult((List<User>)cache.Get(CacheKey));
             else
             {
-                tmpUser = users.OrderByDescending(s => s.GetType().GetProperty(SortField).GetValue(s)).ToList();
-            }
+                List<User> users = await ReadCSVFileAsync();
+                CacheItemPolicy cacheItemPolicy = await CacheItemPolicyAsync(users);
+                users = await SortNamesDataAsync(SortField, SortDesc, users);
 
-            return await Task.FromResult(tmpUser);
+                return await Task.FromResult(users.ToList());
+            }
         }
-        public List<User> SortNamesData(string SortField, bool SortDesc, List<User> users)
+
+        private List<User> Sort(string SortField, bool SortDesc, List<User> users)
         {
             List<User> tmpUser = users;
             if (SortDesc == false)
-            {
                 tmpUser = users.OrderBy(s => s.GetType().GetProperty(SortField).GetValue(s)).ToList();
-            }
             else
-            {
                 tmpUser = users.OrderByDescending(s => s.GetType().GetProperty(SortField).GetValue(s)).ToList();
-            }
 
             return tmpUser;
         }
-        public List<User> ReadCSVFile()
+        public List<User> SortNamesData(string SortField, bool SortDesc, List<User> users)
         {
-            List<User> users = new List<User>();
-            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
-            string[] lines = File.ReadAllLines(path + @"\Data\FakeNameGenerator.com_cc9ff94f.csv");
-            users = ConvertCSVToUsers(lines);
-            return users;
+            return Sort(SortField, SortDesc, users);
         }
-        private string GetFlagIcon(string StateCode)
+        public async Task<List<User>> SortNamesDataAsync(string SortField, bool SortDesc, List<User> users)
         {
-            StateCode = "/Flags/" + StateCode.ToLower() + ".png";
-            return StateCode;
-        }
-        private bool IsDate(string strDate)
-        {
-            try
-            {
-                DateTime dt = DateTime.Parse(strDate);
-                if ((dt.Month != System.DateTime.Now.Month) || (dt.Day < 1 && dt.Day > 31) || dt.Year != System.DateTime.Now.Year)
-                    return false;
-                else
-                    return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        public async Task<List<User>> ReadCSVFileAsync()
-        {
-            List<User> users = new List<User>();
-            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
-            string[] lines = File.ReadAllLines(path + @"\Data\FakeNameGenerator.com_cc9ff94f.csv");
-            users = ConvertCSVToUsers(lines);
-            return await Task.FromResult(users);
+            return await Task.FromResult(Sort(SortField, SortDesc, users));
         }
 
-        public async Task<List<User>> SaveUserAsync(string SortField, bool SortDesc, List<User> users,User SelectedUser)
+        public async Task<List<User>> SaveUserAsync(string SortField, bool SortDesc, List<User> users, User SelectedUser)
         {
             foreach (var x in users)
             {
@@ -184,6 +123,121 @@ namespace BlazorTest.Data
             SortNamesData(SortField, SortDesc, users);
             return await Task.FromResult(users.ToList());
         }
+
+        private CacheItemPolicy CacheItemPolicy(List<User> users)
+        {
+            ObjectCache cache = MemoryCache.Default;
+            CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
+            cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddHours(6.0);
+            cache.Add(CacheKey, users, cacheItemPolicy);
+            return cacheItemPolicy;
+        }
+        private async Task<CacheItemPolicy> CacheItemPolicyAsync(List<User> users)
+        {
+            ObjectCache cache = MemoryCache.Default;
+            CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
+            cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddHours(6.0);
+            cache.Add(CacheKey, users, cacheItemPolicy);
+            return await Task.FromResult(cacheItemPolicy);
+        }
+
+
+        private List<User> ReadCSVFile()
+        {
+            List<User> users = new List<User>();
+            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
+            string[] lines = File.ReadAllLines(path + @"\Data\FakeNameGenerator.com_cc9ff94f.csv");
+            users = ConvertCSVToUsers(lines);
+            return users;
+        }
+        private async Task<List<User>> ReadCSVFileAsync()
+        {
+            List<User> users = new List<User>();
+            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
+            string[] lines = File.ReadAllLines(path + @"\Data\FakeNameGenerator.com_cc9ff94f.csv");
+            users = await ConvertCSVToUsersAsync(lines);
+            return await Task.FromResult(users);
+        }
+        private bool IsDate(string strDate)
+        {
+            try
+            {
+                DateTime dt = DateTime.Parse(strDate);
+                if ((dt.Month != System.DateTime.Now.Month) || (dt.Day < 1 && dt.Day > 31) || dt.Year != System.DateTime.Now.Year)
+                    return false;
+                else
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        private async Task<List<User>> ConvertCSVToUsersAsync(string[] lines)
+        {
+            List<User> users = new List<User>();
+            foreach (string line in lines)
+            {
+                var t = line.Split(',');
+                // Skip the First Line to leave the CSV file from FakeNames.Com intact
+                if (t[0] != "Number")
+                {
+                    User myUser = new User
+                    {
+                        Id = Convert.ToInt16(t[0]),
+                        Gender = t[1],
+                        NameSet = t[2],
+                        Title = t[3],
+                        GivenName = t[4],
+                        MiddleInitial = t[5],
+                        Surname = t[6],
+                        StreetAddress = t[7],
+                        City = t[8],
+                        State = t[9],
+                        StateFull = t[10],
+                        ZipCode = t[11].Length == 5 ? t[11] : t[11].PadLeft(5 - t[11].Length, '0'),
+                        CountryCode = t[12],
+                        CountryFull = t[13],
+                        EmailAddress = t[14],
+                        Username = t[15],
+                        Password = t[16],
+                        TelephoneNumber = t[17],
+                        TelephoneCountryCode = int.Parse(t[18]),
+                        MothersMaiden = t[19],
+                        Birthday = t[20],
+                        Age = Convert.ToInt16(t[21]),
+                        TropicalZodiac = t[22],
+                        CCType = t[23],
+                        CCNumber = Convert.ToDouble(t[24]).ToString().Substring(0, 5) + "?",
+                        CVV2 = Convert.ToInt16(t[25]),
+                        CCExpires = Convert.ToDateTime(t[26]),
+                        NationalID = t[27],
+                        UPS = t[28],
+                        WesternUnionMTCN = Convert.ToDecimal(t[29]),
+                        MoneyGramMTCN = Convert.ToInt32(t[30]),
+                        Color = t[31],
+                        Occupation = t[32],
+                        Company = t[33],
+                        Vehicle = t[34],
+                        Domain = t[35],
+                        BloodType = t[36],
+                        Pounds = t[37],
+                        Kilograms = t[38],
+                        FeetInches = t[39],
+                        Centimeters = t[40],
+                        GUID = t[41],
+                        Latitude = t[42],
+                        Longitude = t[43]
+                    };
+                    if (users.Count < 1000)
+                        users.Add(myUser);
+                }
+            }
+
+            return await Task.FromResult(users);
+        }
         private List<User> ConvertCSVToUsers(string[] lines)
         {
             List<User> users = new List<User>();
@@ -243,7 +297,6 @@ namespace BlazorTest.Data
                     if (users.Count < 200)
                         users.Add(myUser);
                 }
-                //Console.WriteLine(line);
             }
 
             return users;
