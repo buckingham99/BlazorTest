@@ -82,9 +82,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        @*<button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => SaveUser(SelectedUser))" >
                             <span aria-hidden="true">&times;</span>
-                        </button>
+                        </button>*@
                     </div>
                     <div id="modalBody" class="modal-body">
                         <div class="panel-body">
@@ -99,7 +99,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="last_name">Last Name</label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind-value-onchange="@SelectedUser.Surname" value="@SelectedUser.Surname" placeholder="Last Name" />
+                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind="@SelectedUser.Surname" placeholder="Last Name" />
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" onclick="@( () => CancelSaveUser(true))" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" onclick="@( () => CancelSaveUser(SelectedUser))" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" onclick="@( () => SaveUser(SelectedUser))">Save changes</button>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
 @functions {
     //int recordsToReturn = 200;
     List<User> users = new List<User>();
-    User UnModifiedUser = new User();
+    public User UnModifiedUser = new User();
     User SelectedUser = new User();
     int namesCount = 0;
     string SortField = "Id";
@@ -298,11 +298,11 @@
     private async void EditUser(User myUser)
     {
         SelectedUser = myUser;
-        User UnModifiedUser = SelectedUser;
-        UnModifiedUser = SelectedUser;
+        UnModifiedUser = Comparer.DeepCopy<User>(SelectedUser);
+
         await JSRuntime.InvokeAsync<string>(
                  "appFunctions.showEditUserModal", "");
-        StateHasChanged();
+        //StateHasChanged();
     }
     private async Task<List<User>> SaveUser(User SelectedUser)
     {
@@ -322,22 +322,22 @@
         return users;
     }
 
-    private async Task<List<User>> CancelSaveUser(bool CancelSave)
+    private async Task<List<User>> CancelSaveUser(User SelectedUser)
     {
-        if (CancelSave)
+        if (!Comparer.DeepCompare(SelectedUser,UnModifiedUser))
         {
             users = await NamesService.SaveUserAsync(SortField, SortDesc, users, UnModifiedUser);
         }
         
 
-        SelectedUser = null;
-        UnModifiedUser = null;
+        //SelectedUser = null;
+        //UnModifiedUser = null;
 
         await JSRuntime.InvokeAsync<string>(
             "appFunctions.hideEditUserModal", "");
 
         ToggleSpinner(false);
-        StateHasChanged();
+        //StateHasChanged();
         return users;
     }
     }
