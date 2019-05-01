@@ -152,7 +152,7 @@
           "lib/netstandard1.3/Microsoft.CodeAnalysis.Workspaces.dll": {}
         }
       },
-      "Microsoft.CSharp/4.6.0-preview3.19128.7": {
+      "Microsoft.CSharp/4.6.0-preview4.19212.13": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.0/_._": {}
@@ -161,19 +161,20 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore/3.0.0-preview3.19153.1": {
+      "Microsoft.EntityFrameworkCore/3.0.0-preview4.19216.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "3.0.0-preview3.19153.1",
-          "Microsoft.EntityFrameworkCore.Analyzers": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.Caching.Memory": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.Logging": "3.0.0-preview3.19153.1",
+          "Microsoft.EntityFrameworkCore.Abstractions": "3.0.0-preview4.19216.3",
+          "Microsoft.EntityFrameworkCore.Analyzers": "3.0.0-preview4.19216.3",
+          "Microsoft.Extensions.Caching.Memory": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.Logging": "3.0.0-preview4.19216.2",
           "Remotion.Linq": "2.2.0",
-          "System.Collections.Immutable": "1.6.0-preview3.19128.7",
-          "System.ComponentModel.Annotations": "4.6.0-preview3.19128.7",
-          "System.Diagnostics.DiagnosticSource": "4.6.0-preview3.19128.7",
-          "System.Interactive.Async": "3.2.0"
+          "System.Collections.Immutable": "1.6.0-preview4.19212.13",
+          "System.ComponentModel.Annotations": "4.6.0-preview4.19212.13",
+          "System.Diagnostics.DiagnosticSource": "4.6.0-preview4.19212.13",
+          "System.Interactive.Async": "3.2.0",
+          "System.Threading.Tasks.Extensions": "4.5.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
@@ -182,7 +183,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/3.0.0-preview3.19153.1": {
+      "Microsoft.EntityFrameworkCore.Abstractions/3.0.0-preview4.19216.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
@@ -191,14 +192,14 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/3.0.0-preview3.19153.1": {
+      "Microsoft.EntityFrameworkCore.Analyzers/3.0.0-preview4.19216.3": {
         "type": "package"
       },
-      "Microsoft.EntityFrameworkCore.Design/3.0.0-preview3.19153.1": {
+      "Microsoft.EntityFrameworkCore.Design/3.0.0-preview4.19216.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CSharp": "4.6.0-preview3.19128.7",
-          "Microsoft.EntityFrameworkCore.Relational": "3.0.0-preview3.19153.1"
+          "Microsoft.CSharp": "4.6.0-preview4.19212.13",
+          "Microsoft.EntityFrameworkCore.Relational": "3.0.0-preview4.19216.3"
         },
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -210,10 +211,10 @@
           "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/3.0.0-preview3.19153.1": {
+      "Microsoft.EntityFrameworkCore.Relational/3.0.0-preview4.19216.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.0.0-preview3.19153.1"
+          "Microsoft.EntityFrameworkCore": "3.0.0-preview4.19216.3"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
@@ -222,11 +223,11 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.SqlServer/3.0.0-preview3.19153.1": {
+      "Microsoft.EntityFrameworkCore.SqlServer/3.0.0-preview4.19216.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "3.0.0-preview3.19153.1",
-          "System.Data.SqlClient": "4.7.0-preview3.19128.7"
+          "Microsoft.EntityFrameworkCore.Relational": "3.0.0-preview4.19216.3",
+          "System.Data.SqlClient": "4.7.0-preview4.19212.13"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
@@ -235,10 +236,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/3.0.0-preview3.19153.1": {
+      "Microsoft.EntityFrameworkCore.Tools/3.0.0-preview4.19216.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "3.0.0-preview3.19153.1"
+          "Microsoft.EntityFrameworkCore.Design": "3.0.0-preview4.19216.3"
         },
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -247,10 +248,10 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Caching.Abstractions/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Caching.Abstractions/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "3.0.0-preview3.19153.1"
+          "Microsoft.Extensions.Primitives": "3.0.0-preview4.19216.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll": {}
@@ -259,13 +260,13 @@
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Caching.Memory/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Caching.Memory/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.Logging.Abstractions": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.Options": "3.0.0-preview3.19153.1"
+          "Microsoft.Extensions.Caching.Abstractions": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.Logging.Abstractions": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.Options": "3.0.0-preview4.19216.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
@@ -274,10 +275,10 @@
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Configuration/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "3.0.0-preview3.19153.1"
+          "Microsoft.Extensions.Configuration.Abstractions": "3.0.0-preview4.19216.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
@@ -286,10 +287,10 @@
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Configuration.Abstractions/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "3.0.0-preview3.19153.1"
+          "Microsoft.Extensions.Primitives": "3.0.0-preview4.19216.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
@@ -298,10 +299,10 @@
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Binder/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Configuration.Binder/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "3.0.0-preview3.19153.1"
+          "Microsoft.Extensions.Configuration": "3.0.0-preview4.19216.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll": {}
@@ -331,13 +332,13 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Logging/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.Logging.Abstractions": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.Options": "3.0.0-preview3.19153.1"
+          "Microsoft.Extensions.Configuration.Binder": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.Logging.Abstractions": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.Options": "3.0.0-preview4.19216.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.dll": {}
@@ -346,7 +347,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Logging.Abstractions/3.0.0-preview4.19216.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
@@ -355,10 +356,10 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Debug/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Logging.Debug/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Logging": "3.0.0-preview3.19153.1"
+          "Microsoft.Extensions.Logging": "3.0.0-preview4.19216.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll": {}
@@ -367,12 +368,12 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll": {}
         }
       },
-      "Microsoft.Extensions.Options/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Options/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0-preview3.19153.1",
-          "Microsoft.Extensions.Primitives": "3.0.0-preview3.19153.1",
-          "System.ComponentModel.Annotations": "4.6.0-preview3.19128.7"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0-preview4.19216.2",
+          "Microsoft.Extensions.Primitives": "3.0.0-preview4.19216.2",
+          "System.ComponentModel.Annotations": "4.6.0-preview4.19212.13"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Options.dll": {}
@@ -381,11 +382,11 @@
           "lib/netstandard2.0/Microsoft.Extensions.Options.dll": {}
         }
       },
-      "Microsoft.Extensions.Primitives/3.0.0-preview3.19153.1": {
+      "Microsoft.Extensions.Primitives/3.0.0-preview4.19216.2": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.2",
-          "System.Runtime.CompilerServices.Unsafe": "4.6.0-preview3.19128.7"
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0-preview4.19212.13"
         },
         "compile": {
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
@@ -536,11 +537,11 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Microsoft.Win32.Registry/4.6.0-preview3.19128.7": {
+      "Microsoft.Win32.Registry/4.6.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
-          "System.Security.AccessControl": "4.6.0-preview3.19128.7",
-          "System.Security.Principal.Windows": "4.6.0-preview3.19128.7"
+          "System.Security.AccessControl": "4.6.0-preview4.19212.13",
+          "System.Security.Principal.Windows": "4.6.0-preview4.19212.13"
         },
         "compile": {
           "ref/netstandard2.0/_._": {}
@@ -703,7 +704,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.Data.SqlClient.sni/4.6.0-preview3.19128.7": {
+      "runtime.native.System.Data.SqlClient.sni/4.6.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
           "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
@@ -938,7 +939,7 @@
           "lib/netstandard1.3/System.Collections.Concurrent.dll": {}
         }
       },
-      "System.Collections.Immutable/1.6.0-preview3.19128.7": {
+      "System.Collections.Immutable/1.6.0-preview4.19212.13": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
@@ -954,6 +955,18 @@
         },
         "runtime": {
           "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "System.ComponentModel.Composition/4.6.0-preview4.19212.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Permissions": "4.6.0-preview4.19212.13"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.ComponentModel.Composition.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/System.ComponentModel.Composition.dll": {}
         }
       },
       "System.Composition/1.0.31": {
@@ -1070,11 +1083,11 @@
           "lib/netstandard1.0/System.Composition.TypedParts.dll": {}
         }
       },
-      "System.Configuration.ConfigurationManager/4.5.0": {
+      "System.Configuration.ConfigurationManager/4.6.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.ProtectedData": "4.5.0",
-          "System.Security.Permissions": "4.5.0"
+          "System.Security.Cryptography.ProtectedData": "4.6.0-preview4.19212.13",
+          "System.Security.Permissions": "4.6.0-preview4.19212.13"
         },
         "compile": {
           "ref/netstandard2.0/_._": {}
@@ -1115,13 +1128,13 @@
           "lib/netstandard1.2/System.Data.Common.dll": {}
         }
       },
-      "System.Data.SqlClient/4.7.0-preview3.19128.7": {
+      "System.Data.SqlClient/4.7.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.Registry": "4.6.0-preview3.19128.7",
-          "System.Security.Principal.Windows": "4.6.0-preview3.19128.7",
-          "System.Text.Encoding.CodePages": "4.6.0-preview3.19128.7",
-          "runtime.native.System.Data.SqlClient.sni": "4.6.0-preview3.19128.7"
+          "Microsoft.Win32.Registry": "4.6.0-preview4.19212.13",
+          "System.Security.Principal.Windows": "4.6.0-preview4.19212.13",
+          "System.Text.Encoding.CodePages": "4.6.0-preview4.19212.13",
+          "runtime.native.System.Data.SqlClient.sni": "4.6.0-preview4.19212.13"
         },
         "compile": {
           "ref/netcoreapp2.1/System.Data.SqlClient.dll": {}
@@ -1163,7 +1176,7 @@
           "ref/netstandard1.3/System.Diagnostics.Debug.dll": {}
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.6.0-preview3.19128.7": {
+      "System.Diagnostics.DiagnosticSource/4.6.0-preview4.19212.13": {
         "type": "package",
         "compile": {
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
@@ -1734,11 +1747,11 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.Caching/4.5.0": {
+      "System.Runtime.Caching/4.6.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "System.Configuration.ConfigurationManager": "4.5.0"
+          "Microsoft.NETCore.Platforms": "3.0.0-preview4.19212.13",
+          "System.Configuration.ConfigurationManager": "4.6.0-preview4.19212.13"
         },
         "compile": {
           "ref/netstandard2.0/System.Runtime.Caching.dll": {}
@@ -1757,7 +1770,7 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.6.0-preview3.19128.7": {
+      "System.Runtime.CompilerServices.Unsafe/4.6.0-preview4.19212.13": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -1845,11 +1858,11 @@
           "lib/netstandard1.3/System.Runtime.Numerics.dll": {}
         }
       },
-      "System.Security.AccessControl/4.6.0-preview3.19128.7": {
+      "System.Security.AccessControl/4.6.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.0.0-preview3.19128.7",
-          "System.Security.Principal.Windows": "4.6.0-preview3.19128.7"
+          "Microsoft.NETCore.Platforms": "3.0.0-preview4.19212.13",
+          "System.Security.Principal.Windows": "4.6.0-preview4.19212.13"
         },
         "compile": {
           "ref/netstandard2.0/_._": {}
@@ -2038,7 +2051,7 @@
           "lib/netstandard1.3/System.Security.Cryptography.Primitives.dll": {}
         }
       },
-      "System.Security.Cryptography.ProtectedData/4.5.0": {
+      "System.Security.Cryptography.ProtectedData/4.6.0-preview4.19212.13": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/_._": {}
@@ -2096,19 +2109,19 @@
           }
         }
       },
-      "System.Security.Permissions/4.5.0": {
+      "System.Security.Permissions/4.6.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
-          "System.Security.AccessControl": "4.5.0"
+          "System.Security.AccessControl": "4.6.0-preview4.19212.13"
         },
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "ref/netcoreapp3.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Security.Permissions.dll": {}
+          "lib/netcoreapp3.0/System.Security.Permissions.dll": {}
         }
       },
-      "System.Security.Principal.Windows/4.6.0-preview3.19128.7": {
+      "System.Security.Principal.Windows/4.6.0-preview4.19212.13": {
         "type": "package",
         "compile": {
           "ref/netcoreapp3.0/_._": {}
@@ -2138,11 +2151,10 @@
           "ref/netstandard1.3/System.Text.Encoding.dll": {}
         }
       },
-      "System.Text.Encoding.CodePages/4.6.0-preview3.19128.7": {
+      "System.Text.Encoding.CodePages/4.6.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.0.0-preview3.19128.7",
-          "System.Runtime.CompilerServices.Unsafe": "4.6.0-preview3.19128.7"
+          "Microsoft.NETCore.Platforms": "3.0.0-preview4.19212.13"
         },
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -2205,18 +2217,13 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.3.0": {
+      "System.Threading.Tasks.Extensions/4.5.2": {
         "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard1.0/_._": {}
+          "ref/netcoreapp2.1/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll": {}
+          "lib/netcoreapp2.1/_._": {}
         }
       },
       "System.Threading.Tasks.Parallel/4.3.0": {
@@ -2715,10 +2722,10 @@
         "microsoft.codeanalysis.workspaces.common.nuspec"
       ]
     },
-    "Microsoft.CSharp/4.6.0-preview3.19128.7": {
-      "sha512": "9yECMX2xrjv0+4CNKxB8BwgMu8q7q7pu6UdlGhYQcbuPaFyy/eBzCeIzC/5oYBIqHReUHracsVrL7hrwnbjoMg==",
+    "Microsoft.CSharp/4.6.0-preview4.19212.13": {
+      "sha512": "MkCpB2soFh4FL2AmaXgTgweS+IBk8tZuMfRXvkSWb9vAUpAs7UPqy5dNHuK4RS/dxSHWds0H1rQD1tOVX4qbXg==",
       "type": "package",
-      "path": "microsoft.csharp/4.6.0-preview3.19128.7",
+      "path": "microsoft.csharp/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2741,7 +2748,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "microsoft.csharp.4.6.0-preview3.19128.7.nupkg.sha512",
+        "microsoft.csharp.4.6.0-preview4.19212.13.nupkg.sha512",
         "microsoft.csharp.nuspec",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
@@ -2784,48 +2791,48 @@
         "version.txt"
       ]
     },
-    "Microsoft.EntityFrameworkCore/3.0.0-preview3.19153.1": {
-      "sha512": "byvyvCyC/BwPpfeo79WoyxQ9yQb05yTUlo+TUQdKrJ1rt4Q/DhnLjdZxCkEzW/B2w5oNENBXeAFiDeKd7y1oOA==",
+    "Microsoft.EntityFrameworkCore/3.0.0-preview4.19216.3": {
+      "sha512": "CP2r4C4NjX2aJTKVPwAkZt6WAUttc1NYmUVO6yLWV0Ag9aZZkdsDz0DCyJH/6xjBBGZRBGdsTwvAl7HkiYXn5Q==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/3.0.0-preview3.19153.1",
+      "path": "microsoft.entityframeworkcore/3.0.0-preview4.19216.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.3.0.0-preview4.19216.3.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/3.0.0-preview3.19153.1": {
-      "sha512": "2hu4T54xQY7hy+6IZhbrb+7cWHvHoBStqaW42f5ouMQDXJgM10O0mfWCe3gNX4m+b0xzIGtWNU/g/uQOURX7fg==",
+    "Microsoft.EntityFrameworkCore.Abstractions/3.0.0-preview4.19216.3": {
+      "sha512": "+se7Dr/vmwtVyeWqekgE4UaREAeZgNWUE7R9MTkWfOv2PJuD8ici4eYWiRZQdXL1LOcKU4rUeEzVbDOPu0ukdQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/3.0.0-preview3.19153.1",
+      "path": "microsoft.entityframeworkcore.abstractions/3.0.0-preview4.19216.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.3.0.0-preview4.19216.3.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/3.0.0-preview3.19153.1": {
-      "sha512": "Tdr7VB/BD2RfqKUW5KgugD1qrLmlX5yzaJYjwOdVvk8ttW4LYLX9LLRZstOORz+Su0zZrDDCwyuop7mqsFWmVQ==",
+    "Microsoft.EntityFrameworkCore.Analyzers/3.0.0-preview4.19216.3": {
+      "sha512": "sdyCOLfXw2vKTDCLpTvT4nrcHUI3KQfaAtBCVw8Y58q65aWdqEWG5MUnXwQ3caAdXoeIIG/YZIaarSHwob4oMQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/3.0.0-preview3.19153.1",
+      "path": "microsoft.entityframeworkcore.analyzers/3.0.0-preview4.19216.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
-        "microsoft.entityframeworkcore.analyzers.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.3.0.0-preview4.19216.3.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/3.0.0-preview3.19153.1": {
-      "sha512": "BUO/APqjraAnQ9WW3yx3z6AY+P4pCa+8TKqbQrJhjzH8K0L/Qd5wwk2Gf+P8u1SuyjVJyIPP3NuwHws5On+Ftw==",
+    "Microsoft.EntityFrameworkCore.Design/3.0.0-preview4.19216.3": {
+      "sha512": "pWK7B3twFEC8aescVNXN/7DjJj/2vwODwYYFlRWaxStT8LH/JUcIJMCRFU4vz/6UIJzxyNMrXcQCkbk5I4bAAA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/3.0.0-preview3.19153.1",
+      "path": "microsoft.entityframeworkcore.design/3.0.0-preview4.19216.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2835,46 +2842,46 @@
         "lib/net461/Microsoft.EntityFrameworkCore.Design.xml",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.3.0.0-preview4.19216.3.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational/3.0.0-preview3.19153.1": {
-      "sha512": "79lR6iGnTGc9VC7lyIkMNIvkyhylidOhlroK3Kfpoy8Vu1rnF5tYNwyzIqbBBZLTkzt72se/gjPLGdIPWWJUBQ==",
+    "Microsoft.EntityFrameworkCore.Relational/3.0.0-preview4.19216.3": {
+      "sha512": "1iujZi8XDMLc5I7Hv8keGMjPENdZNxm6yy5ditH+07Gxmhi51gB4AokX0rAGBMshyGqSNp4EvU00QRorhKAicA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/3.0.0-preview3.19153.1",
+      "path": "microsoft.entityframeworkcore.relational/3.0.0-preview4.19216.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.3.0.0-preview4.19216.3.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.SqlServer/3.0.0-preview3.19153.1": {
-      "sha512": "+wgXzfCRARLUdXOjfLacTarj5nV17FCuFOCPooib9z/CO+E1fz7VDqwYQyr9lXRAwa8Kdy1CPLUkH8Hymrtydg==",
+    "Microsoft.EntityFrameworkCore.SqlServer/3.0.0-preview4.19216.3": {
+      "sha512": "LqTOvHJZz+KGNdbp+g7ph0+H/6b5kFshfd8n0TO6SIVLH11JwNnmJslOcLNIoIEG5Q7nhTMLiJg5iuak9lHt4w==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlserver/3.0.0-preview3.19153.1",
+      "path": "microsoft.entityframeworkcore.sqlserver/3.0.0-preview4.19216.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
-        "microsoft.entityframeworkcore.sqlserver.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlserver.3.0.0-preview4.19216.3.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/3.0.0-preview3.19153.1": {
-      "sha512": "ioS7BlpgD8fGp5S1+GcjDq50AEBbMAF9l28pGku8jhFfyI2ORcRtfuOYcCSwPhzZ0Z2cnSim8oSq/Li/C8a5QA==",
+    "Microsoft.EntityFrameworkCore.Tools/3.0.0-preview4.19216.3": {
+      "sha512": "iCMqCsYi9DtvduAMFY41Ndtw78PUOJHjWQweQld3xyLqSGW5+RXUgKxZv+XYefX8OjrEpsk6rycPU49Sg2O39w==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/3.0.0-preview3.19153.1",
+      "path": "microsoft.entityframeworkcore.tools/3.0.0-preview4.19216.3",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.tools.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.3.0.0-preview4.19216.3.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PowerShell2.psd1",
         "tools/EntityFrameworkCore.PowerShell2.psm1",
@@ -2889,68 +2896,68 @@
         "tools/netcoreapp2.0/any/ef.runtimeconfig.json"
       ]
     },
-    "Microsoft.Extensions.Caching.Abstractions/3.0.0-preview3.19153.1": {
-      "sha512": "1rQJFuaTL0on87VsopEF+OdOh+8oc/X0W9EI+WcPFni0gRsb5gRtzu6KdcCXDVxTmrC1XpLzs7SmfEs3loqZDg==",
+    "Microsoft.Extensions.Caching.Abstractions/3.0.0-preview4.19216.2": {
+      "sha512": "XsDxa/zcNuw4pOREGz7IkagS8Wg6NEnTYUTXAWb5WmwL6dtaVAM1Lki9Ka57j3fp5QqZdBIO+kWbKnAQwKunvQ==",
       "type": "package",
-      "path": "microsoft.extensions.caching.abstractions/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.caching.abstractions/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.xml",
-        "microsoft.extensions.caching.abstractions.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.caching.abstractions.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.caching.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Caching.Memory/3.0.0-preview3.19153.1": {
-      "sha512": "FlmjiieJyDVt3PD0zSDS6y+GT9V+8ERh/uA8sm/6SVFgQ+jYI+rek1K9BPEPUyFsh4GuvmWPUU9RVej3E1eldA==",
+    "Microsoft.Extensions.Caching.Memory/3.0.0-preview4.19216.2": {
+      "sha512": "FTRzcEtrBPGwYqxKIKQ6ZwDrBU0Wck/zixS0Ggv4DchbWMZG5ar2Xanb+aP7xXuMnWAqbBjEc22MaX9vLk1cEA==",
       "type": "package",
-      "path": "microsoft.extensions.caching.memory/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.caching.memory/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
-        "microsoft.extensions.caching.memory.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.caching.memory.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec"
       ]
     },
-    "Microsoft.Extensions.Configuration/3.0.0-preview3.19153.1": {
-      "sha512": "C23llDGJ6LiG44DLsYamSY4wJLlfGPTC7xXBhGIpU9nXkmibZleW//JV4lItSun3vNZVJ+pyGAJoCJZk38/95w==",
+    "Microsoft.Extensions.Configuration/3.0.0-preview4.19216.2": {
+      "sha512": "TjkK6mLXZIoyGSweUFeSvNrw+PChqMtyX4CVcjnIGbxzVo38drToTi6AXNSOI4RW4RXtF5bg7WZZVnqw6afx4g==",
       "type": "package",
-      "path": "microsoft.extensions.configuration/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.configuration/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
-        "microsoft.extensions.configuration.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.configuration.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.configuration.nuspec"
       ]
     },
-    "Microsoft.Extensions.Configuration.Abstractions/3.0.0-preview3.19153.1": {
-      "sha512": "oWXkB7qyUrBgOY7OABBWhAY/lg0J99p2kfkBKlh6W11rhdz8zVnGaovIWRv+sEtLUgFDn+devlTJHLI0QriPmw==",
+    "Microsoft.Extensions.Configuration.Abstractions/3.0.0-preview4.19216.2": {
+      "sha512": "jVyLH4iM/QxWJ6OZxfBwXcIwUdPn+aM9j1ZdoThNnjZmTd6SpIsmgQlqvWD1retyGCVTzsC3NK5BJCmSQpA2Ug==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.configuration.abstractions/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "microsoft.extensions.configuration.abstractions.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.configuration.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Configuration.Binder/3.0.0-preview3.19153.1": {
-      "sha512": "tnOsqQ6WoNt+ZRZ2uiXoebDZjQrl3kYrn7cziAalvrDI+OKFKLd0tx4/A7QrnXrjEW2xyWdmwfdhDwCR1nJOfg==",
+    "Microsoft.Extensions.Configuration.Binder/3.0.0-preview4.19216.2": {
+      "sha512": "9IDi9CGYNB6c60l24+snRmm3Akh/zql1SBLdteOWUDkId6DcWcoavKHMSUa5RP5tSOELgSmYcqDWcVaVxbP85A==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.binder/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.configuration.binder/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
-        "microsoft.extensions.configuration.binder.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.configuration.binder.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.configuration.binder.nuspec"
       ]
     },
@@ -2984,62 +2991,62 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Logging/3.0.0-preview3.19153.1": {
-      "sha512": "ycIEXpbJVPt52OmiU7UsSGUdEoHtAyEinQ8BfOrhTL40ifQkeF0M+SmvpsyOY0uTmVAlF+vvmrKltshaRgKmYA==",
+    "Microsoft.Extensions.Logging/3.0.0-preview4.19216.2": {
+      "sha512": "/jlGe307miPIVpYBBH6Mi0vkS9Cqz7zgh+RPajai82Dyw9ORgXUs3JK36h1s8Tb9WKAGfF754MuxK/s3pctaLQ==",
       "type": "package",
-      "path": "microsoft.extensions.logging/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.logging/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
-        "microsoft.extensions.logging.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.logging.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.logging.nuspec"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/3.0.0-preview3.19153.1": {
-      "sha512": "3QaXTy2sCChMiyX/e4cz29zGWlOHaZP58uGgibAbp0Mj4k/I2b2YoZaQtNyq6ba09yySEGrym9dLSq4Ooquwew==",
+    "Microsoft.Extensions.Logging.Abstractions/3.0.0-preview4.19216.2": {
+      "sha512": "2tnTWGUTzMKr2UiBq9Qs/h7R5QoNKjX0ARcwAjEeG5CJNSPMSTtrI/Ezk7DXAk9GVDLThO+jsyOQKSceZSvNwA==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.logging.abstractions/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Logging.Debug/3.0.0-preview3.19153.1": {
-      "sha512": "EZnI8ay/zjVVBobtPP1ZOUObL99LugITdRLU8o5ZRD/oziwI9botS9hyS+lIV5xD8yMYYvFCkXTBb+ygnwVJrg==",
+    "Microsoft.Extensions.Logging.Debug/3.0.0-preview4.19216.2": {
+      "sha512": "oLR50D0k39IrjYnTgPm+jK2jOveaFqkR3B95o0D3c2uEB0lZxAcyhGywnRYdNB8gmsMqj+3vx1oj/oE/fGl7RA==",
       "type": "package",
-      "path": "microsoft.extensions.logging.debug/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.logging.debug/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.xml",
-        "microsoft.extensions.logging.debug.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.logging.debug.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.logging.debug.nuspec"
       ]
     },
-    "Microsoft.Extensions.Options/3.0.0-preview3.19153.1": {
-      "sha512": "n2CSA3oWS+9/6jcHTTH0db0v0YU4OG62XKAsDze0H2gkNkhOqXeGr98cmJ2u1pXBsFKHkI+J7FMFQYA/PsfoAQ==",
+    "Microsoft.Extensions.Options/3.0.0-preview4.19216.2": {
+      "sha512": "cmdyu/OUxjKSlQDjxA5vntJQJh1RTTBsHVszShfguhZWybctEwKkcQCpYoh8tXx+S7QZc1D6kJUSJlYe90HzcQ==",
       "type": "package",
-      "path": "microsoft.extensions.options/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.options/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
-        "microsoft.extensions.options.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.options.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.options.nuspec"
       ]
     },
-    "Microsoft.Extensions.Primitives/3.0.0-preview3.19153.1": {
-      "sha512": "HG3Fk+VxJPdqPWIUbvOUBBLCGmz5esbJlmvq986v7mkJvdpa6zcPdIkfhaJ9zoWh81YhOt2y1KdvYNL7l6qXmQ==",
+    "Microsoft.Extensions.Primitives/3.0.0-preview4.19216.2": {
+      "sha512": "sg8yBc38EjXDktXvAOQudj35he+ef87VeSoQzHolePTpDACAEaa7YyiTfRnljuApMDSKGJMkeOnmUWwQECbqFw==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/3.0.0-preview3.19153.1",
+      "path": "microsoft.extensions.primitives/3.0.0-preview4.19216.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3047,7 +3054,7 @@
         "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.3.0.0-preview3.19153.1.nupkg.sha512",
+        "microsoft.extensions.primitives.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
       ]
     },
@@ -3520,10 +3527,10 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Microsoft.Win32.Registry/4.6.0-preview3.19128.7": {
-      "sha512": "nEbjnXltvnv6Irrt4NWt0+VKE7wXef8kgCmeTs7ro8zH/qwUkhKtJXPj5JGWSIz7sQ6UfmOkvZ3a+3DcrEua5Q==",
+    "Microsoft.Win32.Registry/4.6.0-preview4.19212.13": {
+      "sha512": "Q2sKetbTrk+S9t4kwTmrMYzn4iDcWrg1RqSjixmqSpiy/KORCwfXUYz7Ms9c6e44Pkr/DpN82xjQTBjgpxYO0A==",
       "type": "package",
-      "path": "microsoft.win32.registry/4.6.0-preview3.19128.7",
+      "path": "microsoft.win32.registry/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3535,7 +3542,7 @@
         "lib/netstandard1.3/Microsoft.Win32.Registry.dll",
         "lib/netstandard2.0/Microsoft.Win32.Registry.dll",
         "lib/netstandard2.0/Microsoft.Win32.Registry.xml",
-        "microsoft.win32.registry.4.6.0-preview3.19128.7.nupkg.sha512",
+        "microsoft.win32.registry.4.6.0-preview4.19212.13.nupkg.sha512",
         "microsoft.win32.registry.nuspec",
         "ref/net46/Microsoft.Win32.Registry.dll",
         "ref/net461/Microsoft.Win32.Registry.dll",
@@ -3712,16 +3719,16 @@
         "runtime.native.system.nuspec"
       ]
     },
-    "runtime.native.System.Data.SqlClient.sni/4.6.0-preview3.19128.7": {
-      "sha512": "MrxHpiuwHTRi52HJ9xuYq/d4c4eo3Nlrc4MmhOUx+RUKAa0LGDlGl6EU3CzNYD1NmyN+Ye5AdG7N/23pzEZNtQ==",
+    "runtime.native.System.Data.SqlClient.sni/4.6.0-preview4.19212.13": {
+      "sha512": "gcZhxHyUMWniLkGLoIsCBwqMyDQH9hcg5NjVDYuJPVgrAt27RT5cYnJZfvh+AUwfzhSLgmUQpVQqySnYBYu/xQ==",
       "type": "package",
-      "path": "runtime.native.system.data.sqlclient.sni/4.6.0-preview3.19128.7",
+      "path": "runtime.native.system.data.sqlclient.sni/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.native.system.data.sqlclient.sni.4.6.0-preview3.19128.7.nupkg.sha512",
+        "runtime.native.system.data.sqlclient.sni.4.6.0-preview4.19212.13.nupkg.sha512",
         "runtime.native.system.data.sqlclient.sni.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -4148,10 +4155,10 @@
         "system.collections.concurrent.nuspec"
       ]
     },
-    "System.Collections.Immutable/1.6.0-preview3.19128.7": {
-      "sha512": "84yrlNUoiJdAP0zQzuua6nydYvbGxW3EnJAtfksgkOguwVp7y09AHofMrrlOR9D0scACu1ncMmYpMOcaAcBiWA==",
+    "System.Collections.Immutable/1.6.0-preview4.19212.13": {
+      "sha512": "l3sen9rsjYuUu8IDprb6dSulce0mdQq+kLAPNgDhg5kfnrYp1+5ZRyvM3IIdgKZ3AQ8MQuf3dvtgJkgFV2RN3Q==",
       "type": "package",
-      "path": "system.collections.immutable/1.6.0-preview3.19128.7",
+      "path": "system.collections.immutable/1.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4165,7 +4172,7 @@
         "lib/netstandard2.0/System.Collections.Immutable.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.xml",
-        "system.collections.immutable.1.6.0-preview3.19128.7.nupkg.sha512",
+        "system.collections.immutable.1.6.0-preview4.19212.13.nupkg.sha512",
         "system.collections.immutable.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -4262,6 +4269,42 @@
         "version.txt"
       ]
     },
+    "System.ComponentModel.Composition/4.6.0-preview4.19212.13": {
+      "sha512": "KU8jAmuZnMQBJ5joTkKKVfyg2GB7Dqm1BzctGQUlxKzU2hw+HHOwiPRiTeb11IRssqm/AldHZRRX/P20Qddq6w==",
+      "type": "package",
+      "path": "system.componentmodel.composition/4.6.0-preview4.19212.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcoreapp2.0/System.ComponentModel.Composition.dll",
+        "lib/netcoreapp2.0/System.ComponentModel.Composition.xml",
+        "lib/netstandard2.0/System.ComponentModel.Composition.dll",
+        "lib/netstandard2.0/System.ComponentModel.Composition.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netstandard2.0/System.ComponentModel.Composition.dll",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.composition.4.6.0-preview4.19212.13.nupkg.sha512",
+        "system.componentmodel.composition.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Composition/1.0.31": {
       "sha512": "I+D26qpYdoklyAVUdqwUBrEIckMNjAYnuPJy/h9dsQItpQwVREkDFs4b4tkBza0kT2Yk48Lcfsv2QQ9hWsh9Iw==",
       "type": "package",
@@ -4346,22 +4389,24 @@
         "system.composition.typedparts.nuspec"
       ]
     },
-    "System.Configuration.ConfigurationManager/4.5.0": {
-      "sha512": "UIFvaFfuKhLr9u5tWMxmVoDPkFeD+Qv8gUuap4aZgVGYSYMdERck4OhLN/2gulAc0nYTEigWXSJNNWshrmxnng==",
+    "System.Configuration.ConfigurationManager/4.6.0-preview4.19212.13": {
+      "sha512": "BMmL9y/WnJK3mZKY9FGu2IRSRuCc0e4c2bN9YlDNItpko5NWxpW16/DioLMeOFZLZ1rN69DaFJ08BhAYJCtvlA==",
       "type": "package",
-      "path": "system.configuration.configurationmanager/4.5.0",
+      "path": "system.configuration.configurationmanager/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/System.Configuration.ConfigurationManager.dll",
+        "lib/net461/System.Configuration.ConfigurationManager.xml",
         "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll",
+        "lib/netstandard2.0/System.Configuration.ConfigurationManager.xml",
         "ref/net461/System.Configuration.ConfigurationManager.dll",
         "ref/net461/System.Configuration.ConfigurationManager.xml",
         "ref/netstandard2.0/System.Configuration.ConfigurationManager.dll",
         "ref/netstandard2.0/System.Configuration.ConfigurationManager.xml",
-        "system.configuration.configurationmanager.4.5.0.nupkg.sha512",
+        "system.configuration.configurationmanager.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.configuration.configurationmanager.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -4455,10 +4500,10 @@
         "system.data.common.nuspec"
       ]
     },
-    "System.Data.SqlClient/4.7.0-preview3.19128.7": {
-      "sha512": "ug9geYdy/x6LQItzIHMrk9f8fMgpA1PlVfbJh9Rv02AkBVU/TDLWAX87+BDhWsZdLztdO0hunlj/jPRU/KmXTQ==",
+    "System.Data.SqlClient/4.7.0-preview4.19212.13": {
+      "sha512": "LdgFePekzCw5PmVzxkNTxjohKYPzz7Zor0zIG20qCfcFqHuPNx9HS/AnFLKlHu3nUiSsWiERVHG/LWUag3nCZQ==",
       "type": "package",
-      "path": "system.data.sqlclient/4.7.0-preview3.19128.7",
+      "path": "system.data.sqlclient/4.7.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4534,7 +4579,7 @@
         "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.xml",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.xml",
-        "system.data.sqlclient.4.7.0-preview3.19128.7.nupkg.sha512",
+        "system.data.sqlclient.4.7.0-preview4.19212.13.nupkg.sha512",
         "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -4667,10 +4712,10 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/4.6.0-preview3.19128.7": {
-      "sha512": "hU/DHA4wgbcfarWo9CV4tF5mmoEhOCKwTFUGIigNKK+ELSORkMKK8oP+i+OnDkf82jfxn3oPRUUkRNGS1KECig==",
+    "System.Diagnostics.DiagnosticSource/4.6.0-preview4.19212.13": {
+      "sha512": "yVg9MXds/Lh5ghaOQ8FPy4xiYWkAAPyPsJbLvkJRwQmqEi7GR55XFFVCLlU2hZkf41fxiSSIBSzbyU1Ta8yjkA==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/4.6.0-preview3.19128.7",
+      "path": "system.diagnostics.diagnosticsource/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4686,7 +4731,7 @@
         "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.4.6.0-preview3.19128.7.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -6503,10 +6548,10 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.Caching/4.5.0": {
-      "sha512": "95j9KShuaAENf2gLbQ/9YoJDHIWAnoaFYA71xo4QVQyLkOMginn34cD1+6RcYIrqJamLkMXgvgUnOzwzBk+U0w==",
+    "System.Runtime.Caching/4.6.0-preview4.19212.13": {
+      "sha512": "mjluxVJx9VnsLegTmA9FC/+jd2kp3mn+Q22qB1vamhUOYjXNzI8AuDG8wusCL4fEsRiBu5M89SLCWe/CEhidAQ==",
       "type": "package",
-      "path": "system.runtime.caching/4.5.0",
+      "path": "system.runtime.caching/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6516,6 +6561,7 @@
         "lib/MonoTouch10/_._",
         "lib/net45/_._",
         "lib/netstandard2.0/System.Runtime.Caching.dll",
+        "lib/netstandard2.0/System.Runtime.Caching.xml",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
@@ -6529,18 +6575,20 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
         "runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll",
+        "runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.xml",
         "runtimes/win/lib/net45/_._",
         "runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.dll",
-        "system.runtime.caching.4.5.0.nupkg.sha512",
+        "runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.xml",
+        "system.runtime.caching.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.runtime.caching.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.6.0-preview3.19128.7": {
-      "sha512": "6pNB8NAgWC/uTy52WX/gCz9b5FSy27Fti0IrYvF1+L07RR8KKCVjyWdyQxB7lFUz0hij5lP83Ob9OPkVzSGA7g==",
+    "System.Runtime.CompilerServices.Unsafe/4.6.0-preview4.19212.13": {
+      "sha512": "PPd9AFkxov1XKbl3ryiVSFor0IWZjTRuYzEWSqnM4Uralg5toehvee8sLYldbaCugBq5ebuLk7pnMGK1RfNM6Q==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.6.0-preview3.19128.7",
+      "path": "system.runtime.compilerservices.unsafe/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6556,7 +6604,7 @@
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.4.6.0-preview3.19128.7.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -6861,10 +6909,10 @@
         "system.runtime.numerics.nuspec"
       ]
     },
-    "System.Security.AccessControl/4.6.0-preview3.19128.7": {
-      "sha512": "/Hj/VC24ztOXRqDhNpPEQXBARnvNSj7lXGlduj8YScdKUu0ZsYYR2lKh/v7qSvXBGqXqsozxAIRZwmiBu4rxXQ==",
+    "System.Security.AccessControl/4.6.0-preview4.19212.13": {
+      "sha512": "O6Z0DHu0y86QWxjmRz56ZQ0vEjbcGpuwwttVKTlmB2XesbieA/vTG5JKA8XZtNESy05bbClVq2d4K5OEq+cbxA==",
       "type": "package",
-      "path": "system.security.accesscontrol/4.6.0-preview3.19128.7",
+      "path": "system.security.accesscontrol/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6901,7 +6949,7 @@
         "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.xml",
         "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll",
         "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.accesscontrol.4.6.0-preview3.19128.7.nupkg.sha512",
+        "system.security.accesscontrol.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.security.accesscontrol.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -7088,10 +7136,10 @@
         "system.security.cryptography.primitives.nuspec"
       ]
     },
-    "System.Security.Cryptography.ProtectedData/4.5.0": {
-      "sha512": "wLBKzFnDCxP12VL9ANydSYhk59fC4cvOr9ypYQLPnAj48NQIhqnjdD2yhP8yEKyBJEjERWS9DisKL7rX5eU25Q==",
+    "System.Security.Cryptography.ProtectedData/4.6.0-preview4.19212.13": {
+      "sha512": "TV4Kqf22z5Xf5KlIDaSNF1VCvaAbxTtbQj7tRLEI13hrxhq3OqcSXDzlr3LvX3jfoGKVHvxFBtdWgvtYcE5oHg==",
       "type": "package",
-      "path": "system.security.cryptography.protecteddata/4.5.0",
+      "path": "system.security.cryptography.protecteddata/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7101,8 +7149,10 @@
         "lib/MonoTouch10/_._",
         "lib/net46/System.Security.Cryptography.ProtectedData.dll",
         "lib/net461/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net461/System.Security.Cryptography.ProtectedData.xml",
         "lib/netstandard1.3/System.Security.Cryptography.ProtectedData.dll",
         "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
@@ -7121,9 +7171,11 @@
         "ref/xamarinwatchos10/_._",
         "runtimes/win/lib/net46/System.Security.Cryptography.ProtectedData.dll",
         "runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.dll",
+        "runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.xml",
         "runtimes/win/lib/netstandard1.3/System.Security.Cryptography.ProtectedData.dll",
         "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
-        "system.security.cryptography.protecteddata.4.5.0.nupkg.sha512",
+        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
+        "system.security.cryptography.protecteddata.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -7184,31 +7236,37 @@
         "system.security.cryptography.x509certificates.nuspec"
       ]
     },
-    "System.Security.Permissions/4.5.0": {
-      "sha512": "9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
+    "System.Security.Permissions/4.6.0-preview4.19212.13": {
+      "sha512": "xTnkQOHm1eFuy8OzkywlKdlHXmyca3NbOjyPwxRRQOLMEMXXn+r4fZpGh/rB/0lJlu6Nl7mx4YA5NwPv9HD3AA==",
       "type": "package",
-      "path": "system.security.permissions/4.5.0",
+      "path": "system.security.permissions/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/System.Security.Permissions.dll",
+        "lib/net461/System.Security.Permissions.xml",
+        "lib/netcoreapp3.0/System.Security.Permissions.dll",
+        "lib/netcoreapp3.0/System.Security.Permissions.xml",
         "lib/netstandard2.0/System.Security.Permissions.dll",
+        "lib/netstandard2.0/System.Security.Permissions.xml",
         "ref/net461/System.Security.Permissions.dll",
         "ref/net461/System.Security.Permissions.xml",
+        "ref/netcoreapp3.0/System.Security.Permissions.dll",
+        "ref/netcoreapp3.0/System.Security.Permissions.xml",
         "ref/netstandard2.0/System.Security.Permissions.dll",
         "ref/netstandard2.0/System.Security.Permissions.xml",
-        "system.security.permissions.4.5.0.nupkg.sha512",
+        "system.security.permissions.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.security.permissions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Security.Principal.Windows/4.6.0-preview3.19128.7": {
-      "sha512": "3UV2zC9MaLIGQB3x/4cjB4gZxHTDQHf0xW1w0csnT/9kBHz1J8AeW4rashgv+887KjbgDY6csptuR9u59WqJFA==",
+    "System.Security.Principal.Windows/4.6.0-preview4.19212.13": {
+      "sha512": "7mbdyGAvAyEcbJVmjj2Rq//z8ySyPzZEt5JROM8gRqMhItOV/xrjBVIEMAKFsaiEwYFn/7SbX1jYlPUWJ0kmRw==",
       "type": "package",
-      "path": "system.security.principal.windows/4.6.0-preview3.19128.7",
+      "path": "system.security.principal.windows/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7253,7 +7311,7 @@
         "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
         "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll",
         "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.principal.windows.4.6.0-preview3.19128.7.nupkg.sha512",
+        "system.security.principal.windows.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.security.principal.windows.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -7326,10 +7384,10 @@
         "system.text.encoding.nuspec"
       ]
     },
-    "System.Text.Encoding.CodePages/4.6.0-preview3.19128.7": {
-      "sha512": "F7Ft2KhIj9xJ84RMTrUWrPBZk8XkVeknynufO4HutkZDjfzkUje9hYqxwlMypbyO3lZXNm8AKRLn+mXsuSUabg==",
+    "System.Text.Encoding.CodePages/4.6.0-preview4.19212.13": {
+      "sha512": "ovOJO8ooxawMiZ+9d/pLFCRPV0znYDWKhm3OXWelrqifp2dQa5TJWAdeMvWNoHva4YTCFjn16WDb095pdiomLA==",
       "type": "package",
-      "path": "system.text.encoding.codepages/4.6.0-preview3.19128.7",
+      "path": "system.text.encoding.codepages/4.6.0-preview4.19212.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7360,7 +7418,7 @@
         "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
-        "system.text.encoding.codepages.4.6.0-preview3.19128.7.nupkg.sha512",
+        "system.text.encoding.codepages.4.6.0-preview4.19212.13.nupkg.sha512",
         "system.text.encoding.codepages.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -7653,20 +7711,39 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Extensions/4.3.0": {
-      "sha512": "bnVaCBAgfef4G0Jha+iSLgOF2N+sJYrqG++R6KjyOawg9c4z8WJU+OImHn+7y6FaBdY6Lk7vUxieQK/XdOv/yA==",
+    "System.Threading.Tasks.Extensions/4.5.2": {
+      "sha512": "BG/TNxDFv0svAzx8OiMXDlsHfGw623BZ8tCXw4YLhDFDvDhNUEV58jKYMGRnkbJNm7c3JNNJDiN7JBMzxRBR2w==",
       "type": "package",
-      "path": "system.threading.tasks.extensions/4.3.0",
+      "path": "system.threading.tasks.extensions/4.5.2",
       "files": [
         ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/netcoreapp2.1/_._",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
-        "system.threading.tasks.extensions.4.3.0.nupkg.sha512",
-        "system.threading.tasks.extensions.nuspec"
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netcoreapp2.1/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.extensions.4.5.2.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Threading.Tasks.Parallel/4.3.0": {
@@ -8105,12 +8182,13 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
-      "Microsoft.EntityFrameworkCore.SqlServer >= 3.0.0-preview3.19153.1",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.0.0-preview3.19153.1",
-      "Microsoft.Extensions.Logging.Debug >= 3.0.0-preview3.19153.1",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 3.0.0-preview4.19216.3",
+      "Microsoft.EntityFrameworkCore.Tools >= 3.0.0-preview4.19216.3",
+      "Microsoft.Extensions.Logging.Debug >= 3.0.0-preview4.19216.2",
       "Microsoft.NETCore.Platforms >= 3.0.0-preview4.19212.13",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.3",
-      "System.Runtime.Caching >= 4.5.0",
+      "System.ComponentModel.Composition >= 4.6.0-preview4.19212.13",
+      "System.Runtime.Caching >= 4.6.0-preview4.19212.13",
       "Telerik.UI.for.Blazor >= 0.5.0",
       "runtime.win-x64.Microsoft.NETCore.DotNetAppHost >= 3.0.0-preview4-27615-11"
     ]
@@ -8143,7 +8221,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\markb\\Downloads": {},
         "http://bower.io": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore-tooling/index.json": {},
@@ -8169,17 +8246,17 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
-            "version": "[3.0.0-preview3.19153.1, )"
+            "version": "[3.0.0-preview4.19216.3, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[3.0.0-preview3.19153.1, )"
+            "version": "[3.0.0-preview4.19216.3, )"
           },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
-            "version": "[3.0.0-preview3.19153.1, )"
+            "version": "[3.0.0-preview4.19216.2, )"
           },
           "Microsoft.NETCore.Platforms": {
             "suppressParent": "All",
@@ -8191,9 +8268,13 @@
             "target": "Package",
             "version": "[2.2.3, )"
           },
+          "System.ComponentModel.Composition": {
+            "target": "Package",
+            "version": "[4.6.0-preview4.19212.13, )"
+          },
           "System.Runtime.Caching": {
             "target": "Package",
-            "version": "[4.5.0, )"
+            "version": "[4.6.0-preview4.19212.13, )"
           },
           "Telerik.UI.for.Blazor": {
             "target": "Package",

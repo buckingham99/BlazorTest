@@ -1,4 +1,5 @@
-@using BlazorTest.Data
+@using BlazorTest.Data;
+@using BlazorTest.Helpers;
 @using System.Collections.Generic;
 @using System.Linq;
 @using System.Text;
@@ -16,48 +17,45 @@
     </div>
 </div>
 <div class="row">
-    <div class="loader" style="display:none"></div>
+    <div class="loader" bind="@LoaderDisplayType" style="display:@LoaderDisplayType"></div>
     <div class="tableFixHead" style="height: 600px;">
-        @if (users == null)
-        {
-            <p><em>Loading ...</em></p>
-        }
-        else
-        {
-            <table>
-                <thead>
-                    <tr class="table-hover">
-                        <th>
 
-                            <div></div>
-                        </th>
-                        <th>
-                            <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => SortData("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
-                        </th>
-                        <th>
-                            <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => SortData("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
-                        </th>
-                        <th>
-                            <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => SortData("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
-                        </th>
-                        <th>
-                            <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => SortData("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
-                        </th>
-                        <th>
-                            <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => SortData("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
-                        </th>
-                        <th>
-                            <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => SortData("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
-                        </th>
-                        <th>
-                            <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => SortData("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table>
+            <thead>
+                <tr class="table-hover">
+                    <th>
+
+                        <div></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => SortData("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => SortData("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => SortData("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => SortData("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => SortData("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => SortData("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => SortData("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (users != null)
+                {
                     @foreach (var u in @users)
                     {
-                        <tr onclick="@( () => EditUser(@u))" title="Click on Magnifying- Glass or anywhere on the Row to edit">
+                        <tr onclick="@( () => EditUser(@u))" title="Click to Edit">
                             <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span class="oi oi-magnifying-glass"></span></a></td>
                             <td>@u.Surname</td>
                             <td>@u.GivenName</td>
@@ -65,19 +63,19 @@
                             <td>@u.City</td>
                             <td>@u.State</td>
                             <td>@u.ZipCode.ToString()</td>
-                            <td>@u.TelephoneNumber.ToString()</td>
+                            <td>@u.TelephoneNumber</td>
                         </tr>
                     }
-                </tbody>
-            </table>
-        }
+                }
+            </tbody>
+        </table>
+
     </div>
 </div>
 
 <!-- Modal -->
 @if (SelectedUser != null)
 {
-
     <div class="container">
         <div id="editUserModal" class="modal col-xs-6 col-sm-12 col-md-12" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered col-md-12 col-md-offset-3" role="document">
@@ -95,13 +93,13 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="first_name">First Name</label>
-                                            <input type="text" name="first_name" id="first_name" class="form-control input-sm" bind="@SelectedUser.GivenName" placeholder="First Name" />
+                                            <input type="text" name="first_name" id="first_name" class="form-control input-sm" bind-value-onchange="@SelectedUser.GivenName" placeholder="First Name" />
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="last_name">Last Name</label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind="@SelectedUser.Surname" placeholder="Last Name" />
+                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind-value-onchange="@SelectedUser.Surname" value="@SelectedUser.Surname" placeholder="Last Name" />
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +107,7 @@
                                     <div class="col-xs-6 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="address">Street Address</label>
-                                            <input type="text" name="address" id="streetAddress" class="form-control input-sm" bind="@SelectedUser.StreetAddress" placeholder="Street Address" />
+                                            <input type="text" name="address" id="streetAddress" class="form-control input-sm" bind-value-onchange="@SelectedUser.StreetAddress" placeholder="Street Address" />
                                         </div>
                                     </div>
                                 </div>
@@ -117,13 +115,13 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="city">City</label>
-                                            <input type="text" name="city" id="city" class="form-control input-sm" bind="@SelectedUser.City" placeholder="City" />
+                                            <input type="text" name="city" id="city" class="form-control input-sm" bind-value-onchange="@SelectedUser.City" placeholder="City" />
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="state">State</label>
-                                            <input type="text" name="state" id="state" class="form-control input-sm" bind="@SelectedUser.State" placeholder="State" />
+                                            <input type="text" name="state" id="state" class="form-control input-sm" bind-value-onchange="@SelectedUser.State" placeholder="State" />
                                         </div>
                                     </div>
                                 </div>
@@ -131,13 +129,13 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="zipCode">Zip Code</label>
-                                            <input type="text" name="zipCode" id="zipCode" class="form-control input-sm" bind="@SelectedUser.ZipCode" placeholder="Zip Code" />
+                                            <input type="text" name="zipCode" id="zipCode" class="form-control input-sm" bind-value-onchange="@SelectedUser.ZipCode" placeholder="Zip Code" />
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="telephone">Telephone</label>
-                                            <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
+                                            <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind-value-onchange="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
                                         </div>
                                     </div>
                                 </div>
@@ -145,13 +143,13 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="zodiacSign">Zodiac Sign</label>
-                                            <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
+                                            <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind-value-onchange="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="birthdate">Birth Day</label>
-                                            <input type="text" name="birthdate" id="birthdate" class="form-control input-sm" bind="@SelectedUser.Birthday" placeholder="Birthday" />
+                                            <input type="text" name="birthdate" id="birthdate" class="form-control input-sm" bind-value-onchange="@SelectedUser.Birthday" placeholder="Birthday" />
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +157,7 @@
                                     <div class="col-xs-6 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="company">Company</label>
-                                            <input type="text" name="company" id="company" class="form-control input-sm" bind="@SelectedUser.Company" placeholder="Company" />
+                                            <input type="text" name="company" id="company" class="form-control input-sm" bind-value-onchange="@SelectedUser.Company" placeholder="Company" />
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +165,7 @@
                                     <div class="col-xs-6 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="occupation">Occupation</label>
-                                            <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind="@SelectedUser.Occupation" placeholder="Occupation" />
+                                            <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind-value-onchange="@SelectedUser.Occupation" placeholder="Occupation" />
                                         </div>
                                     </div>
                                 </div>
@@ -175,13 +173,13 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="username">User Name</label>
-                                            <input type="text" name="username" id="username" class="form-control input-sm" bind="@SelectedUser.Username" placeholder="User Name" />
+                                            <input type="text" name="username" id="username" class="form-control input-sm" bind-value-onchange="@SelectedUser.Username" placeholder="User Name" />
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="text" name="password" id="password" class="form-control input-sm" bind="@SelectedUser.Password" placeholder="Password" />
+                                            <input type="text" name="password" id="password" class="form-control input-sm" bind-value-onchange="@SelectedUser.Password" placeholder="Password" />
                                         </div>
                                     </div>
                                 </div>
@@ -189,20 +187,20 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="bloodType">Blood Type</label>
-                                            <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind="@SelectedUser.BloodType" placeholder="Blood Type" />
+                                            <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind-value-onchange="@SelectedUser.BloodType" placeholder="Blood Type" />
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="pounds">Weight</label>
-                                            <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind="@SelectedUser.Pounds" placeholder="Weight" />
+                                            <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind-value-onchange="@SelectedUser.Pounds" placeholder="Weight" />
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" onclick="@( () => CancelSaveUser(true))" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" onclick="@( () => SaveUser(SelectedUser))">Save changes</button>
                         </div>
                     </div>
@@ -214,8 +212,10 @@
 
 
 @functions {
-    int recordsToReturn = 200;
+    //int recordsToReturn = 200;
     List<User> users = new List<User>();
+    User UnModifiedUser = new User();
+    User SelectedUser = new User();
     int namesCount = 0;
     string SortField = "Id";
     bool SortDesc = false;
@@ -226,50 +226,35 @@
     string StateSort = String.Empty;
     string ZipCodeSort = String.Empty;
     string PhoneSort = String.Empty;
+    string LoaderDisplayType = "block;";
 
-    // Edit Dialog Entries
-    User SelectedUser;
-
-    protected async override void OnInit()
+    protected async override Task OnInitAsync()
     {
-        //ToggleSpinner(true);
-        this.StateHasChanged();
-        await ReadData();
-        ToggleSpinner(false);
-    }
-    private async Task ReadData()
-    {
-        BlankDirectionIcons();
         users = await NamesService.GetNamesDataAsync(SortField, SortDesc);
         namesCount = users.Count;
+        ToggleSpinner(false);
+        StateHasChanged();
     }
-    private async void ToggleSpinner(bool spinnerOn)
+
+    private void ToggleSpinner(bool spinnerOn)
     {
-        if (spinnerOn == false)
-        {
-          await JSRuntime.InvokeAsync<string>(
-                 "appFunctions.hideSpinner", "");
-        }
-        else
-        {
-            await JSRuntime.InvokeAsync<string>(
-                 "appFunctions.showSpinner", "");
-        }
+        LoaderDisplayType = (spinnerOn) ? "block;" : "none;";
     }
-    async Task SortData(string szSortField)
+    private void SortData(string SortField)
     {
         ToggleSpinner(true);
 
         BlankDirectionIcons();
-        SortField = szSortField;
         SortDesc = !SortDesc;
         CalcIconDirection(SortField);
-        users = await NamesService.SortNamesDataAsync(SortField, SortDesc, users);
+        users = NamesService.SortNamesData(SortField, SortDesc, users);
 
         ToggleSpinner(false);
+        StateHasChanged();
+
     }
 
-    string CalcIconDirection(string SortField)
+    private string CalcIconDirection(string SortField)
     {
         string szDirection = SortDesc == true ? "oi oi-arrow-thick-bottom" : "oi oi-arrow-thick-top";
         switch (SortField)
@@ -306,32 +291,54 @@
         StreetAddressSort = "";
         CitySort = "";
         StateSort = "";
-        ZipCodeSort = "";
         PhoneSort = "";
-    }
-
-    private void PopulateUserDialog(User myUser)
-    {
-        SelectedUser = myUser;
+        ZipCodeSort = "";
     }
 
     private async void EditUser(User myUser)
     {
         SelectedUser = myUser;
-        await  JSRuntime.InvokeAsync<string>(
+        User UnModifiedUser = SelectedUser;
+        UnModifiedUser = SelectedUser;
+        await JSRuntime.InvokeAsync<string>(
                  "appFunctions.showEditUserModal", "");
-        //PopulateUserDialog(myUser);
+        StateHasChanged();
     }
     private async Task<List<User>> SaveUser(User SelectedUser)
     {
-        ToggleSpinner(false);
+        //await JSRuntime.InvokeAsync<string>(
+        //    "appfunctions.saveConfirmation", "");
+
+        //await JSRuntime.InvokeAsync<string>(
+        //    "appFunctions.hideEditUserModal", "");
 
         users = await NamesService.SaveUserAsync(SortField, SortDesc, users, SelectedUser);
 
-        ToggleSpinner(true);
+        await JSRuntime.InvokeAsync<string>(
+                "appFunctions.hideEditUserModal", "");
 
-        this.StateHasChanged();
+        ToggleSpinner(false);
+        StateHasChanged();
         return users;
     }
-}
+
+    private async Task<List<User>> CancelSaveUser(bool CancelSave)
+    {
+        if (CancelSave)
+        {
+            users = await NamesService.SaveUserAsync(SortField, SortDesc, users, UnModifiedUser);
+        }
+        
+
+        SelectedUser = null;
+        UnModifiedUser = null;
+
+        await JSRuntime.InvokeAsync<string>(
+            "appFunctions.hideEditUserModal", "");
+
+        ToggleSpinner(false);
+        StateHasChanged();
+        return users;
+    }
+    }
 

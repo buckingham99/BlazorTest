@@ -206,7 +206,6 @@ namespace BlazorTest.Data
                         City = t[8],
                         State = t[9],
                         StateFull = t[10],
-                        //ZipCode = Convert.ToInt32(t[11]),
                         ZipCode = t[11].Length == 5 ? t[11] : t[11].PadLeft(5 - t[11].Length, '0'),
                         CountryCode = t[12],
                         CountryFull = t[13],
@@ -235,13 +234,13 @@ namespace BlazorTest.Data
                         BloodType = t[36],
                         Pounds = t[37],
                         Kilograms = t[38],
-                        //FeetInches = t[39],
+                        FeetInches = t[39],
                         Centimeters = t[40],
                         GUID = t[41],
                         Latitude = t[42],
                         Longitude = t[43]
                     };
-                    //if (users.Count < 1000)
+                    if (users.Count < 200)
                         users.Add(myUser);
                 }
                 //Console.WriteLine(line);
