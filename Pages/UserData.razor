@@ -30,9 +30,11 @@
     }
 
 @functions {
-    //int recordsToReturn = 200;
+    int currentPage = 1;
+    int pageSize = 20;
+
     List<User> users = new List<User>();
-    //int namesCount = 0;
+    List<User> displayUsers = new List<User>();
     string SortField = "Id";
     bool SortDesc = false;
     string SurnameSort = String.Empty;

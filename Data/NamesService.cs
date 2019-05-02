@@ -12,7 +12,13 @@ namespace BlazorTest.Data
     public class NamesService : INamesService
     {
         private const string CacheKey = "users";
-        public List<User> GetNamesData(string SortField, bool SortDesc)
+        private const int UsersToReturn = 200;
+        public int GetUserCount()
+        {
+            ObjectCache cache = MemoryCache.Default;
+            return ((List<User>)cache.Get(CacheKey)).Count;
+        }
+        public List<User> GetNamesData(string SortField, bool SortDesc, int currentPage, int pageSize)
         {
             ObjectCache cache = MemoryCache.Default;
             if (cache.Contains(CacheKey))
@@ -21,6 +27,7 @@ namespace BlazorTest.Data
             {
                 List<User> users = ReadCSVFile();
                 CacheItemPolicy cacheItemPolicy = CacheItemPolicy(users);
+
                 users = SortNamesData(SortField, SortDesc, users);
 
                 return users;
@@ -35,6 +42,7 @@ namespace BlazorTest.Data
             {
                 List<User> users = await ReadCSVFileAsync();
                 CacheItemPolicy cacheItemPolicy = await CacheItemPolicyAsync(users);
+
                 users = await SortNamesDataAsync(SortField, SortDesc, users);
 
                 return await Task.FromResult(users.ToList());
@@ -45,9 +53,13 @@ namespace BlazorTest.Data
         {
             List<User> tmpUser = users;
             if (SortDesc == false)
+                //tmpUser = users.OrderBy(s => s.GetType().GetProperty(SortField).GetValue(s)).Skip((currentPage-1)*pageSize).Take(pageSize).ToList();
                 tmpUser = users.OrderBy(s => s.GetType().GetProperty(SortField).GetValue(s)).ToList();
             else
-                tmpUser = users.OrderByDescending(s => s.GetType().GetProperty(SortField).GetValue(s)).ToList();
+                tmpUser = users.OrderByDescending(s => s.GetType()
+                .GetProperty(SortField)
+                .GetValue(s))
+                .ToList();
 
             return tmpUser;
         }
@@ -60,7 +72,7 @@ namespace BlazorTest.Data
             return await Task.FromResult(Sort(SortField, SortDesc, users));
         }
 
-        public async Task<List<User>> SaveUserAsync(string SortField, bool SortDesc, List<User> users, User SelectedUser)
+        public async Task<List<User>> SaveUserAsync(string SortField, bool SortDesc, List<User> users, User SelectedUser, int currentPage, int pageSize)
         {
             foreach (var x in users)
             {
@@ -178,7 +190,72 @@ namespace BlazorTest.Data
         private async Task<List<User>> ConvertCSVToUsersAsync(string[] lines)
         {
             List<User> users = new List<User>();
-            foreach (string line in lines)
+            List<string> list_lines = new List<string>(lines);
+            Parallel.ForEach(list_lines, line =>
+            {
+                var t = line.Split(',');
+                // Skip the First Line to leave the CSV file from FakeNames.Com intact
+                if (t[0] != "Number")
+                {
+                    User myUser = new User
+                    {
+                        Id = Convert.ToInt16(t[0]),
+                        Gender = t[1],
+                        NameSet = t[2],
+                        Title = t[3],
+                        GivenName = t[4],
+                        MiddleInitial = t[5],
+                        Surname = t[6],
+                        StreetAddress = t[7],
+                        City = t[8],
+                        State = t[9],
+                        StateFull = t[10],
+                        ZipCode = t[11].Trim().Length == 5 ? t[11] : t[11].PadRight(5 - t[11].Length, '0'),
+                        CountryCode = t[12],
+                        CountryFull = t[13],
+                        EmailAddress = t[14],
+                        Username = t[15],
+                        Password = t[16],
+                        TelephoneNumber = t[17],
+                        TelephoneCountryCode = int.Parse(t[18]),
+                        MothersMaiden = t[19],
+                        Birthday = t[20],
+                        Age = Convert.ToInt16(t[21]),
+                        TropicalZodiac = t[22],
+                        CCType = t[23],
+                        CCNumber = Convert.ToDouble(t[24]).ToString().Substring(0, 5) + "?",
+                        CVV2 = Convert.ToInt16(t[25]),
+                        CCExpires = Convert.ToDateTime(t[26]),
+                        NationalID = t[27],
+                        UPS = t[28],
+                        WesternUnionMTCN = Convert.ToDecimal(t[29]),
+                        MoneyGramMTCN = Convert.ToInt32(t[30]),
+                        Color = t[31],
+                        Occupation = t[32],
+                        Company = t[33],
+                        Vehicle = t[34],
+                        Domain = t[35],
+                        BloodType = t[36],
+                        Pounds = t[37],
+                        Kilograms = t[38],
+                        FeetInches = t[39],
+                        Centimeters = t[40],
+                        GUID = t[41],
+                        Latitude = t[42],
+                        Longitude = t[43]
+
+                    };
+                    if (users.Count < UsersToReturn)
+                        users.Add(myUser);
+                }
+            });
+            return await Task.FromResult(users);
+        }
+        private List<User> ConvertCSVToUsers(string[] lines)
+        {
+            List<User> users = new List<User>();
+            List<string> list_lines = new List<string>(lines);
+            Parallel.ForEach(list_lines, line =>
             {
                 var t = line.Split(',');
                 // Skip the First Line to leave the CSV file from FakeNames.Com intact
@@ -230,74 +307,12 @@ namespace BlazorTest.Data
                         GUID = t[41],
                         Latitude = t[42],
                         Longitude = t[43]
-                    };
-                    if (users.Count < 1000)
-                        users.Add(myUser);
-                }
-            }
 
-            return await Task.FromResult(users);
-        }
-        private List<User> ConvertCSVToUsers(string[] lines)
-        {
-            List<User> users = new List<User>();
-            foreach (string line in lines)
-            {
-                var t = line.Split(',');
-                // Skip the First Line to leave the CSV file from FakeNames.Com intact
-                if (t[0] != "Number")
-                {
-                    User myUser = new User
-                    {
-                        Id = Convert.ToInt16(t[0]),
-                        Gender = t[1],
-                        NameSet = t[2],
-                        Title = t[3],
-                        GivenName = t[4],
-                        MiddleInitial = t[5],
-                        Surname = t[6],
-                        StreetAddress = t[7],
-                        City = t[8],
-                        State = t[9],
-                        StateFull = t[10],
-                        ZipCode = t[11].Length == 5 ? t[11] : t[11].PadLeft(5 - t[11].Length, '0'),
-                        CountryCode = t[12],
-                        CountryFull = t[13],
-                        EmailAddress = t[14],
-                        Username = t[15],
-                        Password = t[16],
-                        TelephoneNumber = t[17],
-                        TelephoneCountryCode = int.Parse(t[18]),
-                        MothersMaiden = t[19],
-                        Birthday = t[20],
-                        Age = Convert.ToInt16(t[21]),
-                        TropicalZodiac = t[22],
-                        CCType = t[23],
-                        CCNumber = Convert.ToDouble(t[24]).ToString().Substring(0,5) + "?",
-                        CVV2 = Convert.ToInt16(t[25]),
-                        CCExpires = Convert.ToDateTime(t[26]),
-                        NationalID = t[27],
-                        UPS = t[28],
-                        WesternUnionMTCN = Convert.ToDecimal(t[29]),
-                        MoneyGramMTCN = Convert.ToInt32(t[30]),
-                        Color = t[31],
-                        Occupation = t[32],
-                        Company = t[33],
-                        Vehicle = t[34],
-                        Domain = t[35],
-                        BloodType = t[36],
-                        Pounds = t[37],
-                        Kilograms = t[38],
-                        FeetInches = t[39],
-                        Centimeters = t[40],
-                        GUID = t[41],
-                        Latitude = t[42],
-                        Longitude = t[43]
                     };
-                    if (users.Count < 200)
-                        users.Add(myUser);
+                        if(users.Count < UsersToReturn)
+                            users.Add(myUser);
                 }
-            }
+            });
 
             return users;
         }
