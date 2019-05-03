@@ -22,6 +22,7 @@
     },
     hideEditUserModal: function (myModal) {
         $('#editUserModal').modal('hide');
+        $('#map').empty();
     },
     setFocus: function (element) {
         element.focus();
@@ -46,6 +47,26 @@
                 }
             });
         });
-    }
+    },
+    showMap: function (coords) {
+        var tmpSplit = coords.split(',');
+        var long = Number(tmpSplit[0]);
+        var lat = Number(tmpSplit[1]);
 
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([long,lat]),
+                zoom: 14
+            })
+        });
+    },
+    scrollToMap: function () {
+        document.getElementById('map').scrollIntoView(true);
+    }
 };
