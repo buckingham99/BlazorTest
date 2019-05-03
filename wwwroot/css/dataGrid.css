@@ -1,7 +1,22 @@
-﻿.tableFixHead {
+﻿.modal {
+   
+}
+
+/* Important part */
+.modal-dialog {
+    overflow-y: initial !important
+}
+
+.modal-body {
+    height: 950px;
+    overflow-y: auto;
+}
+
+
+.tableFixHead {
     overflow-y: auto;
     overflow-x: auto;
-    height: 600px;
+    height: 500px;
 }
     .tableFixHead table {
         border-collapse: collapse;
@@ -27,11 +42,11 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(128, 128, 128, 0.15);
+    background-color: lightgray;
 }
 
 th {
-    background-color: rgba(128, 128, 128, 0.15);
+    background-color: lightgray;
 }
 
 .pager {

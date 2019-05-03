@@ -95,7 +95,7 @@
         <div id="editUserModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="background-color:lightgray;">
                         <h5 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b></h5>
                         <button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => CancelSaveUser(SelectedUser))">
                             <span aria-hidden="true">&times;</span>
@@ -154,7 +154,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" style="background-color:azure;">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="zodiacSign">Zodiac Sign</label>
@@ -167,7 +167,74 @@
                                             <input type="text" name="birthdate" id="birthdate" class="form-control input-sm" bind-value-onchange="@SelectedUser.Birthday" placeholder="Birthday" />
                                         </div>
                                     </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="momMaiden">Mothers Maiden Name</label>
+                                            <input type="text" name="momMaiden" id="momMaiden" class="form-control input-sm" bind-value-onchange="@SelectedUser.MothersMaiden" placeholder="Mother's Maiden Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="age">Age</label>
+                                            <input type="text" name="age" id="age" class="form-control input-sm" bind-value-onchange="@SelectedUser.Age" placeholder="Age" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="bloodType">Blood Type</label>
+                                            <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind-value-onchange="@SelectedUser.BloodType" placeholder="Blood Type" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="pounds">Weight</label>
+                                            <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind-value-onchange="@SelectedUser.Pounds" placeholder="Weight" />
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <div class="row" style="background-color:blanchedalmond;">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="CCType">Credit Card Type</label>
+                                            <input type="text" name="CCType" id="CCType" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCType" placeholder="Credit Card Type" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="CCNumber">Credit Card Number</label>
+                                            <input type="text" name="CCNumber" id="CCNumber" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCNumber" placeholder="Credit Card Number" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="CVV2">CVV2</label>
+                                            <input type="text" name="CVV2" id="CVV2" class="form-control input-sm" bind-value-onchange="@SelectedUser.CVV2" placeholder="CVV2" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="CCExpires">CCExpires</label>
+                                            <input type="text" name="CCExpires" id="CCExpires" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCExpires" placeholder="CCExpires" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="WesternUnionMTCN">WesternUnionMTCN</label>
+                                            <input type="text" name="WesternUnionMTCN" id="WesternUnionMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.WesternUnionMTCN" placeholder="WesternUnionMTCN" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="MoneyGramMTCN">MoneyGramMTCN</label>
+                                            <input type="text" name="MoneyGramMTCN" id="MoneyGramMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.MoneyGramMTCN" placeholder="MoneyGramMTCN" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-12 col-md-12">
                                         <div class="form-group">
@@ -198,20 +265,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="bloodType">Blood Type</label>
-                                            <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind-value-onchange="@SelectedUser.BloodType" placeholder="Blood Type" />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="pounds">Weight</label>
-                                            <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind-value-onchange="@SelectedUser.Pounds" placeholder="Weight" />
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -228,7 +281,7 @@
 
 @functions {
     private int currentPage = 1;
-    private int pageSize = 20;
+    private int pageSize = 30;
 
     private List<User> users = new List<User>();
     private List<User> displayUsers = new List<User>();
@@ -250,11 +303,13 @@
     private int TotalPages => users.Count > 0 ? (int)Math.Ceiling(decimal.Divide(users.Count, pageSize)) : 0;
     private List<int> btnlist = new List<int>();
 
+    /// I changed this to OnInit from OnInit Async
+    /// since I'm populating the Queue once the Index page has loaded,
+    /// so speed in this method is not of the essence.
     protected override void OnInit()
     {
         ToggleSpinner(true);
         users = NamesService.GetNamesData(SortField, SortDesc);
-        //namesCount = NamesService.GetUserCount();
         namesCount = users.Count;
 
         for (int i = 1; i < TotalPages + 1; i++)

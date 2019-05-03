@@ -17,7 +17,8 @@
             .then(r => console.log(r));
     },
     showEditUserModal: function (myModal) {
-        $('#editUserModal').modal('show').attr('backdrop','static'); 
+        $('#editUserModal').modal('show').attr('backdrop', 'static'); 
+        $('#first_name').focus();
     },
     hideEditUserModal: function (myModal) {
         $('#editUserModal').modal('hide');

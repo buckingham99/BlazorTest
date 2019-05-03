@@ -35,7 +35,7 @@ namespace BlazorTest.Models
         public string CCType { get; set; }
         public string CCNumber { get; set; }
         public int CVV2 { get; set; }
-        public DateTime CCExpires { get; set; }
+        public string CCExpires { get; set; }
         public string NationalID { get; set; }
         public string UPS { get; set; }
         public decimal WesternUnionMTCN { get; set; }

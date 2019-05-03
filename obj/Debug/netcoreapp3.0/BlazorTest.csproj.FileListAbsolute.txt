@@ -77,8 +77,6 @@ C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.Views.pdb
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.csproj.CopyComplete
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.dll
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.pdb
-C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\Chart.cshtml.g.cs
-C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.csprojAssemblyReference.cache
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\BlazorTest.dll
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\App.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\Counter.razor.g.cs
