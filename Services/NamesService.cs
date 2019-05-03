@@ -19,7 +19,7 @@ namespace BlazorTest.Services
             ObjectCache cache = MemoryCache.Default;
             return ((List<User>)cache.Get(CacheKey)).Count;
         }
-        public List<User> GetNamesData(string SortField, bool SortDesc, int currentPage, int pageSize)
+        public List<User> GetNamesData(string SortField, bool SortDesc)
         {
             ObjectCache cache = MemoryCache.Default;
             if (cache.Contains(CacheKey))

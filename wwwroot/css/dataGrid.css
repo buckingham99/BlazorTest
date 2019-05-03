@@ -1,14 +1,17 @@
 ﻿.tableFixHead {
     overflow-y: auto;
+    overflow-x: auto;
     height: 600px;
 }
-.tableFixHead table {
-    border-collapse: collapse;
-    width: 100%;
-}
+    .tableFixHead table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: smaller;
+    }
 .tableFixHead th {
     position: sticky;
     top: 0;
+    
 }
 
 table {
@@ -28,7 +31,7 @@ tr:nth-child(even) {
 }
 
 th {
-    
+    background-color: rgba(128, 128, 128, 0.15);
 }
 
 .pager {
