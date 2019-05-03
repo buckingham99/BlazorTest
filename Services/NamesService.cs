@@ -4,15 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using BlazorTest.Data;
+using BlazorTest.Services;
+using BlazorTest.Models;
 using System.Runtime.Caching;
 
-namespace BlazorTest.Data
+namespace BlazorTest.Services
 {
     public class NamesService : INamesService
     {
         private const string CacheKey = "users";
-        private const int UsersToReturn = 200;
+        private const int UsersToReturn = 500;
         public int GetUserCount()
         {
             ObjectCache cache = MemoryCache.Default;

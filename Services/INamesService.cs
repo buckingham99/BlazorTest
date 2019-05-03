@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-
-namespace BlazorTest.Data
+using BlazorTest.Models;
+namespace BlazorTest.Services
 {
     public interface INamesService
     {

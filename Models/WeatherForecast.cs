@@ -1,6 +1,6 @@
 using System;
 
-namespace BlazorTest.Data
+namespace BlazorTest.Models
 {
     public class WeatherForecast
     {

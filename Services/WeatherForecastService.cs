@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using BlazorTest.Models;
 
-namespace BlazorTest.Data
+namespace BlazorTest.Services
 {
     public class WeatherForecastService
     {

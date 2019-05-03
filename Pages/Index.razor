@@ -1,4 +1,8 @@
 ﻿@page "/"
+@using BlazorTest.Services;
+@using BlazorTest.Models;
+
+@inject NamesService NamesService;
 <HeadingComponent />
 
 <h2>Blazor Test by Mark Buckingham</h2>
@@ -6,23 +10,24 @@
 
 <p>This is the standard Blazor Client side template and it's been extended from there.</p>
 
-<p>I didn't want to load up a MDF file for the database, so I used a CSV file from FakeNames.Com for data.
+<p>
+    I didn't want to load up a MDF file for the database, so I used a CSV file from FakeNames.Com for data.
     (Located in the Data folder).
-    </p>
+</p>
 <p>
     Since I wanted to start quickly I used the Trial Telerik Controls for Blazor.
 
     <NavLink class="nav-link" href="userdata">Telerik data grid</NavLink>
-    This is Excellent for UI, however I wanted to dig a little deeper into the 
-    binding methods available and created another grid with editing, located here: 
+    This is Excellent for UI, however I wanted to dig a little deeper into the
+    binding methods available and created another grid with editing, located here:
     <NavLink class="nav-link" href="testuserdata">HTML Grid</NavLink>
 </p>
 <p>
-    The Test HTML grid parses the CSV file via a Names Service 
+    The Test HTML grid parses the CSV file via a Names Service
     and creates a user list that is persisted in a Memory Cache.
 
     This page also takes advantage of invoking JavaScript to handle a standard Bootstrap Modal.
-    Changes can be made and will persist throughout the session, they will go away 
+    Changes can be made and will persist throughout the session, they will go away
     once you've navigated away from the site.
     You can easily add a database to this via the Names Service and persist the data.
 
@@ -33,4 +38,12 @@
 
 
 @functions {
+    List<User> users = new List<User>();
+    string SortField = "Id";
+    bool SortDesc = false;
+
+    protected async Task OnRenderAsync()
+    {
+        users = await NamesService.GetNamesDataAsync(SortField, SortDesc);
+    }
 }

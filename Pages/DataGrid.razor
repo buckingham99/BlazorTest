@@ -1,103 +1,103 @@
-@using BlazorTest.Data;
+@using BlazorTest.Models;
+@using BlazorTest.Services;
 @using BlazorTest.Helpers;
 @using System.Collections.Generic;
 @using System.Linq;
 @using System.Text;
 @using Microsoft.AspNetCore.Components;
+
 @inject NamesService NamesService;
 @inject IJSRuntime JSRuntime;
 
 
 <div class="container">
-        <div class="row">
-            <h3>Users DataGrid Component</h3>
-        </div>
-        <div class="row">
-            <b>Users count:  (@namesCount)</b>
-        </div>
+    <div class="row">
+        <h3>Users DataGrid Component</h3>
+    </div>
+    <div class="row">
+        <b>Users count:  (@namesCount)</b>
+    </div>
 
-        <div class="row">
-            <div class="loader" bind="@LoaderDisplayType" style="display:@LoaderDisplayType"></div>
-        </div>
-        <div class="row">
-            <div class="tableFixHead" >
-
-                <table class="table-responsive">
-                    <thead>
-                        <tr class="table-hover">
-                            <th>
-                                <div><a href="javascript:void(0)" title="Default Sort by Id" onclick="@( () => SortData("Id"))"><b> </b></a><span style="background-color:ActiveBorder;" class="oi oi-target" title="Default Sort" onclick="@( () => SortData("Id"))"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => SortData("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => SortData("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => SortData("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => SortData("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => SortData("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => SortData("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => SortData("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (displayUsers != null)
-                        {
-                            @foreach (var u in @displayUsers)
-                            {
-                                <tr onclick="@( () => EditUser(@u))" title="Click to Edit">
-                                    <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span class="oi oi-magnifying-glass"></span></a></td>
-                                    <td>@u.Surname</td>
-                                    <td>@u.GivenName</td>
-                                    <td>@u.StreetAddress</td>
-                                    <td>@u.City</td>
-                                    <td>@u.State</td>
-                                    <td>@u.ZipCode.ToString()</td>
-                                    <td>@u.TelephoneNumber</td>
-                                </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                <ul class="pagination pagination-sm">
-                    @foreach (var i in btnlist)
+    <div class="row">
+        <div class="loader" bind="@LoaderDisplayType" style="display:@LoaderDisplayType"></div>
+    </div>
+    <div class="row">
+        <div class="tableFixHead navbar">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Default Sort by Id" onclick="@( () => SortData("Id"))"><b> </b></a><span style="background-color:ActiveBorder;" class="oi oi-target" title="Default Sort" onclick="@( () => SortData("Id"))"></span></div>
+                        </th>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => SortData("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
+                        </th>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => SortData("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
+                        </th>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => SortData("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
+                        </th>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => SortData("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
+                        </th>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => SortData("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
+                        </th>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => SortData("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
+                        </th>
+                        <th>
+                            <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => SortData("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (displayUsers != null)
                     {
-                        <li  class="page-item @(i == currentPage ? "active" : "")">
-                            <a href="javascript:void(0)" class="page-link" title="Page: @i" value-bind="@i" onclick="@( () => ChangePage(@i))">@i</a>
-                        </li>
+                        @foreach (var u in @displayUsers)
+                        {
+                            <tr onclick="@( () => EditUser(@u))" title="Click to Edit">
+                                <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span class="oi oi-magnifying-glass"></span></a></td>
+                                <td>@u.Surname</td>
+                                <td>@u.GivenName</td>
+                                <td>@u.StreetAddress</td>
+                                <td>@u.City</td>
+                                <td>@u.State</td>
+                                <td>@u.ZipCode.ToString()</td>
+                                <td>@u.TelephoneNumber</td>
+                            </tr>
+                        }
                     }
-                </ul>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
+    <div class="row">
+        <div>
+            <ul class="pagination pagination-sm pager">
+                @foreach (var i in btnlist)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a href="javascript:void(0)" class="page-link" title="Page: @i" value-bind="@i" onclick="@( () => ChangePage(@i))">@i</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
 <!-- Modal -->
 @if (SelectedUser != null)
 {
     <div class="container">
-        <div id="editUserModal" class="modal col-xs-6 col-sm-12 col-md-12" tabindex="-1" role="dialog">
+        <div id="editUserModal" class="modal col-md-12" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered col-md-12 col-md-offset-3" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b></h5>
                         @*<button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => SaveUser(SelectedUser))" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>*@
+                                <span aria-hidden="true">&times;</span>
+                            </button>*@
                     </div>
                     <div id="modalBody" class="modal-body">
                         <div class="panel-body">
@@ -225,11 +225,11 @@
 
 
 @functions {
-        int currentPage = 1;
-        int pageSize = 10;
+    int currentPage = 1;
+    int pageSize = 20;
 
-        List<User> users = new List<User>();
-        List<User> displayUsers = new List<User>();
+    List<User> users = new List<User>();
+    List<User> displayUsers = new List<User>();
     public User UnModifiedUser = new User();
     User SelectedUser = new User();
     int namesCount = 0;
@@ -252,7 +252,7 @@
         ToggleSpinner(true);
         users = await NamesService.GetNamesDataAsync(SortField, SortDesc);
         namesCount = NamesService.GetUserCount();
-        for (int i = 1; i < TotalPages+1; i++)
+        for (int i = 1; i < TotalPages + 1; i++)
         {
             btnlist.Add(i);
         }
@@ -376,7 +376,7 @@
 
     private async Task<List<User>> CancelSaveUser(User SelectedUser)
     {
-        if (!Comparer.DeepCompare(SelectedUser,UnModifiedUser))
+        if (!Comparer.DeepCompare(SelectedUser, UnModifiedUser))
         {
             users = await NamesService.SaveUserAsync(SortField, SortDesc, users, UnModifiedUser, currentPage, pageSize);
         }

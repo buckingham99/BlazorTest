@@ -1,9 +1,11 @@
 @page "/testuserdata"
-@using BlazorTest.Data;
+@using BlazorTest.Models;
+@using BlazorTest.Services;
 @using System.Collections.Generic;
 @using System.Linq;
 @using Telerik.Blazor.Components.Grid;
 @using System.Text;
+
 @inject NamesService namesService;
 @inject IJSRuntime JSRuntime
 
@@ -12,8 +14,8 @@
     <div class="row">
         <p>This component demonstrates fetching & editing data from a service via local CSV file using a HTML Grid.</p>
     </div>
-    <div  class="row">
-       <p>Data shown below is a component</p>
+    <div class="row">
+        <p>Data shown below is a component</p>
     </div>
     <div class="row">
         <DataGrid />

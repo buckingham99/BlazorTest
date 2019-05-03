@@ -1,20 +1,16 @@
 ﻿.tableFixHead {
     overflow-y: auto;
-    height: 400px;
+    height: 600px;
+}
+.tableFixHead table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.tableFixHead th {
+    position: sticky;
+    top: 0;
 }
 
-    .tableFixHead th {
-        position: sticky;
-        top: 0;
-    }
-
-}
-
-.papaginationFixed {
-    
-}
-
-/* Just common table stuff. Really. */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -24,6 +20,7 @@ th, td {
     padding: 8px 16px;
     font-size: small;
     white-space: nowrap;
+    
 }
 
 tr:nth-child(even) {
@@ -31,8 +28,17 @@ tr:nth-child(even) {
 }
 
 th {
-    background: #eee;
+    
 }
+
+.pager {
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
 
 .loader {
     position: absolute;
