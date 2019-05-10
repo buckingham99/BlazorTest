@@ -3,31 +3,129 @@
 @using BlazorTest.Services;
 @using System.Collections.Generic;
 @using System.Linq;
-@using Telerik.Blazor.Components.Grid;
 @using System.Text;
-
 @inject NamesService namesService;
 @inject IJSRuntime JSRuntime
 
-<h3>Test User Data Page</h3>
-<div class="container">
-    <div class="row">
-        <p>This component demonstrates fetching & editing data from a service via local CSV file using a HTML Grid.</p>
-        <p>Click on a user to edit data and view an OpenLayers Map of their location.  You can either scroll to 
-        the bottom of the page to view the map or click the <span class="oi oi-map-marker" title="Scroll To Map"></span> 
-        located in the header of the Modal Screen.</p>
-        <p>Please note that your data will not be persisted between sessions, but a Database can easily be attached
-        to the NamesService Class.
-        </p>
-    </div>
-    <div class="row">
-        <p>Data shown below is a component</p>
-    </div>
-    <div class="row">
-        <DataGrid />
-    </div>
-</div>
+    <div class="container">
+        <div class="row">
+            <h3>Test User Data Page</h3>
+            <p>This component demonstrates fetching & editing data from a service via local CSV or JSON file using a HTML Grid.</p>
+            <p>Click on a user to edit data and view an OpenLayers Map of their location. </p>
+            <p>
+                Please note that your data will not be persisted between sessions, but a Database can easily be attached
+                to the NamesService Class.
+            </p>
+        </div>
+        <div class="row col-xl-12" style="border: 1px solid black;">
+            <p>
+                <h5>Parent Component</h5>
+            </p>
+            <div class="row col-md-12">
+                <div>
+                    <input type="text" name="" bind-value-oninput="@ParentSearch" onkeyup="@(() => SortOrder())" placeholder="@PlaceHolderSort" />
+                </div>
+                <div>
+                    <label>  Search by Category  </label>
+                    <input type="radio" id="lastName"
+                           name="searchGroup" checked onchange="@(() => ParentSort = "Surname")" />
+                    <label for="lastName">Last Name</label>
+                    <input type="radio" id="givenName"
+                           name="searchGroup" onchange="@(() => ParentSort = "GivenName")" />
+                    <label for="givenName">First Name</label>
+                    <input type="radio" id="address"
+                           name="searchGroup" onchange="@(() => ParentSort = "StreetAddress")" />
+                    <label for="address">Address</label>
+                    <input type="radio" id="city"
+                           name="searchGroup" onchange="@(() => ParentSort = "City")" />
+                    <label for="city">City</label>
+                    <input type="radio" id="state"
+                           name="searchGroup" onchange="@(() => ParentSort = "State")" />
+                    <label for="state">State</label>
+                    <input type="radio" id="zip"
+                           name="searchGroup" onchange="@(() => ParentSort = "ZipCode")" />
+                    <label for="zip">Zip Code</label>
+                    <input type="radio" id="phone"
+                           name="searchGroup" onchange="@(() => ParentSort = "TelephoneNumber")" />
+                    <label for="phone">Phone</label>
+                </div>
+            </div>
 
+        </div>
+    </div>
+<div class="content">
+    <DataGrid SortParameters="@ParentParameters"></DataGrid>
+</div>
 @functions {
+    public string PlaceHolderSort { get; set; } = "Search Last Name ...";
+    public string _ParentSort { get; set; } = "Surname";
+    public string ParentSort
+    {
+        get { return string.Empty; }
+        set
+        {
+            if (value != null)
+            {
+                _ParentSort = value;
+                SortOrder();
+            }
+            else
+            {
+                _ParentSort = "Surname";
+            }
+
+        }
+    }
+    public string _ParentSearch { get; set; } = "";
+    public string ParentSearch
+    {
+        get { return string.Empty; }
+        set
+        {
+            if (value != null)
+            {
+                _ParentSearch = value;
+                SortOrder();
+            }
+        }
+    }
+
+    public List<string> ParentParameters = new List<string>();
+
+    public List<string> SortOrder()
+    {
+        switch (_ParentSort)
+        {
+            case "Surname":
+                PlaceHolderSort = "Search Last Name ...";
+                break;
+            case "GivenName":
+                PlaceHolderSort = "Search First Name ...";
+                break;
+            case "StreetAddress":
+                PlaceHolderSort = "Search Address ...";
+                break;
+            case "City":
+                PlaceHolderSort = "Search City ...";
+                break;
+            case "State":
+                PlaceHolderSort = "Search State ...";
+                break;
+            case "ZipCode":
+                PlaceHolderSort = "Search Zip Code ...";
+                break;
+            case "TelephoneNumber":
+                PlaceHolderSort = "Search Telephone Number ...";
+                break;
+            default:
+                break;
+        }
+        ParentParameters.Clear();
+        ParentParameters.Add(_ParentSort);
+        ParentParameters.Add(_ParentSearch);
+        return ParentParameters;
+
+    }
+
 
 }

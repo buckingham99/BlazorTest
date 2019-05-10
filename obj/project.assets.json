@@ -2,51 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.0": {
-      "Microsoft.AspNetCore.Blazor/3.0.0-preview4-19216-03": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Browser": "3.0.0-preview4-19216-03",
-          "Mono.WebAssembly.Interop": "3.0.0-preview4.19216.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Blazor.DevServer/3.0.0-preview4-19216-03": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        }
-      },
-      "Microsoft.AspNetCore.Components/3.0.0-preview4-19216-03": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.JSInterop": "3.0.0-preview4.19216.2",
-          "System.ComponentModel.Annotations": "4.6.0-preview4.19212.13"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Components.Browser/3.0.0-preview4-19216-03": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "3.0.0-preview4-19216-03",
-          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview4.19216.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Razor.Language/2.2.0": {
         "type": "package",
         "compile": {
@@ -395,15 +350,6 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Microsoft.JSInterop/3.0.0-preview4.19216.2": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Microsoft.JSInterop.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.JSInterop.dll": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/3.0.0-preview4.19212.13": {
         "type": "package",
         "compile": {
@@ -558,18 +504,6 @@
             "assetType": "runtime",
             "rid": "win"
           }
-        }
-      },
-      "Mono.WebAssembly.Interop/3.0.0-preview4.19216.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.JSInterop": "3.0.0-preview4.19216.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Mono.WebAssembly.Interop.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Mono.WebAssembly.Interop.dll": {}
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -1109,25 +1043,6 @@
           "ref/netstandard1.3/System.Console.dll": {}
         }
       },
-      "System.Data.Common/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
-        },
-        "compile": {
-          "ref/netstandard1.2/System.Data.Common.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.2/System.Data.Common.dll": {}
-        }
-      },
       "System.Data.SqlClient/4.7.0-preview4.19212.13": {
         "type": "package",
         "dependencies": {
@@ -1489,17 +1404,17 @@
           "lib/netstandard1.3/System.Linq.Parallel.dll": {}
         }
       },
-      "System.Linq.Queryable/4.3.0": {
+      "System.Linq.Queryable/4.0.1": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Linq.Expressions": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0"
         },
         "compile": {
           "ref/netstandard1.0/System.Linq.Queryable.dll": {}
@@ -2391,242 +2306,10 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
-      },
-      "Telerik.UI.for.Blazor/0.5.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Blazor": "3.0.0-preview4-19216-03",
-          "Microsoft.AspNetCore.Blazor.DevServer": "3.0.0-preview4-19216-03",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Data.Common": "4.3.0",
-          "System.Linq.Queryable": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Telerik.Blazor.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Telerik.Blazor.dll": {}
-        }
       }
     }
   },
   "libraries": {
-    "Microsoft.AspNetCore.Blazor/3.0.0-preview4-19216-03": {
-      "sha512": "y4LMGWkIiE1fzpJSmNDIElYbyPg98e/seMgL+A3+ye3v9Zy2+WGF1SqZB6Ax4queHLazvakmQ55NCnFtzyTBhg==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.blazor/3.0.0-preview4-19216-03",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "THIRD-PARTY-NOTICES.txt",
-        "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll",
-        "microsoft.aspnetcore.blazor.3.0.0-preview4-19216-03.nupkg.sha512",
-        "microsoft.aspnetcore.blazor.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Blazor.DevServer/3.0.0-preview4-19216-03": {
-      "sha512": "sO/dwzDEGxal64uk43ouMN+FQlUK3c6cT0tmjfZ99TiFWumw6/pgM0st7VYus24nTy6AtAiIxNumVmJl3o+5uQ==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.blazor.devserver/3.0.0-preview4-19216-03",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "THIRD-PARTY-NOTICES.txt",
-        "build/Microsoft.AspNetCore.Blazor.DevServer.props",
-        "microsoft.aspnetcore.blazor.devserver.3.0.0-preview4-19216-03.nupkg.sha512",
-        "microsoft.aspnetcore.blazor.devserver.nuspec",
-        "tools/Microsoft.AspNetCore.Antiforgery.dll",
-        "tools/Microsoft.AspNetCore.Antiforgery.xml",
-        "tools/Microsoft.AspNetCore.Authentication.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Authentication.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Authentication.Core.dll",
-        "tools/Microsoft.AspNetCore.Authentication.Core.xml",
-        "tools/Microsoft.AspNetCore.Authorization.Policy.dll",
-        "tools/Microsoft.AspNetCore.Authorization.Policy.xml",
-        "tools/Microsoft.AspNetCore.Authorization.dll",
-        "tools/Microsoft.AspNetCore.Authorization.xml",
-        "tools/Microsoft.AspNetCore.Blazor.Server.dll",
-        "tools/Microsoft.AspNetCore.Components.Browser.dll",
-        "tools/Microsoft.AspNetCore.Components.Browser.xml",
-        "tools/Microsoft.AspNetCore.Components.Server.dll",
-        "tools/Microsoft.AspNetCore.Components.Server.xml",
-        "tools/Microsoft.AspNetCore.Components.dll",
-        "tools/Microsoft.AspNetCore.Components.xml",
-        "tools/Microsoft.AspNetCore.Connections.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Connections.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Cryptography.Internal.dll",
-        "tools/Microsoft.AspNetCore.Cryptography.Internal.xml",
-        "tools/Microsoft.AspNetCore.DataProtection.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.DataProtection.dll",
-        "tools/Microsoft.AspNetCore.DataProtection.xml",
-        "tools/Microsoft.AspNetCore.Diagnostics.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Diagnostics.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Diagnostics.dll",
-        "tools/Microsoft.AspNetCore.Diagnostics.xml",
-        "tools/Microsoft.AspNetCore.HostFiltering.dll",
-        "tools/Microsoft.AspNetCore.HostFiltering.xml",
-        "tools/Microsoft.AspNetCore.Hosting.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Hosting.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Hosting.Server.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Hosting.dll",
-        "tools/Microsoft.AspNetCore.Hosting.xml",
-        "tools/Microsoft.AspNetCore.Html.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Html.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Http.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Http.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Http.Connections.Common.dll",
-        "tools/Microsoft.AspNetCore.Http.Connections.Common.xml",
-        "tools/Microsoft.AspNetCore.Http.Connections.dll",
-        "tools/Microsoft.AspNetCore.Http.Connections.xml",
-        "tools/Microsoft.AspNetCore.Http.Extensions.dll",
-        "tools/Microsoft.AspNetCore.Http.Extensions.xml",
-        "tools/Microsoft.AspNetCore.Http.Features.dll",
-        "tools/Microsoft.AspNetCore.Http.Features.xml",
-        "tools/Microsoft.AspNetCore.Http.dll",
-        "tools/Microsoft.AspNetCore.Http.xml",
-        "tools/Microsoft.AspNetCore.HttpOverrides.dll",
-        "tools/Microsoft.AspNetCore.HttpOverrides.xml",
-        "tools/Microsoft.AspNetCore.Mvc.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Mvc.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Mvc.Core.dll",
-        "tools/Microsoft.AspNetCore.Mvc.Core.xml",
-        "tools/Microsoft.AspNetCore.Mvc.DataAnnotations.dll",
-        "tools/Microsoft.AspNetCore.Mvc.DataAnnotations.xml",
-        "tools/Microsoft.AspNetCore.Mvc.Razor.dll",
-        "tools/Microsoft.AspNetCore.Mvc.Razor.xml",
-        "tools/Microsoft.AspNetCore.Mvc.TagHelpers.dll",
-        "tools/Microsoft.AspNetCore.Mvc.TagHelpers.xml",
-        "tools/Microsoft.AspNetCore.Mvc.ViewFeatures.dll",
-        "tools/Microsoft.AspNetCore.Mvc.ViewFeatures.xml",
-        "tools/Microsoft.AspNetCore.NodeServices.dll",
-        "tools/Microsoft.AspNetCore.Razor.Runtime.dll",
-        "tools/Microsoft.AspNetCore.Razor.Runtime.xml",
-        "tools/Microsoft.AspNetCore.Razor.dll",
-        "tools/Microsoft.AspNetCore.Razor.xml",
-        "tools/Microsoft.AspNetCore.ResponseCaching.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.ResponseCaching.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.ResponseCompression.dll",
-        "tools/Microsoft.AspNetCore.ResponseCompression.xml",
-        "tools/Microsoft.AspNetCore.Routing.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Routing.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Routing.dll",
-        "tools/Microsoft.AspNetCore.Routing.xml",
-        "tools/Microsoft.AspNetCore.Server.IIS.dll",
-        "tools/Microsoft.AspNetCore.Server.IIS.xml",
-        "tools/Microsoft.AspNetCore.Server.IISIntegration.dll",
-        "tools/Microsoft.AspNetCore.Server.IISIntegration.xml",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.Core.dll",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.Core.xml",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.xml",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.xml",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.dll",
-        "tools/Microsoft.AspNetCore.Server.Kestrel.xml",
-        "tools/Microsoft.AspNetCore.SignalR.Common.dll",
-        "tools/Microsoft.AspNetCore.SignalR.Common.xml",
-        "tools/Microsoft.AspNetCore.SignalR.Core.dll",
-        "tools/Microsoft.AspNetCore.SignalR.Core.xml",
-        "tools/Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson.dll",
-        "tools/Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson.xml",
-        "tools/Microsoft.AspNetCore.SignalR.dll",
-        "tools/Microsoft.AspNetCore.SignalR.xml",
-        "tools/Microsoft.AspNetCore.SpaServices.Extensions.dll",
-        "tools/Microsoft.AspNetCore.SpaServices.dll",
-        "tools/Microsoft.AspNetCore.StaticFiles.dll",
-        "tools/Microsoft.AspNetCore.StaticFiles.xml",
-        "tools/Microsoft.AspNetCore.WebSockets.dll",
-        "tools/Microsoft.AspNetCore.WebSockets.xml",
-        "tools/Microsoft.AspNetCore.WebUtilities.dll",
-        "tools/Microsoft.AspNetCore.WebUtilities.xml",
-        "tools/Microsoft.AspNetCore.dll",
-        "tools/Microsoft.AspNetCore.xml",
-        "tools/Microsoft.Extensions.Caching.Abstractions.dll",
-        "tools/Microsoft.Extensions.Caching.Memory.dll",
-        "tools/Microsoft.Extensions.Configuration.Abstractions.dll",
-        "tools/Microsoft.Extensions.Configuration.Binder.dll",
-        "tools/Microsoft.Extensions.Configuration.CommandLine.dll",
-        "tools/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
-        "tools/Microsoft.Extensions.Configuration.FileExtensions.dll",
-        "tools/Microsoft.Extensions.Configuration.Json.dll",
-        "tools/Microsoft.Extensions.Configuration.UserSecrets.dll",
-        "tools/Microsoft.Extensions.Configuration.dll",
-        "tools/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
-        "tools/Microsoft.Extensions.DependencyInjection.dll",
-        "tools/Microsoft.Extensions.DependencyModel.dll",
-        "tools/Microsoft.Extensions.FileProviders.Abstractions.dll",
-        "tools/Microsoft.Extensions.FileProviders.Composite.dll",
-        "tools/Microsoft.Extensions.FileProviders.Embedded.dll",
-        "tools/Microsoft.Extensions.FileProviders.Physical.dll",
-        "tools/Microsoft.Extensions.FileSystemGlobbing.dll",
-        "tools/Microsoft.Extensions.Hosting.Abstractions.dll",
-        "tools/Microsoft.Extensions.Localization.Abstractions.dll",
-        "tools/Microsoft.Extensions.Localization.dll",
-        "tools/Microsoft.Extensions.Logging.Abstractions.dll",
-        "tools/Microsoft.Extensions.Logging.Configuration.dll",
-        "tools/Microsoft.Extensions.Logging.Console.dll",
-        "tools/Microsoft.Extensions.Logging.Debug.dll",
-        "tools/Microsoft.Extensions.Logging.EventSource.dll",
-        "tools/Microsoft.Extensions.Logging.dll",
-        "tools/Microsoft.Extensions.ObjectPool.dll",
-        "tools/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
-        "tools/Microsoft.Extensions.Options.dll",
-        "tools/Microsoft.Extensions.Primitives.dll",
-        "tools/Microsoft.Extensions.WebEncoders.dll",
-        "tools/Microsoft.JSInterop.dll",
-        "tools/Microsoft.Net.Http.Headers.dll",
-        "tools/Microsoft.Net.Http.Headers.xml",
-        "tools/Mono.Cecil.Mdb.dll",
-        "tools/Mono.Cecil.Pdb.dll",
-        "tools/Mono.Cecil.Rocks.dll",
-        "tools/Mono.Cecil.dll",
-        "tools/Newtonsoft.Json.dll",
-        "tools/System.IO.Pipelines.dll",
-        "tools/System.Security.Cryptography.Pkcs.dll",
-        "tools/System.Security.Cryptography.Xml.dll",
-        "tools/System.Security.Permissions.dll",
-        "tools/System.Text.Encodings.Web.dll",
-        "tools/System.Threading.Channels.dll",
-        "tools/blazor-devserver.deps.json",
-        "tools/blazor-devserver.dll",
-        "tools/blazor-devserver.exe",
-        "tools/blazor-devserver.runtimeconfig.json",
-        "tools/runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
-        "tools/x64/aspnetcorev2_inprocess.dll",
-        "tools/x86/aspnetcorev2_inprocess.dll"
-      ]
-    },
-    "Microsoft.AspNetCore.Components/3.0.0-preview4-19216-03": {
-      "sha512": "mDx+/5/E3ZHJD1hnTd9mxzacK/PDAIbojr5yTAKgfy2iapbzNePLetAMXgJ/3PbUBd4VQcm9I1uEXAxek7UU4g==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.components/3.0.0-preview4-19216-03",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "THIRD-PARTY-NOTICES.txt",
-        "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll",
-        "lib/netstandard2.0/Microsoft.AspNetCore.Components.xml",
-        "microsoft.aspnetcore.components.3.0.0-preview4-19216-03.nupkg.sha512",
-        "microsoft.aspnetcore.components.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Components.Browser/3.0.0-preview4-19216-03": {
-      "sha512": "3qE9ALr118kS7pxf5QMT83jFcX9dwcfpK7HMRvqXUDLoGivpyYO2Qtqon7gpW7nepe6YvtkDbYFhMxRcWTyu7A==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.components.browser/3.0.0-preview4-19216-03",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "THIRD-PARTY-NOTICES.txt",
-        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll",
-        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.xml",
-        "microsoft.aspnetcore.components.browser.3.0.0-preview4-19216-03.nupkg.sha512",
-        "microsoft.aspnetcore.components.browser.nuspec"
-      ]
-    },
     "Microsoft.AspNetCore.Razor.Language/2.2.0": {
       "sha512": "IeyzVFXZdpUAnWKWoNYE0SsP1Eu7JLjZaC94jaI1VfGtK57QykROz/iGMc8D0VcqC8i02qYTPQN/wPKm6PfidA==",
       "type": "package",
@@ -3056,19 +2739,6 @@
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
         "microsoft.extensions.primitives.3.0.0-preview4.19216.2.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
-      ]
-    },
-    "Microsoft.JSInterop/3.0.0-preview4.19216.2": {
-      "sha512": "VqoWX8783pY80ZwE8K1i98Btsb/dZqkRaxOYvl2BjaryeCpJ0rDNlvj+c88YaFgG5o50tLEihTcqVjSAHmV8bw==",
-      "type": "package",
-      "path": "microsoft.jsinterop/3.0.0-preview4.19216.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Microsoft.JSInterop.dll",
-        "lib/netstandard2.0/Microsoft.JSInterop.xml",
-        "microsoft.jsinterop.3.0.0-preview4.19216.2.nupkg.sha512",
-        "microsoft.jsinterop.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/3.0.0-preview4.19212.13": {
@@ -3572,19 +3242,6 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "Mono.WebAssembly.Interop/3.0.0-preview4.19216.2": {
-      "sha512": "5wPHH5tovy63nFf05wYn8cc9SeK/TYl1G25QOZgtbu7EXQJ2wKNZCEF5pbH7w83/RvBXXuWQa/PgCvOGRpqBag==",
-      "type": "package",
-      "path": "mono.webassembly.interop/3.0.0-preview4.19216.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Mono.WebAssembly.Interop.dll",
-        "lib/netstandard2.0/Mono.WebAssembly.Interop.xml",
-        "mono.webassembly.interop.3.0.0-preview4.19216.2.nupkg.sha512",
-        "mono.webassembly.interop.nuspec"
       ]
     },
     "NETStandard.Library/1.6.1": {
@@ -4447,57 +4104,6 @@
         "ref/xamarinwatchos10/_._",
         "system.console.4.3.0.nupkg.sha512",
         "system.console.nuspec"
-      ]
-    },
-    "System.Data.Common/4.3.0": {
-      "sha512": "lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
-      "type": "package",
-      "path": "system.data.common/4.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net451/System.Data.Common.dll",
-        "lib/netstandard1.2/System.Data.Common.dll",
-        "lib/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net451/System.Data.Common.dll",
-        "ref/netstandard1.2/System.Data.Common.dll",
-        "ref/netstandard1.2/System.Data.Common.xml",
-        "ref/netstandard1.2/de/System.Data.Common.xml",
-        "ref/netstandard1.2/es/System.Data.Common.xml",
-        "ref/netstandard1.2/fr/System.Data.Common.xml",
-        "ref/netstandard1.2/it/System.Data.Common.xml",
-        "ref/netstandard1.2/ja/System.Data.Common.xml",
-        "ref/netstandard1.2/ko/System.Data.Common.xml",
-        "ref/netstandard1.2/ru/System.Data.Common.xml",
-        "ref/netstandard1.2/zh-hans/System.Data.Common.xml",
-        "ref/netstandard1.2/zh-hant/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
-        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/de/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/es/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/fr/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/it/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/ja/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/ko/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/ru/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/zh-hans/System.Data.Common.xml",
-        "ref/portable-net451+win8+wp8+wpa81/zh-hant/System.Data.Common.xml",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.data.common.4.3.0.nupkg.sha512",
-        "system.data.common.nuspec"
       ]
     },
     "System.Data.SqlClient/4.7.0-preview4.19212.13": {
@@ -5671,13 +5277,12 @@
         "system.linq.parallel.nuspec"
       ]
     },
-    "System.Linq.Queryable/4.3.0": {
-      "sha512": "In1Bmmvl/j52yPu3xgakQSI0YIckPUr870w4K5+Lak3JCCa8hl+my65lABOuKfYs4ugmZy25ScFerC4nz8+b6g==",
+    "System.Linq.Queryable/4.0.1": {
+      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
       "type": "package",
-      "path": "system.linq.queryable/4.3.0",
+      "path": "system.linq.queryable/4.0.1",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -5726,7 +5331,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.3.0.nupkg.sha512",
+        "system.linq.queryable.4.0.1.nupkg.sha512",
         "system.linq.queryable.nuspec"
       ]
     },
@@ -8167,17 +7772,6 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
-    },
-    "Telerik.UI.for.Blazor/0.5.0": {
-      "sha512": "Y+/g7kTZBRI9l09vPY/gAAfkAQOR8l3OQ6p3Pbzq93DQ4A8gFB2K/9lIQyyPbYi9g8DXVDEYaD/Uon0qVLV4aw==",
-      "type": "package",
-      "path": "telerik.ui.for.blazor/0.5.0",
-      "files": [
-        ".nupkg.metadata",
-        "lib/netstandard2.0/Telerik.Blazor.dll",
-        "telerik.ui.for.blazor.0.5.0.nupkg.sha512",
-        "telerik.ui.for.blazor.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -8188,8 +7782,8 @@
       "Microsoft.NETCore.Platforms >= 3.0.0-preview4.19212.13",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.3",
       "System.ComponentModel.Composition >= 4.6.0-preview4.19212.13",
+      "System.Reflection >= 4.3.0",
       "System.Runtime.Caching >= 4.6.0-preview4.19212.13",
-      "Telerik.UI.for.Blazor >= 0.5.0",
       "runtime.win-x64.Microsoft.NETCore.DotNetAppHost >= 3.0.0-preview4-27615-11"
     ]
   },
@@ -8272,13 +7866,13 @@
             "target": "Package",
             "version": "[4.6.0-preview4.19212.13, )"
           },
+          "System.Reflection": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
           "System.Runtime.Caching": {
             "target": "Package",
             "version": "[4.6.0-preview4.19212.13, )"
-          },
-          "Telerik.UI.for.Blazor": {
-            "target": "Package",
-            "version": "[0.5.0, )"
           },
           "runtime.win-x64.Microsoft.NETCore.DotNetAppHost": {
             "include": "None",

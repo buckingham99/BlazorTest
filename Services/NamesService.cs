@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 using BlazorTest.Services;
 using BlazorTest.Models;
 using System.Runtime.Caching;
+using Newtonsoft.Json;
 
 namespace BlazorTest.Services
 {
     public class NamesService : INamesService
     {
         private const string CacheKey = "users";
-        private const int UsersToReturn = 500;
+        private const int UsersToReturn = 250;
+        private const string FileNameCSV = @"\Data\FakeNameGenerator.com_cc9ff94f.csv";
+        private const string FileNameJSON = @"\Data\FakeNames.json";
 
         public List<User> GetNamesData(string SortField, bool SortDesc)
         {
@@ -38,14 +41,52 @@ namespace BlazorTest.Services
             else
             {
                 List<User> users = await ReadCSVFileAsync();
-                CacheItemPolicy cacheItemPolicy = await CacheItemPolicyAsync(users);
-
                 users = await SortNamesDataAsync(SortField, SortDesc, users);
-
+                CacheItemPolicy cacheItemPolicy = await CacheItemPolicyAsync(users);
                 return await Task.FromResult(users.ToList());
             }
         }
 
+        public List<User> GetNamesJson(string SortField, bool SortDesc)
+        {
+            var path = Path.GetDirectoryName(Assembly
+                .GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly()
+                .Location.IndexOf("bin\\")));
+            ObjectCache cache = MemoryCache.Default;
+            using (StreamReader r = new StreamReader(path + FileNameJSON))
+            {
+                string json = r.ReadToEnd();
+                if (cache.Contains(CacheKey))
+                    return (List<User>)cache.Get(CacheKey);
+                else
+                {
+                    List<User> users = JsonConvert.DeserializeObject<List<User>>(json);
+                    users = SortNamesData(SortField, SortDesc, users);
+                    CacheItemPolicy cacheItemPolicy = CacheItemPolicy(users);
+                    return users.ToList();
+                }
+            }
+        }
+        public async Task<List<User>> GetNamesJsonAsync(string SortField, bool SortDesc)
+        {
+            var path = Path.GetDirectoryName(Assembly
+                .GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly()
+                .Location.IndexOf("bin\\")));
+            ObjectCache cache = MemoryCache.Default;
+            using (StreamReader r = new StreamReader(path + FileNameJSON))
+            {
+                string json = r.ReadToEnd();
+                if (cache.Contains(CacheKey))
+                    return (List<User>)cache.Get(CacheKey);
+                else
+                {
+                    List<User> users = JsonConvert.DeserializeObject<List<User>>(json);
+                    users = await SortNamesDataAsync(SortField, SortDesc, users);
+                    CacheItemPolicy cacheItemPolicy = await CacheItemPolicyAsync(users);
+                    return await Task.FromResult(users.ToList());
+                }
+            }
+        }
         private List<User> Sort(string SortField, bool SortDesc, List<User> users)
         {
             List<User> tmpUser = users;
@@ -56,7 +97,6 @@ namespace BlazorTest.Services
                 .GetProperty(SortField)
                 .GetValue(s))
                 .ToList();
-
             return tmpUser;
         }
         public List<User> SortNamesData(string SortField, bool SortDesc, List<User> users)
@@ -153,7 +193,7 @@ namespace BlazorTest.Services
         {
             List<User> users = new List<User>();
             var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
-            string[] lines = File.ReadAllLines(path + @"\Data\FakeNameGenerator.com_cc9ff94f.csv");
+            string[] lines = File.ReadAllLines(path + FileNameCSV);
             users = ConvertCSVToUsers(lines);
             return users;
         }
@@ -161,7 +201,7 @@ namespace BlazorTest.Services
         {
             List<User> users = new List<User>();
             var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
-            string[] lines = File.ReadAllLines(path + @"\Data\FakeNameGenerator.com_cc9ff94f.csv");
+            string[] lines = File.ReadAllLines(path + FileNameCSV);
             users = await ConvertCSVToUsersAsync(lines);
             return await Task.FromResult(users);
         }

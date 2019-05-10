@@ -1,33 +1,51 @@
-﻿.modal {
-   
+﻿/* Clearable text inputs */
+.clearable {
+    position: relative;
+    display: inline-block;
 }
 
-/* Important part */
-.modal-dialog {
-    overflow-y: initial !important
+    .clearable input[type=text] {
+        padding-right: 24px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+.clearable__clear {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 8px;
+    font-style: normal;
+    font-size: 1.2em;
+    user-select: none;
+    cursor: pointer;
 }
 
-.modal-body {
-    height: 950px;
-    overflow-y: auto;
+.clearable input::-ms-clear { /* Remove IE default X */
+    display: none;
 }
-
-
+/*End*/
+.map {
+    width: 100%;
+    /*height: 600px;*/
+}
 .tableFixHead {
     overflow-y: auto;
     overflow-x: auto;
     height: 500px;
 }
-    .tableFixHead table {
-        border-collapse: collapse;
-        width: 100%;
-        font-size: smaller;
-    }
-.tableFixHead th {
-    position: sticky;
-    top: 0;
-    
+
+.tableFixHead table {
+    border-collapse: collapse;
+    /*width: 80%;*/
+    font-size: smaller;
 }
+
+    .tableFixHead th {
+        position: sticky;
+        top: 0;
+    }
 
 table {
     border-collapse: collapse;
@@ -38,7 +56,6 @@ th, td {
     padding: 8px 16px;
     font-size: small;
     white-space: nowrap;
-    
 }
 
 tr:nth-child(even) {
@@ -127,4 +144,3 @@ th {
         opacity: 1
     }
 }
-

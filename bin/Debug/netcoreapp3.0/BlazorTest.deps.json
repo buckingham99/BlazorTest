@@ -30,8 +30,8 @@
           "Microsoft.NETCore.Platforms": "3.0.0-preview4.19212.13",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
           "System.ComponentModel.Composition": "4.6.0-preview4.19212.13",
+          "System.Reflection": "4.3.0",
           "System.Runtime.Caching": "4.6.0-preview4.19212.13",
-          "Telerik.UI.for.Blazor": "0.5.0",
           "runtime.win-x64.Microsoft.NETCore.DotNetAppHost": "3.0.0-preview4-27615-11",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
@@ -41,8 +41,8 @@
           "Microsoft.AspNetCore.Authentication.OAuth": "3.0.0.0",
           "Microsoft.AspNetCore.Authorization": "3.0.0.0",
           "Microsoft.AspNetCore.Authorization.Policy": "3.0.0.0",
-          "Microsoft.AspNetCore.Components.Browser.Reference": "3.0.0.0",
-          "Microsoft.AspNetCore.Components.Reference": "3.0.0.0",
+          "Microsoft.AspNetCore.Components.Browser": "3.0.0.0",
+          "Microsoft.AspNetCore.Components": "3.0.0.0",
           "Microsoft.AspNetCore.Components.Server": "3.0.0.0",
           "Microsoft.AspNetCore.Connections.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.CookiePolicy": "3.0.0.0",
@@ -153,7 +153,7 @@
           "Microsoft.Extensions.Options.Reference": "3.0.0.0",
           "Microsoft.Extensions.Primitives.Reference": "3.0.0.0",
           "Microsoft.Extensions.WebEncoders": "3.0.0.0",
-          "Microsoft.JSInterop.Reference": "3.0.0.0",
+          "Microsoft.JSInterop": "3.0.0.0",
           "Microsoft.Net.Http.Headers": "3.0.0.0",
           "Microsoft.VisualBasic.Core": "10.0.4.0",
           "Microsoft.VisualBasic": "10.0.0.0",
@@ -178,7 +178,7 @@
           "System.Configuration": "4.0.0.0",
           "System.Console.Reference": "4.1.1.0",
           "System.Core": "4.0.0.0",
-          "System.Data.Common.Reference": "4.2.1.0",
+          "System.Data.Common": "4.2.1.0",
           "System.Data.DataSetExtensions": "4.0.0.0",
           "System.Data": "4.0.0.0",
           "System.Diagnostics.Contracts.Reference": "4.0.3.0",
@@ -318,40 +318,6 @@
         },
         "compile": {
           "BlazorTest.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Blazor/3.0.0-preview4-19216-03": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Browser": "3.0.0-preview4-19216-03",
-          "Mono.WebAssembly.Interop": "3.0.0-preview4.19216.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.0.19216"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Blazor.DevServer/3.0.0-preview4-19216-03": {},
-      "Microsoft.AspNetCore.Components/3.0.0-preview4-19216-03": {
-        "dependencies": {
-          "Microsoft.JSInterop": "3.0.0-preview4.19216.2",
-          "System.ComponentModel.Annotations": "4.6.0-preview4.19212.13"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Components.Browser/3.0.0-preview4-19216-03": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "3.0.0-preview4-19216-03",
-          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview4.19216.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor.Language/2.2.0": {
@@ -649,11 +615,6 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Microsoft.JSInterop/3.0.0-preview4.19216.2": {
-        "compile": {
-          "lib/netstandard2.0/Microsoft.JSInterop.dll": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/3.0.0-preview4.19212.13": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.VisualStudio.Web.CodeGeneration/2.2.3": {
@@ -789,20 +750,6 @@
           "System.Security.Principal.Windows": "4.6.0-preview4.19212.13"
         }
       },
-      "Mono.WebAssembly.Interop/3.0.0-preview4.19216.2": {
-        "dependencies": {
-          "Microsoft.JSInterop": "3.0.0-preview4.19216.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Mono.WebAssembly.Interop.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.19.21602"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Mono.WebAssembly.Interop.dll": {}
-        }
-      },
       "NETStandard.Library/1.6.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.0.0-preview4.19212.13",
@@ -872,7 +819,7 @@
           "System.Diagnostics.Debug": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Linq.Expressions": "4.3.0",
-          "System.Linq.Queryable": "4.3.0",
+          "System.Linq.Queryable": "4.0.1",
           "System.ObjectModel": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
@@ -1172,18 +1119,6 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
-      "System.Data.Common/4.3.0": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
-        }
-      },
       "System.Data.SqlClient/4.7.0-preview4.19212.13": {
         "dependencies": {
           "Microsoft.Win32.Registry": "4.6.0-preview4.19212.13",
@@ -1423,7 +1358,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Linq.Queryable/4.3.0": {
+      "System.Linq.Queryable/4.0.1": {
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -1969,24 +1904,6 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
-      "Telerik.UI.for.Blazor/0.5.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Blazor": "3.0.0-preview4-19216-03",
-          "Microsoft.AspNetCore.Blazor.DevServer": "3.0.0-preview4-19216-03",
-          "Newtonsoft.Json": "11.0.2",
-          "System.Data.Common": "4.3.0",
-          "System.Linq.Queryable": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Telerik.Blazor.dll": {
-            "assemblyVersion": "0.5.0.0",
-            "fileVersion": "0.5.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Telerik.Blazor.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -2035,13 +1952,13 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Components.Browser.Reference/3.0.0.0": {
+      "Microsoft.AspNetCore.Components.Browser/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Components.Browser.dll": {}
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Components.Reference/3.0.0.0": {
+      "Microsoft.AspNetCore.Components/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Components.dll": {}
         },
@@ -2707,7 +2624,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.JSInterop.Reference/3.0.0.0": {
+      "Microsoft.JSInterop/3.0.0.0": {
         "compile": {
           "Microsoft.JSInterop.dll": {}
         },
@@ -2857,7 +2774,7 @@
         },
         "compileOnly": true
       },
-      "System.Data.Common.Reference/4.2.1.0": {
+      "System.Data.Common/4.2.1.0": {
         "compile": {
           "System.Data.Common.dll": {}
         },
@@ -3669,34 +3586,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Blazor/3.0.0-preview4-19216-03": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-y4LMGWkIiE1fzpJSmNDIElYbyPg98e/seMgL+A3+ye3v9Zy2+WGF1SqZB6Ax4queHLazvakmQ55NCnFtzyTBhg==",
-      "path": "microsoft.aspnetcore.blazor/3.0.0-preview4-19216-03",
-      "hashPath": "microsoft.aspnetcore.blazor.3.0.0-preview4-19216-03.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Blazor.DevServer/3.0.0-preview4-19216-03": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-sO/dwzDEGxal64uk43ouMN+FQlUK3c6cT0tmjfZ99TiFWumw6/pgM0st7VYus24nTy6AtAiIxNumVmJl3o+5uQ==",
-      "path": "microsoft.aspnetcore.blazor.devserver/3.0.0-preview4-19216-03",
-      "hashPath": "microsoft.aspnetcore.blazor.devserver.3.0.0-preview4-19216-03.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Components/3.0.0-preview4-19216-03": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mDx+/5/E3ZHJD1hnTd9mxzacK/PDAIbojr5yTAKgfy2iapbzNePLetAMXgJ/3PbUBd4VQcm9I1uEXAxek7UU4g==",
-      "path": "microsoft.aspnetcore.components/3.0.0-preview4-19216-03",
-      "hashPath": "microsoft.aspnetcore.components.3.0.0-preview4-19216-03.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Components.Browser/3.0.0-preview4-19216-03": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3qE9ALr118kS7pxf5QMT83jFcX9dwcfpK7HMRvqXUDLoGivpyYO2Qtqon7gpW7nepe6YvtkDbYFhMxRcWTyu7A==",
-      "path": "microsoft.aspnetcore.components.browser/3.0.0-preview4-19216-03",
-      "hashPath": "microsoft.aspnetcore.components.browser.3.0.0-preview4-19216-03.nupkg.sha512"
-    },
     "Microsoft.AspNetCore.Razor.Language/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -3879,13 +3768,6 @@
       "path": "microsoft.extensions.primitives/3.0.0-preview4.19216.2",
       "hashPath": "microsoft.extensions.primitives.3.0.0-preview4.19216.2.nupkg.sha512"
     },
-    "Microsoft.JSInterop/3.0.0-preview4.19216.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-VqoWX8783pY80ZwE8K1i98Btsb/dZqkRaxOYvl2BjaryeCpJ0rDNlvj+c88YaFgG5o50tLEihTcqVjSAHmV8bw==",
-      "path": "microsoft.jsinterop/3.0.0-preview4.19216.2",
-      "hashPath": "microsoft.jsinterop.3.0.0-preview4.19216.2.nupkg.sha512"
-    },
     "Microsoft.NETCore.Platforms/3.0.0-preview4.19212.13": {
       "type": "package",
       "serviceable": true,
@@ -3969,13 +3851,6 @@
       "sha512": "sha512-Q2sKetbTrk+S9t4kwTmrMYzn4iDcWrg1RqSjixmqSpiy/KORCwfXUYz7Ms9c6e44Pkr/DpN82xjQTBjgpxYO0A==",
       "path": "microsoft.win32.registry/4.6.0-preview4.19212.13",
       "hashPath": "microsoft.win32.registry.4.6.0-preview4.19212.13.nupkg.sha512"
-    },
-    "Mono.WebAssembly.Interop/3.0.0-preview4.19216.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-5wPHH5tovy63nFf05wYn8cc9SeK/TYl1G25QOZgtbu7EXQJ2wKNZCEF5pbH7w83/RvBXXuWQa/PgCvOGRpqBag==",
-      "path": "mono.webassembly.interop/3.0.0-preview4.19216.2",
-      "hashPath": "mono.webassembly.interop.3.0.0-preview4.19216.2.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",
@@ -4257,13 +4132,6 @@
       "path": "system.console/4.3.0",
       "hashPath": "system.console.4.3.0.nupkg.sha512"
     },
-    "System.Data.Common/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
-      "path": "system.data.common/4.3.0",
-      "hashPath": "system.data.common.4.3.0.nupkg.sha512"
-    },
     "System.Data.SqlClient/4.7.0-preview4.19212.13": {
       "type": "package",
       "serviceable": true,
@@ -4411,12 +4279,12 @@
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
     },
-    "System.Linq.Queryable/4.3.0": {
+    "System.Linq.Queryable/4.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-In1Bmmvl/j52yPu3xgakQSI0YIckPUr870w4K5+Lak3JCCa8hl+my65lABOuKfYs4ugmZy25ScFerC4nz8+b6g==",
-      "path": "system.linq.queryable/4.3.0",
-      "hashPath": "system.linq.queryable.4.3.0.nupkg.sha512"
+      "sha512": "sha512-Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "path": "system.linq.queryable/4.0.1",
+      "hashPath": "system.linq.queryable.4.0.1.nupkg.sha512"
     },
     "System.Memory/4.5.2": {
       "type": "package",
@@ -4761,13 +4629,6 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
-    "Telerik.UI.for.Blazor/0.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Y+/g7kTZBRI9l09vPY/gAAfkAQOR8l3OQ6p3Pbzq93DQ4A8gFB2K/9lIQyyPbYi9g8DXVDEYaD/Uon0qVLV4aw==",
-      "path": "telerik.ui.for.blazor/0.5.0",
-      "hashPath": "telerik.ui.for.blazor.0.5.0.nupkg.sha512"
-    },
     "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
@@ -4808,12 +4669,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Components.Browser.Reference/3.0.0.0": {
+    "Microsoft.AspNetCore.Components.Browser/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Components.Reference/3.0.0.0": {
+    "Microsoft.AspNetCore.Components/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5368,7 +5229,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.JSInterop.Reference/3.0.0.0": {
+    "Microsoft.JSInterop/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5493,7 +5354,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Data.Common.Reference/4.2.1.0": {
+    "System.Data.Common/4.2.1.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

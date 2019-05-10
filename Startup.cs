@@ -20,9 +20,9 @@ namespace BlazorTest
             services.AddRazorPages();
             services.AddServerSideBlazor();
             
-            services.AddTelerikBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<NamesService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
