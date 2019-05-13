@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorTest.Services;
-
 namespace BlazorTest
 {
     public class Startup
@@ -19,9 +18,9 @@ namespace BlazorTest
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            
-            services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<NamesService>();
+
+            services.AddSingleton<UserService>();
+            services.AddSingleton<DataGridService>();
 
         }
 

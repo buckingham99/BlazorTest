@@ -1,0 +1,198 @@
+@page "/userdata"
+@using BlazorTest.Models;
+@using BlazorTest.Services;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Text;
+@using  System;
+@inject UserService userService;
+@inject IJSRuntime JSRuntime;
+@inject DataGridService dgService;
+
+<div class="container">
+    <div class="row">
+        <h3>Test User Data Page</h3>
+        <p>This component demonstrates fetching & editing data from a service via local CSV or JSON file using a HTML Grid.</p>
+        <p>Click on a user to edit data and view an OpenLayers Map of their location. </p>
+        <p>
+            Please note that your data will not be persisted between sessions, but a Database can easily be attached
+            to the UserService Class.
+        </p>
+    </div>
+    <div class="container" style="border: 1px solid black;">
+        <div  class="row">
+                <h5>Parent Component</h5>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label><b>Search by:</b></label>
+            </div>
+            <div class="col-md-10">
+                <input type="radio" id="lastName"
+                       name="searchGroup" checked="@(SurnameChecked == 1)" onchange="@(() => ParentSort = "Surname")" />
+                <label for="lastName">Last Name</label>
+                <input type="radio" id="givenName"
+                       name="searchGroup" checked=@(GivenNameChecked == 1) onchange="@(() => ParentSort = "GivenName")" />
+                <label for="givenName">First Name</label>
+                <input type="radio" id="address"
+                       name="searchGroup" checked=@(StreetAddressChecked == 1) onchange="@(() => ParentSort = "StreetAddress")" />
+                <label for="address">Address</label>
+                <input type="radio" id="city"
+                       name="searchGroup" checked=@(CityChecked == 1) onchange="@(() => ParentSort = "City")" />
+                <label for="city">City</label>
+                <input type="radio" id="state"
+                       name="searchGroup" checked=@(StateChecked == 1) onchange="@(() => ParentSort = "State")" />
+                <label for="state">State</label>
+                <input type="radio" id="zip"
+                       name="searchGroup" checked=@(ZipCodeChecked == 1) onchange="@(() => ParentSort = "ZipCode")" />
+                <label for="zip">Zip Code</label>
+                <input type="radio" id="phone"
+                       name="searchGroup" checked=@(TelephoneNumberChecked == 1) onchange="@(() => ParentSort = "TelephoneNumber")" />
+                <label for="phone">Phone</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group">
+                <input type="search" class="form-control" id="SearchText" name="SearchText" bind-value-oninput="@ParentSearch" onchange="@(() => SortOrder())" placeholder="@PlaceHolderSort" />
+            </div>
+        </div>
+    </div>
+</div>
+<p>@newMessage</p>
+    <DataGrid 
+              SortParameters="@ParentParameters" 
+              OnSortLinkClicked="@OnSortClick"
+              OnSearchError="@SearchErrorClear"
+              >
+
+    </DataGrid>
+@functions {
+    private int SurnameChecked { get; set; } = 1;
+    private int GivenNameChecked { get; set; }
+    private int StreetAddressChecked { get; set; }
+    private int CityChecked { get; set; }
+    private int StateChecked { get; set; }
+    private int ZipCodeChecked { get; set; }
+    private int TelephoneNumberChecked { get; set; }
+    private string newMessage  { get; set; }
+    public int UsersCount { get; set; }
+    public string PlaceHolderSort { get; set; } = "Search Last Name ...";
+
+    public string _ParentSort { get; set; } = "Surname";
+
+    public string ParentSort
+    {
+        get { return _ParentSort; }
+        set
+        {
+            if (value != null)
+            {
+                _ParentSort = value;
+                SortOrder();
+            }
+        }
+    }
+    public string _ParentSearch { get; set; } = "";
+    public string ParentSearch
+    {
+        get { return string.Empty; }
+        set
+        {
+            if (value != null)
+            {
+                _ParentSearch = value;
+                SortOrder();
+                StateHasChanged();
+            }
+        }
+    }
+
+    public List<string> ParentParameters = new List<string>();
+    
+    public List<string> SortOrder()
+    {
+        switch (_ParentSort)
+        {
+            case "Surname":
+                PlaceHolderSort = "Search Last Name ...";
+                break;
+            case "GivenName":
+                PlaceHolderSort = "Search First Name ...";
+                break;
+            case "StreetAddress":
+                PlaceHolderSort = "Search Address ...";
+                break;
+            case "City":
+                PlaceHolderSort = "Search City ...";
+                break;
+            case "State":
+                PlaceHolderSort = "Search State ...";
+                break;
+            case "ZipCode":
+                PlaceHolderSort = "Search Zip Code ...";
+                break;
+            case "TelephoneNumber":
+                PlaceHolderSort = "Search Telephone Number ...";
+                break;
+            default:
+                break;
+        }
+        ParentParameters.Clear();
+        ParentParameters.Add(_ParentSort);
+        ParentParameters.Add(_ParentSearch);
+        //ReturnedCheck(_ParentSort);
+
+        StateHasChanged();
+        return ParentParameters;
+
+    }
+
+    void OnSortClick(string newMessage)
+    {
+        ReturnedCheck(newMessage);
+
+        _ParentSort = newMessage;
+        SortOrder();
+
+        StateHasChanged();
+    }
+
+    void SearchErrorClear(string SearchError)
+    {
+        ParentSearch = "";
+        _ParentSearch = "";
+        StateHasChanged();
+    }
+
+    private int ReturnedCheck(string returnedString)
+    {
+
+        switch (returnedString)
+        {
+            case "Surname":
+                SurnameChecked = 1;
+                return SurnameChecked;
+            case "GivenName":
+                GivenNameChecked = 1;
+                return GivenNameChecked;
+            case "StreetAddress":
+                StreetAddressChecked = 1;
+                return StreetAddressChecked;
+            case "City":
+                CityChecked = 1;
+                return CityChecked;
+            case "State":
+                StateChecked = 1;
+                return StateChecked;
+            case "TelephoneNumber":
+                TelephoneNumberChecked = 1;
+                return TelephoneNumberChecked;
+            case "ZipCode":
+                ZipCodeChecked = 1;
+                return ZipCodeChecked;
+            default:
+                return 0;
+        }
+
+    }
+}

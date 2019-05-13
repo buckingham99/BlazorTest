@@ -1,7 +1,7 @@
 ﻿@page "/"
 @using BlazorTest.Services;
 @using BlazorTest.Models;
-@inject NamesService NamesService;
+@inject UserService UserService;
 <HeadingComponent />
 
 <h2>Blazor Test by Mark Buckingham</h2>
@@ -14,13 +14,9 @@
     (Located in the Data folder).
 </p>
 <p>
-    <div>
-        <NavLink class="nav-link" href="testuserdata">Test Users</NavLink>
-    </div>
-</p>
-<p>
-    The Test HTML grid parses the CSV file via a Names Service
-    and creates a user list that is persisted in a Memory Cache.
+    The Test Users page is a grid that parses a CSV or JSON file via a Users Service
+    to creates a list of users that is persisted in a Memory Cache.  You can Sort or Search 
+    the grid
 
     This page also takes advantage of invoking JavaScript to handle a standard Bootstrap Modal.
     Changes can be made and will persist throughout the session, they will go away
@@ -38,7 +34,7 @@
 
     protected async Task OnRenderAsync()
     {
-        //users = await NamesService.GetNamesJsonAsync(SortField, SortDesc);
-        users = await NamesService.GetNamesDataAsync(SortField, SortDesc);
+        //users = await UserService.GetNamesJsonAsync(SortField, SortDesc);
+        users = await UserService.GetNamesDataAsync(SortField, SortDesc);
     }
 }

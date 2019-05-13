@@ -6,68 +6,74 @@
 @using System.Text;
 @using Microsoft.AspNetCore.Components;
 @using System.Reflection;
-@inject NamesService NamesService;
+@using  System;
+@inject UserService UserService;
 @inject IJSRuntime JSRuntime;
+@inject DataGridService dgService;
 
+<div class="loader" bind="@LoaderDisplayType" style="display:@LoaderDisplayType"></div>
+<div class="container">
 
-    <div class="container">
-        <div class="loader" bind="@LoaderDisplayType" style="display:@LoaderDisplayType"></div>
-        <div class="row">
-            <h3>Users DataGrid Component - </h3> User count:  (@namesCount)
-        </div>
-        <div class="row">
-            <div class="tableFixHead">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Default Sort by Id" onclick="@( () => SortData("Id",""))"><b> </b></a><span style="background-color:ActiveBorder;" class="oi oi-target" title="Default Sort" onclick="@( () => SortData("Id",SearchString))"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => SortData("Surname",""))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => SortData("GivenName",""))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => SortData("StreetAddress",""))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => SortData("City",""))"><b>City</b></a> <span class="@CitySort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => SortData("State",""))"><b>State</b></a> <span class="@StateSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => SortData("ZipCode",""))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
-                            </th>
-                            <th>
-                                <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => SortData("TelephoneNumber",""))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
-                            </th>
+    <h5>Child Component - Users DataGrid</h5>
+    <div class="tableFixHead row">
+        <table class="table table-hover table-condensed table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Default Sort by Id" onclick="@( () => NotifyParent("Id"))"><b> </b></a><span class="oi oi-target" title="Default Sort" onclick="@( () => SortData("Id",SearchString))"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => NotifyParent("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => NotifyParent("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => NotifyParent("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => NotifyParent("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => NotifyParent("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => NotifyParent("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
+                    </th>
+                    <th>
+                        <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => NotifyParent("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (displayUsers.Count > 0)
+                {
+                    @foreach (var u in @displayUsers)
+                    {
+                        <tr class="datarow" onclick="@( () => EditUser(@u))" title="Click to Edit">
+                            <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span style="color:black;" class="oi oi-magnifying-glass"></span></a></td>
+                            <td>@u.Surname</td>
+                            <td>@u.GivenName</td>
+                            <td>@u.StreetAddress</td>
+                            <td>@u.City</td>
+                            <td>@u.State</td>
+                            <td>@u.ZipCode.ToString()</td>
+                            <td>@u.TelephoneNumber</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @if (displayUsers != null)
-                        {
-                            @foreach (var u in @displayUsers)
-                            {
-                                <tr onclick="@( () => EditUser(@u))" title="Click to Edit">
-                                    <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span class="oi oi-magnifying-glass"></span></a></td>
-                                    <td>@u.Surname</td>
-                                    <td>@u.GivenName</td>
-                                    <td>@u.StreetAddress</td>
-                                    <td>@u.City</td>
-                                    <td>@u.State</td>
-                                    <td>@u.ZipCode.ToString()</td>
-                                    <td>@u.TelephoneNumber</td>
-                                </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
+                    }
+                }
+                @*@if (displayUsers.Count == 0)
+            {
+                <tr>
+                    <td>No results found!</td>
+                </tr>
+            }*@
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        @if (displayUsers.Count > 0)
+        {
             <div>
                 <ul class="pagination pagination-sm pager">
                     @foreach (var i in btnlist)
@@ -78,8 +84,9 @@
                     }
                 </ul>
             </div>
-        </div>
+        }
     </div>
+</div>
 <!-- Modal -->
 @if (SelectedUser != null)
 {
@@ -88,19 +95,27 @@
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color:lightgray;">
-                        <h5 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b> </h5>
+                        <h11 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b>  @SelectedUser.StreetAddress @SelectedUser.City,  @SelectedUser.StateFull  @SelectedUser.ZipCode @SelectedUser.CountryFull </h11>
                         <button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => CancelSaveUser(SelectedUser))">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <ul class="nav nav-justified">
-                                <li><button type="button" class="btn btn-primary" onclick="@( () => ChangeTab("User"))" href="javascript:void(0)">User</button></li>
-                                <li><button type="button" class="btn btn-primary" onclick="@( () => ChangeTab("CreditData"))" href="javascript:void(0)">Credit</button></li>
-                                <li><button type="button" class="btn btn-primary" onclick="@( () => ChangeTab("Employment"))" href="javascript:void(0)">Employment</button></li>
-                                <li><button type="button" class="btn btn-primary" onclick="@( () => ChangeTab("mapDisplay"))" href="javascript:void(0)">Map</button></li>
-                            </ul>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <div>
+                                    <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("User"))" href="javascript:void(0)">User</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("CreditData"))" href="javascript:void(0)">Credit</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("Employment"))" href="javascript:void(0)">Employment</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("mapDisplay"))" href="javascript:void(0)">Map</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-content">
                             <div id="User" class="tab-pane active" style="background-color:azure;">
@@ -250,20 +265,38 @@
         </div>
     </div>
 }
-
+<div class="container mt-sm-4">
+    <div class="modal" id="searchError">
+        <div class="modal-dialog modal-sm modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:lightgray;">
+                    <h11 id="modalTitle" class="modal-title">Search Error </h11>
+                    <button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => CancelSaveUser(SelectedUser))">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <b>@SearchErrorText</b> was Not Found
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="@( () => CloseModal())" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @functions {
-
+    [Parameter] EventCallback<string> OnSortLinkClicked { get; set; }
+    [Parameter] EventCallback<string> OnSearchError { get; set; }
 
     private int currentPage = 1;
     private int pageSize = 30;
 
     private List<User> users = new List<User>();
     private List<User> displayUsers = new List<User>();
-    public User UnModifiedUser = new User();
+    private User UnModifiedUser = new User();
     private User SelectedUser = new User();
-    private int namesCount = 0;
-
 
     private bool SortDesc = false;
     private string SurnameSort = String.Empty;
@@ -273,9 +306,10 @@
     private string StateSort = String.Empty;
     private string ZipCodeSort = String.Empty;
     private string PhoneSort = String.Empty;
+    private string SearchErrorText = String.Empty;
     private string LoaderDisplayType = "block;";
-    private int _TotalPages;
     private int TotalPages { get; set; }
+    private int namesCount = 0;
 
     private List<int> btnlist = new List<int>();
 
@@ -284,7 +318,8 @@
     [Parameter]
     public string SortField { get; set; } = "Surname";
     [Parameter]
-    public List<string> SortParameters {
+    public List<string> SortParameters
+    {
         get { return new List<string>(); }
         set
         {
@@ -292,7 +327,6 @@
             {
                 SortData(value[0], value[1]);
             }
-
         }
     }
 
@@ -304,8 +338,8 @@
     {
         ToggleSpinner(true);
 
-        //users = NamesService.GetNamesJson(SortField = SortField == null ? "Id" : SortField, SortDesc);
-        users = NamesService.GetNamesData(SortField = SortField == null ? "Id" : SortField, SortDesc);
+        //users = UserService.GetNamesJson(SortField = SortField == null ? "Id" : SortField, SortDesc);
+        users = UserService.GetNamesData(SortField = SortField == null ? "Id" : SortField, SortDesc);
         namesCount = users.Count;
 
         recalcPageButtons(users.Count);
@@ -330,16 +364,30 @@
         currentPage = newPage;
         SortDesc = !SortDesc;
         //Reverse Sort so that the sort stays the same
-        SortData(SortField,SearchString);
+        SortData(SortField, SearchString);
         StateHasChanged();
         ToggleSpinner(false);
     }
 
-    public void SortData(string SortField,string SearchString)
+    async Task NotifyParent(string dataToSend)
+    {
+        await Task.FromResult(OnSortLinkClicked.InvokeAsync(dataToSend));
+        SortDesc = !SortDesc;
+        SortData(dataToSend, SearchString);
+    }
+    async Task SearchError()
+    {
+        await Task.FromResult(
+            OnSearchError.InvokeAsync(SearchErrorText));
+        SearchString = "";
+    }
+
+    public void SortData(string SortField, string SearchString)
     {
         if (displayUsers.Count > 0)
         {
             ToggleSpinner(true);
+            StateHasChanged();
             BlankDirectionIcons();
             SortDesc = !SortDesc;
             CalcIconDirection(SortField);
@@ -379,22 +427,31 @@
                     .ToString()).ToList();
                 }
             }
-            if (displayUsers.Count == 0)
-            {
-                displayUsers = NamesService.GetNamesData(SortField = SortField == null ? "Id" : SortField, SortDesc);
-            }
 
-            if (SearchString == "")
+            if (displayUsers.Count == 0 && SearchString.Length > 0)
+            {
+                SearchErrorText = SearchString;
+                JSRuntime.InvokeAsync<string>(
+                         "appFunctions.showModal", "searchError", "Search Text: " +
+                         SearchString + " was not found");
+                SearchError();
+
+                SortDesc = !SortDesc;
+
+                displayUsers = users.OrderBy(s => s.GetType()
+                .GetProperty(SortField)
+                .GetValue(s))
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize).ToList();
+
+
+            }
+            if (displayUsers.Count > 0)
             {
                 recalcPageButtons(users.Count);
             }
-            else
-            {
-                recalcPageButtons(displayUsers.Count);
-            }
-
             ToggleSpinner(false);
-            //StateHasChanged();
+            StateHasChanged();
         }
     }
     public List<int> recalcPageButtons(int TotalRecords)
@@ -413,7 +470,7 @@
     }
     public void SearchData(string SearchString)
     {
-        if (users.Count > 0 &&  SearchString.Length > 0)
+        if (users.Count > 0 && SearchString.Length > 0)
         {
             ToggleSpinner(true);
             BlankDirectionIcons();
@@ -496,18 +553,20 @@
         UnModifiedUser = Comparer.DeepCopy<User>(SelectedUser);
 
         await JSRuntime.InvokeAsync<string>(
-                 "appFunctions.showModal", "editUserModal");
+                 "appFunctions.showModal", "editUserModal", "");
 
         ChangeTab("User");
-        ShowMap(SelectedUser);
     }
     private async void ShowMap(User SelectedUser)
     {
-        decimal[] CoordinateArray = new decimal[]
+        string szAddress = SelectedUser.StreetAddress + " " +
+            SelectedUser.City + ", " + SelectedUser.ZipCode;
+        string[] CoordinateArray = new string[]
         {
-            Convert.ToDecimal(SelectedUser.Longitude),
-            Convert.ToDecimal(SelectedUser.Latitude)
-            };
+            SelectedUser.Longitude,
+            SelectedUser.Latitude,
+            szAddress
+        };
         await JSRuntime.InvokeAsync<string>(
                   "appFunctions.showMap", CoordinateArray);
         StateHasChanged();
@@ -516,6 +575,18 @@
     {
         await JSRuntime.InvokeAsync<string>(
                  "appFunctions.changeTabs", tab);
+        if (tab == "mapDisplay")
+        {
+            decimal[] CoordinateArray = new decimal[]
+            {
+                Convert.ToDecimal(SelectedUser.Longitude),
+                Convert.ToDecimal(SelectedUser.Latitude)
+                            };
+            await JSRuntime.InvokeAsync<string>(
+                  "appFunctions.showMap", CoordinateArray);
+
+            StateHasChanged();
+        }
     }
     private async Task<List<User>> SaveUser(User SelectedUser)
     {
@@ -525,7 +596,7 @@
         //await JSRuntime.InvokeAsync<string>(
         //    "appFunctions.hideEditUserModal", "");
 
-        users = await NamesService.SaveUserAsync(SortField, SortDesc, users, SelectedUser, currentPage, pageSize);
+        users = await UserService.SaveUserAsync(SortField, SortDesc, users, SelectedUser);
 
         await JSRuntime.InvokeAsync<string>(
                 "appFunctions.hideModal", "editUserModal");
@@ -534,11 +605,16 @@
         StateHasChanged();
         return users;
     }
+    private void CloseModal()
+    {
+        JSRuntime.InvokeAsync<string>(
+            "appFunctions.hideModal", "searchError");
+    }
     private async Task<List<User>> CancelSaveUser(User SelectedUser)
     {
         if (!Comparer.DeepCompare(SelectedUser, UnModifiedUser))
         {
-            users = await NamesService.SaveUserAsync(SortField, SortDesc, users, UnModifiedUser, currentPage, pageSize);
+            users = await UserService.SaveUserAsync(SortField, SortDesc, users, UnModifiedUser);
         }
 
 
