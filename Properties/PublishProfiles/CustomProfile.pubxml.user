@@ -6,9 +6,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\inetpub\wwwroot\BlazorTest</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\BlazorTest</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="Data/FakeNames.csv">
+      <publishTime>04/28/2019 11:06:31</publishTime>
+    </File>
     <File Include="Pages/_Host.cshtml">
       <publishTime>05/10/2019 17:09:28</publishTime>
     </File>

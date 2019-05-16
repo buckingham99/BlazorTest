@@ -38,6 +38,10 @@
     .tableFixHead  th span {
         color: white;
     }
+    .tableFixHead td {
+        font-size:small;
+        height:15px;
+    }
 
 
 table {

@@ -5,7 +5,7 @@
 <HeadingComponent />
 
 <h2>Blazor Test by Mark Buckingham</h2>
-<p>This is a test of using <b>Client Side</b> <u>Blazor Components</u></p>
+<p>This is a test of using <b>Server Side</b> <u>Blazor Components</u></p>
 
 <p>This is the standard Blazor Client side template and it's been extended from there.</p>
 
@@ -28,13 +28,5 @@
 
 
 @functions {
-    List<User> users = new List<User>();
-    string SortField = "Surname";
-    bool SortDesc = false;
 
-    protected async Task OnRenderAsync()
-    {
-        //users = await UserService.GetNamesJsonAsync(SortField, SortDesc);
-        users = await UserService.GetNamesDataAsync(SortField, SortDesc);
-    }
 }

@@ -9,39 +9,39 @@
 @using  System;
 @inject UserService UserService;
 @inject IJSRuntime JSRuntime;
-@inject DataGridService dgService;
 
-<div class="loader" bind="@LoaderDisplayType" style="display:@LoaderDisplayType"></div>
-<div class="container">
 
+<div class="container" style="border: 1px dotted black;">
+    <div class="row"></div>
     <h5>Child Component - Users DataGrid</h5>
-    <div class="tableFixHead row">
+    <div class="tableFixHead row " style="line-height: 0.5">
+        <div class="loader" style="display:@LoaderDisplayType"></div>
         <table class="table table-hover table-condensed table-bordered table-striped">
             <thead>
                 <tr>
                     <th>
-                        <div><a href="javascript:void(0)" title="Default Sort by Id" onclick="@( () => NotifyParent("Id"))"><b> </b></a><span class="oi oi-target" title="Default Sort" onclick="@( () => SortData("Id",SearchString))"></span></div>
+                        <div onclick="@( () => SortLinkClicked("Id"))"><a href="javascript:void(0)" title="Default Sort by Id" ><b> </b></a><span class="oi oi-target" title="Id Sort"></span></div>
                     </th>
                     <th>
-                        <div><a href="javascript:void(0)" title="Sort by Last Name" onclick="@( () => NotifyParent("Surname"))"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
+                        <div onclick="@( () => SortLinkClicked("Surname"))"><a href="javascript:void(0)" title="Sort by Last Name"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
                     </th>
                     <th>
-                        <div><a href="javascript:void(0)" title="Sort by First Name" onclick="@( () => NotifyParent("GivenName"))"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
+                        <div onclick="@( () => SortLinkClicked("GivenName"))"><a href="javascript:void(0)" title="Sort by First Name"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
                     </th>
                     <th>
-                        <div><a href="javascript:void(0)" title="Sort by Street Address" onclick="@( () => NotifyParent("StreetAddress"))"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
+                        <div onclick="@( () => SortLinkClicked("StreetAddress"))"><a href="javascript:void(0)" title="Sort by Street Address"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
                     </th>
                     <th>
-                        <div><a href="javascript:void(0)" title="Sort by City" onclick="@( () => NotifyParent("City"))"><b>City</b></a> <span class="@CitySort"></span></div>
+                        <div onclick="@( () => SortLinkClicked("City"))"><a href="javascript:void(0)" title="Sort by City"><b>City</b></a> <span class="@CitySort"></span></div>
                     </th>
                     <th>
-                        <div><a href="javascript:void(0)" title="Sort by State" onclick="@( () => NotifyParent("State"))"><b>State</b></a> <span class="@StateSort"></span></div>
+                        <div onclick="@( () => SortLinkClicked("State"))"><a href="javascript:void(0)" title="Sort by State"><b>State</b></a> <span class="@StateSort"></span></div>
                     </th>
                     <th>
-                        <div><a href="javascript:void(0)" title="Sort by Zip Code" onclick="@( () => NotifyParent("ZipCode"))"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
+                        <div onclick="@( () => SortLinkClicked("ZipCode"))"><a href="javascript:void(0)" title="Sort by Zip Code"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
                     </th>
                     <th>
-                        <div><a href="javascript:void(0)" title="Sort by Telephone Number" onclick="@( () => NotifyParent("TelephoneNumber"))"><b>Phone</b></a> <span class="@PhoneSort"></span></div>
+                        <div onclick="@( () => SortLinkClicked("TelephoneNumber"))"><a href="javascript:void(0)" title="Sort by Telephone Number"><b>Phone</b></a> <span class="@TelephoneNumberSort"></span></div>
                     </th>
                 </tr>
             </thead>
@@ -62,12 +62,6 @@
                         </tr>
                     }
                 }
-                @*@if (displayUsers.Count == 0)
-            {
-                <tr>
-                    <td>No results found!</td>
-                </tr>
-            }*@
             </tbody>
         </table>
     </div>
@@ -289,7 +283,8 @@
 @functions {
     [Parameter] EventCallback<string> OnSortLinkClicked { get; set; }
     [Parameter] EventCallback<string> OnSearchError { get; set; }
-
+    [Parameter] EventCallback<string> OnUserCount { get; set; }
+    [Parameter] EventCallback<string> OnSearchText { get; set; }
     private int currentPage = 1;
     private int pageSize = 30;
 
@@ -298,34 +293,51 @@
     private User UnModifiedUser = new User();
     private User SelectedUser = new User();
 
-    private bool SortDesc = false;
-    private string SurnameSort = String.Empty;
-    private string GivenNameSort = String.Empty;
-    private string StreetAddressSort = String.Empty;
-    private string CitySort = String.Empty;
-    private string StateSort = String.Empty;
-    private string ZipCodeSort = String.Empty;
-    private string PhoneSort = String.Empty;
-    private string SearchErrorText = String.Empty;
-    private string LoaderDisplayType = "block;";
+    private bool SortDesc  { get; set; }
+    private string SurnameSort { get; set; }
+    private string GivenNameSort{ get; set; }
+    private string StreetAddressSort { get; set; }
+    private string CitySort { get; set; }
+    private string StateSort { get; set; }
+    private string ZipCodeSort { get; set; }
+    private string TelephoneNumberSort { get; set; }
+    private string SearchErrorText { get; set; }
+    private string LoaderDisplayType  { get; set; } = "block;";
     private int TotalPages { get; set; }
     private int namesCount = 0;
 
     private List<int> btnlist = new List<int>();
 
+    public string _SearchString { get; set; }
     [Parameter]
-    public string SearchString { get; set; }
-    [Parameter]
-    public string SortField { get; set; } = "Surname";
-    [Parameter]
-    public List<string> SortParameters
+    public string SearchString
     {
-        get { return new List<string>(); }
+        get { return _SearchString; }
         set
         {
-            if (value.Count > 0)
+            if (value != "" && value != null)
             {
-                SortData(value[0], value[1]);
+                ToggleSpinner(true);
+                _SearchString = value;
+                SearchData(value);
+                //ToggleSpinner(false);
+            }
+        }
+    }
+
+    public string _SortField { get; set; } = "Surname";
+    [Parameter]
+    public string SortField
+    {
+        get { return _SortField; }
+        set
+        {
+            if (value != "" && value != null && users.Count > 0)
+            {
+                ToggleSpinner(true);
+                _SortField = value;
+                SortData(value);
+                //ToggleSpinner(false);
             }
         }
     }
@@ -334,46 +346,62 @@
     /// since I start populating the Users once the Index page has loaded
     /// Once you reach this page the users are in a List of Users.
 
-    protected override void OnInit()
+    protected override Task OnInitAsync()
+    {
+        SortDesc = true;
+        ToggleSpinner(true);
+        System.Threading.Thread.Sleep(1000);
+        return Task.FromResult(StartPage());
+    }
+
+    async Task StartPage()
+    {
+        users = UserService.GetNamesData(SortField == "" ? "Surname" : SortField, SortDesc);
+
+        namesCount = UserService.UsersCount;
+        await UserCountUpdate();
+        recalcPageButtons(users.Count);
+        await OnSortLinkClicked.InvokeAsync("Surname");
+        ToggleSpinner(false);
+    }
+    private void ForceRecordCountChange(string RecordsToChange)
     {
         ToggleSpinner(true);
+        displayUsers.Clear();
+        users.Clear();
 
-        //users = UserService.GetNamesJson(SortField = SortField == null ? "Id" : SortField, SortDesc);
         users = UserService.GetNamesData(SortField = SortField == null ? "Id" : SortField, SortDesc);
         namesCount = users.Count;
-
-        recalcPageButtons(users.Count);
 
         displayUsers = users.OrderByDescending(s => s.GetType()
         .GetProperty(SortField)
         .GetValue(s))
         .Skip((currentPage - 1) * pageSize)
         .Take(pageSize).ToList();
+        recalcPageButtons(users.Count);
+
         ToggleSpinner(false);
-        StateHasChanged();
     }
 
-
-    private void ToggleSpinner(bool spinnerOn)
+    private string ToggleSpinner(bool spinnerOn)
     {
         LoaderDisplayType = (spinnerOn) ? "block;" : "none;";
+        return LoaderDisplayType;
     }
     void ChangePage(int newPage)
     {
-        ToggleSpinner(true);
         currentPage = newPage;
-        SortDesc = !SortDesc;
-        //Reverse Sort so that the sort stays the same
-        SortData(SortField, SearchString);
-        StateHasChanged();
-        ToggleSpinner(false);
+        OnSortLinkClicked.InvokeAsync(SortField);
     }
 
-    async Task NotifyParent(string dataToSend)
+    void SortLinkClicked(string dataToSend)
     {
-        await Task.FromResult(OnSortLinkClicked.InvokeAsync(dataToSend));
-        SortDesc = !SortDesc;
-        SortData(dataToSend, SearchString);
+        ToggleSpinner(true);
+        OnSortLinkClicked.InvokeAsync(dataToSend);
+    }
+    void NotifyParent(string dataToSend)
+    {
+        OnSortLinkClicked.InvokeAsync(SortField);
     }
     async Task SearchError()
     {
@@ -381,78 +409,53 @@
             OnSearchError.InvokeAsync(SearchErrorText));
         SearchString = "";
     }
-
-    public void SortData(string SortField, string SearchString)
+    async Task UserCountUpdate()
     {
-        if (displayUsers.Count > 0)
+        await Task.FromResult
+            (
+                OnUserCount.InvokeAsync(users.Count.ToString())
+            );
+    }
+
+    public void SortData(string SortField)
+    {
+        if (users.Count > 0 )
         {
             ToggleSpinner(true);
-            StateHasChanged();
-            BlankDirectionIcons();
-            SortDesc = !SortDesc;
             CalcIconDirection(SortField);
-            if (SearchString == "" || SearchString == null)
+
+            if (SortDesc)
             {
-                if (SortDesc)
-                {
-                    displayUsers = users.OrderByDescending(s => s.GetType()
-                    .GetProperty(SortField)
-                    .GetValue(s))
-                    .Skip((currentPage - 1) * pageSize)
-                    .Take(pageSize).ToList();
-                }
-                else
-                {
-                    displayUsers = users.OrderBy(s => s.GetType()
-                    .GetProperty(SortField)
-                    .GetValue(s))
-                    .Skip((currentPage - 1) * pageSize)
-                    .Take(pageSize).ToList();
-                }
+                displayUsers = users
+                .OrderByDescending(x => x.GetType().GetProperty(SortField).GetValue(x)
+                .ToString()).ToList();
             }
             else
             {
-                if (SortDesc)
-                {
-                    displayUsers = users.Where(s => s.GetType().GetProperty(SortField).GetValue(s)
-                    .ToString().ToLower().StartsWith(SearchString.ToLower()))
-                    .OrderByDescending(x => x.GetType().GetProperty(SortField).GetValue(x)
-                    .ToString()).ToList();
-                }
-                else
-                {
-                    displayUsers = users.Where(s => s.GetType().GetProperty(SortField).GetValue(s)
-                    .ToString().ToLower().StartsWith(SearchString.ToLower()))
-                    .OrderBy(x => x.GetType().GetProperty(SortField).GetValue(x)
-                    .ToString()).ToList();
-                }
+                displayUsers = users
+                .OrderBy(x => x.GetType().GetProperty(SortField).GetValue(x)
+                .ToString()).ToList();
             }
 
-            if (displayUsers.Count == 0 && SearchString.Length > 0)
-            {
-                SearchErrorText = SearchString;
-                JSRuntime.InvokeAsync<string>(
-                         "appFunctions.showModal", "searchError", "Search Text: " +
-                         SearchString + " was not found");
-                SearchError();
-
-                SortDesc = !SortDesc;
-
-                displayUsers = users.OrderBy(s => s.GetType()
-                .GetProperty(SortField)
-                .GetValue(s))
-                .Skip((currentPage - 1) * pageSize)
-                .Take(pageSize).ToList();
-
-
-            }
-            if (displayUsers.Count > 0)
-            {
-                recalcPageButtons(users.Count);
-            }
-            ToggleSpinner(false);
-            StateHasChanged();
         }
+        if (SearchString != "")
+        {
+            recalcPageButtons(users.Count);
+        }
+        else
+        {
+            recalcPageButtons(displayUsers.Count);
+        }
+
+        ToggleSpinner(false);
+
+    }
+    public async Task ShowError(string errMessage)
+    {
+        await Task.FromResult(JSRuntime.InvokeAsync<string>(
+                     "appFunctions.showModal", "searchError", "Search Text: " +
+                     SearchString + " was not found"));
+
     }
     public List<int> recalcPageButtons(int TotalRecords)
     {
@@ -470,11 +473,9 @@
     }
     public void SearchData(string SearchString)
     {
-        if (users.Count > 0 && SearchString.Length > 0)
+        if (SearchString.Length > 0 && users.Count > 0)
         {
             ToggleSpinner(true);
-            BlankDirectionIcons();
-            SortDesc = !SortDesc;
             CalcIconDirection(SortField);
             if (SortDesc)
             {
@@ -496,57 +497,86 @@
                 .OrderBy(x => x.GetType()
                 .GetProperty(SortField).GetValue(x)).ToList();
             }
-
-
-            //ToggleSpinner(false);
-            StateHasChanged();
+            namesCount = displayUsers.Count;
+            recalcPageButtons(displayUsers.Count);
+            ToggleSpinner(false);
+        }
+        else
+        {
+            namesCount = users.Count;
+            OnSortLinkClicked.InvokeAsync(SortField);
+        }
+        /*
+        if(SearchString.Length == 0  && users.Count > 0)
+        {
+            SortData(SortField);
+            recalcPageButtons(users.Count);
+        }
+        */
+        ToggleSpinner(false);
+    }
+    static string OrderCheck(bool SortDesc)
+    {
+        if (SortDesc)
+        {
+            return "oi oi-arrow-thick-bottom";
+        }
+        else
+        {
+            return "oi oi-arrow-thick-top";
         }
     }
-
     private string CalcIconDirection(string SortField)
     {
-        string szDirection = SortDesc == true ? "oi oi-arrow-thick-bottom" : "oi oi-arrow-thick-top";
+        SurnameSort = SortField != "Surname" ? "" : SurnameSort;
+        GivenNameSort = SortField != "GivenName" ? "" : GivenNameSort;
+        StreetAddressSort = SortField != "StreetAddress" ? "" : StreetAddressSort;
+        CitySort = SortField != "City" ? "" : CitySort;
+        StateSort = SortField != "State" ? "" : StateSort;
+        TelephoneNumberSort = SortField != "TelephoneNumber" ? "" : TelephoneNumberSort;
+        ZipCodeSort = SortField != "ZipCode" ? "" : ZipCodeSort;
+
         switch (SortField)
         {
             case "Surname":
-                SurnameSort = szDirection;
+                SortDesc =  (SurnameSort != "" && SurnameSort != null) ? !SortDesc : SortDesc;
+                SurnameSort = OrderCheck(SortDesc);
                 return SurnameSort;
             case "GivenName":
-                GivenNameSort = szDirection;
+                SortDesc = (GivenNameSort != "" && GivenNameSort != null) ? !SortDesc : SortDesc;
+                GivenNameSort =  OrderCheck(SortDesc);
                 return GivenNameSort;
             case "StreetAddress":
-                StreetAddressSort = szDirection;
+                SortDesc = (StreetAddressSort != "" && StreetAddressSort != null) ? !SortDesc : SortDesc;
+                StreetAddressSort =  OrderCheck(SortDesc);
                 return StreetAddressSort;
             case "City":
-                CitySort = szDirection;
+                SortDesc = (CitySort != "" && CitySort != null) ? !SortDesc : SortDesc;
+                CitySort =  OrderCheck(SortDesc);
                 return CitySort;
             case "State":
-                StateSort = szDirection;
+                SortDesc = (StateSort != "" && StateSort != null) ? !SortDesc : SortDesc;
+                StateSort =  OrderCheck(SortDesc);
                 return StateSort;
             case "TelephoneNumber":
-                PhoneSort = szDirection;
-                return PhoneSort;
+                SortDesc = (TelephoneNumberSort != "" && TelephoneNumberSort != null) ? !SortDesc : SortDesc;
+                TelephoneNumberSort =  OrderCheck(SortDesc);
+                return TelephoneNumberSort;
             case "ZipCode":
-                ZipCodeSort = szDirection;
+                SortDesc = (ZipCodeSort != "" && ZipCodeSort != null) ? !SortDesc : SortDesc;
+                ZipCodeSort =  OrderCheck(SortDesc);
                 return ZipCodeSort;
             default:
                 return String.Empty;
         }
+
     }
-    void BlankDirectionIcons()
-    {
-        SurnameSort = "";
-        GivenNameSort = "";
-        StreetAddressSort = "";
-        CitySort = "";
-        StateSort = "";
-        PhoneSort = "";
-        ZipCodeSort = "";
-    }
+
     /// <summary>
     /// Modal Section
     /// </summary>
     /// <param name="myUser"></param>
+    #region Modal
     private async void EditUser(User myUser)
     {
         SelectedUser = myUser;
@@ -569,7 +599,6 @@
         };
         await JSRuntime.InvokeAsync<string>(
                   "appFunctions.showMap", CoordinateArray);
-        StateHasChanged();
     }
     private async void ChangeTab(string tab)
     {
@@ -585,7 +614,6 @@
             await JSRuntime.InvokeAsync<string>(
                   "appFunctions.showMap", CoordinateArray);
 
-            StateHasChanged();
         }
     }
     private async Task<List<User>> SaveUser(User SelectedUser)
@@ -601,8 +629,7 @@
         await JSRuntime.InvokeAsync<string>(
                 "appFunctions.hideModal", "editUserModal");
 
-        ToggleSpinner(false);
-        StateHasChanged();
+        //ToggleSpinner(false);
         return users;
     }
     private void CloseModal()
@@ -624,8 +651,9 @@
         await JSRuntime.InvokeAsync<string>(
             "appFunctions.hideModal", "EditUserModal");
 
-        ToggleSpinner(false);
+        //ToggleSpinner(false);
         return users;
     }
+    #endregion
 }
 

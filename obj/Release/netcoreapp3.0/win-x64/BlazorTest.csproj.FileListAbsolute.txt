@@ -3,6 +3,7 @@ C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\appsettings.json
 C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\Data\FakeNames.json
 C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\libman.json
 C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\Properties\launchSettings.json
+C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\Data\FakeNames.csv
 C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\BlazorTest.exe
 C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\BlazorTest.deps.json
 C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\BlazorTest.runtimeconfig.json
@@ -420,3 +421,4 @@ C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.Views.
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.csproj.CopyComplete
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.dll
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.pdb
+C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\Data\FakeNames_bak1.json

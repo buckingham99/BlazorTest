@@ -20,7 +20,6 @@ namespace BlazorTest
             services.AddServerSideBlazor();
 
             services.AddSingleton<UserService>();
-            services.AddSingleton<DataGridService>();
 
         }
 
