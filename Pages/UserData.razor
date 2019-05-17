@@ -20,24 +20,26 @@
         </div>
         <div class="container" style="border: 1px solid black;">
             <div class="container">
-                <div class="col-md-12">
-                    <h5>Parent Component</h5>  <label>UserCount = @UsersCount </label>
-                    
+                <div class="row">
+                    <h5>Parent Component</h5> &nbsp; &nbsp; <label>  UserCount = @UsersCount </label>
                 </div>
             </div>
-            <div class="container">
-                <div class="input-group input-group-sm">
-                    <div>
-                        <input type="search" class="form-control form-control-sm" id="SearchText"
-                               name="SearchText" bind-value-oninput="@ParentSearch"
-                               aria-label="search" aria-describedby="basic-addon1"
-                               placeholder="@PlaceHolderSort" />
-                    </div>
-                    <div class="col-md-12">
-                        <form class="form-group">
+            <div class="row">
+                <div class="input-group input-group-md" style="line-height: 0.5">
+                    <form class="form-group">
+                        <div class="input-group-sm">
+                            <input type="search" class="form-control form-control-sm" id="SearchText"
+                                   name="SearchText" bind-value-oninput="@ParentSearch"
+                                   aria-label="search" aria-describedby="basic-addon1"
+                                   placeholder="@PlaceHolderSort" />
+                        </div>
+                        <div>
+                            <br />
+                        </div>
+                        <div class="input-group-sm">
                             <fieldset>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="lastName" 
+                                    <input type="radio" id="lastName"
                                            name="searchGroup" checked="@(SurnameChecked == 1)" onchange="@(() => ParentSort = "Surname")" />
                                     <label class="radio-inline" for="lastName">Last Name</label>
                                 </div>
@@ -71,9 +73,9 @@
                                            name="searchGroup" checked=@(TelephoneNumberChecked == 1) onchange="@(() => ParentSort = "TelephoneNumber")" />
                                     <label class="radio-inline" for="phone">Phone</label>
                                 </div>
-                                </fieldset>
-                        </form>
-                    </div>
+                            </fieldset>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -208,6 +210,7 @@
         void OnSortClick(string newSort)
         {
             ClickListButton(newSort);
+            ChangeSearchPlaceHolder();
             _ParentSort = newSort;
         }
 
