@@ -7,21 +7,28 @@
 <h2>Blazor Test by Mark Buckingham</h2>
 <p>This is a test of using <b>Server Side</b> <u>Blazor Components</u></p>
 
-<p>This is the standard Blazor Client side template and it's been extended from there.</p>
-
+<p>This is the standard Blazor Server side template and it's been extended from there.</p>
+<p> The point of this experiment is to explore the various Parent/Child - Child/Child communication techniques that 
+    are available in Blazor.</p>
 <p>
-    I didn't want to load up a MDF file for the database, so I used a CSV file from FakeNames.Com for data.
-    (Located in the Data folder).
+    I didn't want to load up a MDF file for the database, so I used a CSV file from
+    <a href="https://www.fakenamegenerator.com">Fake Name Generator</a> for data.
+    The csv file uses about 20,000 users and it's located in the Data folder.
+
+    Classes were generated (with a little massaging) from <a href="http://json2csharp.com">Json2csharp</a>
+
 </p>
 <p>
-    The Test Users page is a grid that parses a CSV or JSON file via a Users Service
-    to creates a list of users that is persisted in a Memory Cache.  You can Sort or Search 
-    the grid
-
-    This page also takes advantage of invoking JavaScript to handle a standard Bootstrap Modal.
-    Changes can be made and will persist throughout the session, they will go away
+    The Test Users page is a datagrid that parses either a CSV or a JSON file via the UserService
+    to create a list of users that is persisted in to a Memory Cache.  You can Sort or Search
+    the grid. Changes to the data can be made and will persist throughout the session, they will go away
     once you've navigated away from the site.
-    You can easily add a database to this via the Names Service and persist the data.
+
+    You can easily add a database to this via the UserService and persist the data.
+
+    This page also takes advantage of invoking JavaScript to handle several functions.  Those functions
+    handle a standard Bootstrap Modal and OpenMaps js calls.
+
 </p>
 
 
@@ -29,4 +36,5 @@
 
 @functions {
 
+    
 }

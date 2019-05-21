@@ -1,0 +1,120 @@
+@page "/creditcard"
+@using Microsoft.AspNetCore.Components;
+@using  System;
+
+<h1 style="display:none;">@ChildContent</h1>
+<div style="background-color:lightblue;display:@DisplayType">
+    <div>
+        <label><b><u>Credit Card Data:</u></b></label>
+    </div>
+    <div style="font-size:xx-small">
+        <table class="table table-hover table-condensed table-bordered table-sm" style="font-size:xx-small">
+            <tbody>
+                <tr>
+                    <td><b>Female</b></td>
+                </tr>
+                @if (@_FemaleCardTypes.Count > 0)
+                {
+                    <tr>
+                        @foreach (var u in @_FemaleCardTypes)
+                        {
+                            <td><b>@u.CardType.Trim()</b></td>
+                        }
+                    </tr>
+                    <tr>
+                        @foreach (var u in @_FemaleCardTypes)
+                        {
+                            <td>@u.CardTypeTotalCount.ToString("#,##0")</td>
+                        }
+                    </tr>
+                }
+                <tr>
+                    <td><b>Male</b></td>
+                </tr>
+                @if (@_MaleCardTypes.Count > 0)
+                {
+                    <tr>
+                        @foreach (var u in _MaleCardTypes)
+                        {
+                        <td><b>@u.CardType.Trim()</b></td>
+                        }
+                    </tr>
+                    <tr>
+                        @foreach (var u in @_MaleCardTypes)
+                        {
+                            <td>@u.CardTypeTotalCount.ToString("#,##0")</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    [Serializable]
+    public class CardTypes
+    {
+        public string CardType { get; set; }
+        public int CardTypeTotalCount { get; set; }
+    }
+    public List<CardTypes> cardTypes = new List<CardTypes>();
+
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+
+    List<CardTypes> _FemaleCardTypes = new List<CardTypes>();
+    [Parameter]
+    public IReadOnlyList<CardTypes> FemaleCardTypes
+    {
+        get { return _FemaleCardTypes; }
+        set
+        {
+            if (value.Count > 0)
+            {
+                _FemaleCardTypes = value.ToList();
+                onFemaleCardTypes();
+            }
+        }
+    }
+    List<CardTypes> _MaleCardTypes = new List<CardTypes>();
+    [Parameter]
+    public IReadOnlyList<CardTypes> MaleCardTypes
+    {
+        get { return _MaleCardTypes; }
+        set
+        {
+            if (value.Count > 0)
+            {
+                _MaleCardTypes = value.ToList();
+                onMaleCardTypes();
+            }
+        }
+    }
+
+    List<CardTypes> onMaleCardTypes()
+    {
+        ToggleDisplay(true);
+        return _MaleCardTypes.ToList();
+    }
+    List<CardTypes> onFemaleCardTypes()
+    {
+        ToggleDisplay(true);
+        return _FemaleCardTypes.ToList();
+    }
+
+    string DisplayType { get; set; }
+
+    private string ToggleDisplay(bool spinnerOn)
+    {
+        DisplayType = (spinnerOn) ? "block;" : "none;";
+        return DisplayType;
+    }
+
+    protected override void OnInit()
+    {
+        ToggleDisplay(false);
+    }
+}
+
+

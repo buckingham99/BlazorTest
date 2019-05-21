@@ -11,693 +11,885 @@
 @inject IJSRuntime JSRuntime;
 
 
-    <div class="container" style="border: 1px dotted black;">
-        <div class="row"></div>
-        <h5>Child Component - Users DataGrid</h5>
-        @if (users.Count == 0)
+<div class="container" style="border: 1px dotted black;">
+    <div class="row"></div>
+    <h5>Child Component - Users DataGrid</h5>
+    @if (users.Count == 0)
         {
-            <div class="loader" style="display:@LoaderDisplayType"></div>
+    <div class="loader" style="display:block"></div>
         }
-        @if (users.Count > 0)
+    @if (users.Count > 0)
         {
-            <div class="tableFixHead row " style="line-height: 0.5">
-                <table class="table table-hover table-condensed table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("Id"))"><a href="javascript:void(0)" title="Default Sort by Id"><b> </b></a><span class="oi oi-target" title="Id Sort"></span></div>
-                            </th>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("Surname"))"><a href="javascript:void(0)" title="Sort by Last Name"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
-                            </th>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("GivenName"))"><a href="javascript:void(0)" title="Sort by First Name"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
-                            </th>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("StreetAddress"))"><a href="javascript:void(0)" title="Sort by Street Address"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
-                            </th>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("City"))"><a href="javascript:void(0)" title="Sort by City"><b>City</b></a> <span class="@CitySort"></span></div>
-                            </th>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("State"))"><a href="javascript:void(0)" title="Sort by State"><b>State</b></a> <span class="@StateSort"></span></div>
-                            </th>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("ZipCode"))"><a href="javascript:void(0)" title="Sort by Zip Code"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
-                            </th>
-                            <th>
-                                <div onclick="@( () => SortLinkClicked("TelephoneNumber"))"><a href="javascript:void(0)" title="Sort by Telephone Number"><b>Phone</b></a> <span class="@TelephoneNumberSort"></span></div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (displayUsers.Count > 0)
+    <div class="tableFixHead row " style="line-height: 0.5">
+        <table class="table table-hover table-condensed table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("Number"))"><a href="javascript:void(0)" title="Default Sort by Id"><b> </b></a><span class="oi oi-target" title="Id Sort"></span></div>
+                    </th>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("Surname"))"><a href="javascript:void(0)" title="Sort by Last Name"><b>Last Name</b></a> <span class="@SurnameSort"></span></div>
+                    </th>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("GivenName"))"><a href="javascript:void(0)" title="Sort by First Name"><b>First Name</b></a> <span class="@GivenNameSort"></span></div>
+                    </th>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("StreetAddress"))"><a href="javascript:void(0)" title="Sort by Street Address"><b>Address</b></a> <span class="@StreetAddressSort"></span></div>
+                    </th>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("City"))"><a href="javascript:void(0)" title="Sort by City"><b>City</b></a> <span class="@CitySort"></span></div>
+                    </th>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("State"))"><a href="javascript:void(0)" title="Sort by State"><b>State</b></a> <span class="@StateSort"></span></div>
+                    </th>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("ZipCode"))"><a href="javascript:void(0)" title="Sort by Zip Code"><b>Zip</b></a> <span class="@ZipCodeSort"></span></div>
+                    </th>
+                    <th>
+                        <div onclick="@( () => SortLinkClicked("TelephoneNumber"))"><a href="javascript:void(0)" title="Sort by Telephone Number"><b>Phone</b></a> <span class="@TelephoneNumberSort"></span></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (displayUsers.Count > 0)
                         {
-                            @foreach (var u in @displayUsers)
+                @foreach (var u in @displayUsers)
                             {
-                                <tr class="datarow" onclick="@( () => EditUser(@u))" title="Click to Edit">
-                                    <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span style="color:black;" class="oi oi-magnifying-glass"></span></a></td>
-                                    <td>@u.Surname</td>
-                                    <td>@u.GivenName</td>
-                                    <td>@u.StreetAddress</td>
-                                    <td>@u.City</td>
-                                    <td>@u.State</td>
-                                    <td>@u.ZipCode.ToString()</td>
-                                    <td>@u.TelephoneNumber</td>
-                                </tr>
+                <tr class="datarow" onclick="@( () => EditUser(@u))" title="Click to Edit">
+                    <td><a href="javascript:void(0);" onclick="@( () => EditUser(@u))"><span style="color:black;" class="oi oi-magnifying-glass"></span></a></td>
+                    <td>@u.Surname</td>
+                    <td>@u.GivenName</td>
+                    <td>@u.StreetAddress</td>
+                    <td>@u.City</td>
+                    <td>@u.State</td>
+                    <td>@u.ZipCode.ToString()</td>
+                    <td>@u.TelephoneNumber</td>
+                </tr>
                             }
                         }
-                    </tbody>
-                </table>
-            </div>
-            <div class="row">
-                @if (displayUsers.Count > 0)
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        @if (displayUsers.Count > 0)
                 {
-                    <div>
-                        <ul class="pagination pagination-sm pager">
-                            @foreach (var i in btnlist)
+        <div>
+            <ul class="pagination pagination-sm pager">
+                @foreach (var i in btnlist)
                             {
-                                @if ((i >= (currentPage-5) && i <= (currentPage+5)) || i ==(int)(btnlist.Count/4) || (i == btnlist.Count) || i == 1)
+                @if ((i >= (currentPage-2) && i <= (currentPage+2)) || i == checkPageInt(i)  || (i == btnlist.Count) || i == 1)
                                 {
-                                    <li class="page-item @(i == currentPage ? "active" : "")">
-                                        <a href="javascript:void(0)" class="page-link" title="Page: @i" value-bind="@i" onclick="@( () => ChangePage(@i))">@i</a>
-                                    </li>
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a href="javascript:void(0)" class="page-link" title="Page: @i" value-bind="@i" onclick="@( () => ChangePage(@i))">@i</a>
+                </li>
                                 }
                             }
-                        </ul>
-                    </div>
+            </ul>
+        </div>
                 }
-            </div>
+    </div>
         }
 
-    </div>
-    <!-- Modal -->
-    @if (SelectedUser != null)
+</div>
+<!-- Modal -->
+@if (SelectedUser != null)
     {
-        <div class="container mt-lg-4">
-            <div class="modal" id="editUserModal">
-                <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color:lightgray;">
-                            <h11 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b>  @SelectedUser.StreetAddress @SelectedUser.City,  @SelectedUser.StateFull  @SelectedUser.ZipCode @SelectedUser.CountryFull </h11>
-                            <button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => CancelSaveUser(SelectedUser))">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+<div class="container mt-lg-4">
+    <div class="modal" id="editUserModal">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:lightgray;">
+                    <h11 id="modalTitle" class="modal-title">Edit User: <b><u>@(SelectedUser.GivenName + " " + SelectedUser.Surname)</u></b>  @SelectedUser.StreetAddress @SelectedUser.City,  @SelectedUser.StateFull  @SelectedUser.ZipCode @SelectedUser.CountryFull </h11>
+                    <button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => CancelSaveUser(SelectedUser))">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <div>
+                                <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("User"))" href="javascript:void(0)">User</button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("CreditData"))" href="javascript:void(0)">Credit</button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("Employment"))" href="javascript:void(0)">Employment</button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("mapDisplay"))" href="javascript:void(0)">Map</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
+                    </div>
+                    <div class="tab-content">
+                        <div id="User" class="tab-pane active">
                             <div class="row">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <div>
-                                        <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("User"))" href="javascript:void(0)">User</button>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("CreditData"))" href="javascript:void(0)">Credit</button>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("Employment"))" href="javascript:void(0)">Employment</button>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="btn btn-secondary" onclick="@( () => ChangeTab("mapDisplay"))" href="javascript:void(0)">Map</button>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" bind-value-onchange="@SelectedUser.GivenName" placeholder="First Name" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind="@SelectedUser.Surname" placeholder="Last Name" />
                                 </div>
                             </div>
-                            <div class="tab-content">
-                                <div id="User" class="tab-pane active" style="background-color:azure;">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="first_name">First Name</label>
-                                            <input type="text" name="first_name" id="first_name" class="form-control input-sm" bind-value-onchange="@SelectedUser.GivenName" placeholder="First Name" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="last_name">Last Name</label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" bind="@SelectedUser.Surname" placeholder="Last Name" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <label for="address">Street Address</label>
-                                            <input type="text" name="address" id="streetAddress" class="form-control input-sm" bind-value-onchange="@SelectedUser.StreetAddress" placeholder="Street Address" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="city">City</label>
-                                            <input type="text" name="city" id="city" class="form-control input-sm" bind-value-onchange="@SelectedUser.City" placeholder="City" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="state">State</label>
-                                            <input type="text" name="state" id="state" class="form-control input-sm" bind-value-onchange="@SelectedUser.State" placeholder="State" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="zipCode">Zip Code</label>
-                                            <input type="text" name="zipCode" id="zipCode" class="form-control input-sm" bind-value-onchange="@SelectedUser.ZipCode" placeholder="Zip Code" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="telephone">Telephone</label>
-                                            <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind-value-onchange="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="zodiacSign">Zodiac Sign</label>
-                                            <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind-value-onchange="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="birthdate">Birth Day</label>
-                                            <input type="text" name="birthdate" id="birthdate" class="form-control input-sm" bind-value-onchange="@SelectedUser.Birthday" placeholder="Birthday" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="momMaiden">Mothers Maiden Name</label>
-                                            <input type="text" name="momMaiden" id="momMaiden" class="form-control input-sm" bind-value-onchange="@SelectedUser.MothersMaiden" placeholder="Mother's Maiden Name" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="age">Age</label>
-                                            <input type="text" name="age" id="age" class="form-control input-sm" bind-value-onchange="@SelectedUser.Age" placeholder="Age" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="bloodType">Blood Type</label>
-                                            <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind-value-onchange="@SelectedUser.BloodType" placeholder="Blood Type" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="pounds">Weight</label>
-                                            <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind-value-onchange="@SelectedUser.Pounds" placeholder="Weight" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="username">User Name</label>
-                                            <input type="text" name="username" id="username" class="form-control input-sm" bind-value-onchange="@SelectedUser.Username" placeholder="User Name" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="password">Password</label>
-                                            <input type="text" name="password" id="password" class="form-control input-sm" bind-value-onchange="@SelectedUser.Password" placeholder="Password" />
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label for="address">Street Address</label>
+                                    <input type="text" name="address" id="streetAddress" class="form-control input-sm" bind-value-onchange="@SelectedUser.StreetAddress" placeholder="Street Address" />
                                 </div>
-
-                                <div id="CreditData" class="tab-pane container" style="background-color:blanchedalmond;">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="CCType">Credit Card Type</label>
-                                            <input type="text" name="CCType" id="CCType" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCType" placeholder="Credit Card Type" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="CCNumber">Credit Card Number</label>
-                                            <input type="text" name="CCNumber" id="CCNumber" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCNumber" placeholder="Credit Card Number" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="CVV2">CVV2</label>
-                                            <input type="text" name="CVV2" id="CVV2" class="form-control input-sm" bind-value-onchange="@SelectedUser.CVV2" placeholder="CVV2" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="CCExpires">CCExpires</label>
-                                            <input type="text" name="CCExpires" id="CCExpires" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCExpires" placeholder="CCExpires" />
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="WesternUnionMTCN">Western Union Tracking Number</label>
-                                            <input type="text" name="WesternUnionMTCN" id="WesternUnionMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.WesternUnionMTCN" placeholder="Western Union Tracking Number" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="MoneyGramMTCN">MoneyGram Tracking Number</label>
-                                            <input type="text" name="MoneyGramMTCN" id="MoneyGramMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.MoneyGramMTCN" placeholder="MoneyGram Tracking Number" />
-                                        </div>
-                                    </div>
-
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="city">City</label>
+                                    <input type="text" name="city" id="city" class="form-control input-sm" bind-value-onchange="@SelectedUser.City" placeholder="City" />
                                 </div>
-
-                                <div id="Employment" class="tab-pane container">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="company">Company</label>
-                                            <input type="text" name="company" id="company" class="form-control input-sm" bind-value-onchange="@SelectedUser.Company" placeholder="Company" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="occupation">Occupation</label>
-                                            <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind-value-onchange="@SelectedUser.Occupation" placeholder="Occupation" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="vehicle">Vehicle</label>
-                                            <input type="text" name="vehicle" id="vehicle" class="form-control input-sm" bind-value-onchange="@SelectedUser.Vehicle" placeholder="Vehicle" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="color">Vehicle Color</label>
-                                            <input type="text" name="color" id="color" class="form-control input-sm" bind-value-onchange="@SelectedUser.Color" placeholder="Vehicle Color" />
-                                        </div>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <label for="state">State</label>
+                                    <input type="text" name="state" id="state" class="form-control input-sm" bind-value-onchange="@SelectedUser.State" placeholder="State" />
                                 </div>
-                                <div id="mapDisplay" class="tab-pane container">
-                                    <div id="map" class="map"></div>
+                                <div class="col-sm-6">
+                                    <label for="zipCode">Zip Code</label>
+                                    <input type="text" name="zipCode" id="zipCode" class="form-control input-sm" bind-value-onchange="@SelectedUser.ZipCode" placeholder="Zip Code" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="telephone">Telephone</label>
+                                    <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind-value-onchange="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="zodiacSign">Zodiac Sign</label>
+                                    <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind-value-onchange="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="birthdate">Birth Day</label>
+                                    <input type="text" name="birthdate" id="birthdate" class="form-control input-sm" bind-value-onchange="@SelectedUser.Birthday" placeholder="Birthday" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="momMaiden">Mothers Maiden Name</label>
+                                    <input type="text" name="momMaiden" id="momMaiden" class="form-control input-sm" bind-value-onchange="@SelectedUser.MothersMaiden" placeholder="Mother's Maiden Name" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="age">Age</label>
+                                    <input type="text" name="age" id="age" class="form-control input-sm" bind-value-onchange="@SelectedUser.Age" placeholder="Age" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="bloodType">Blood Type</label>
+                                    <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind-value-onchange="@SelectedUser.BloodType" placeholder="Blood Type" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="pounds">Weight</label>
+                                    <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind-value-onchange="@SelectedUser.Pounds" placeholder="Weight" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="username">User Name</label>
+                                    <input type="text" name="username" id="username" class="form-control input-sm" bind-value-onchange="@SelectedUser.Username" placeholder="User Name" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="password">Password</label>
+                                    <input type="text" name="password" id="password" class="form-control input-sm" bind-value-onchange="@SelectedUser.Password" placeholder="Password" />
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" onclick="@( () => CancelSaveUser(SelectedUser))" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" onclick="@( () => SaveUser(SelectedUser))">Save changes</button>
+
+                        <div id="CreditData" class="tab-pane container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="CCType">Credit Card Type</label>
+                                    <input type="text" name="CCType" id="CCType" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCType" placeholder="Credit Card Type" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="CCNumber">Credit Card Number</label>
+                                    <input type="text" name="CCNumber" id="CCNumber" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCNumber" placeholder="Credit Card Number" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="CVV2">CVV2</label>
+                                    <input type="text" name="CVV2" id="CVV2" class="form-control input-sm" bind-value-onchange="@SelectedUser.CVV2" placeholder="CVV2" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="CCExpires">CCExpires</label>
+                                    <input type="text" name="CCExpires" id="CCExpires" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCExpires" placeholder="CCExpires" />
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="WesternUnionMTCN">Western Union Tracking Number</label>
+                                    <input type="text" name="WesternUnionMTCN" id="WesternUnionMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.WesternUnionMTCN" placeholder="Western Union Tracking Number" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="MoneyGramMTCN">MoneyGram Tracking Number</label>
+                                    <input type="text" name="MoneyGramMTCN" id="MoneyGramMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.MoneyGramMTCN" placeholder="MoneyGram Tracking Number" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="Employment" class="tab-pane container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="company">Company</label>
+                                    <input type="text" name="company" id="company" class="form-control input-sm" bind-value-onchange="@SelectedUser.Company" placeholder="Company" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="occupation">Occupation</label>
+                                    <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind-value-onchange="@SelectedUser.Occupation" placeholder="Occupation" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="vehicle">Vehicle</label>
+                                    <input type="text" name="vehicle" id="vehicle" class="form-control input-sm" bind-value-onchange="@SelectedUser.Vehicle" placeholder="Vehicle" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="color">Vehicle Color</label>
+                                    <input type="text" name="color" id="color" class="form-control input-sm" bind-value-onchange="@SelectedUser.Color" placeholder="Vehicle Color" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mapDisplay" class="tab-pane container">
+                            <label>The Street is correct but the House / Apartment number is random!</label>
+                            <div id="map" class="map"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    }
-    <div class="container mt-sm-4">
-        <div class="modal" id="searchError">
-            <div class="modal-dialog modal-sm modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color:lightgray;">
-                        <h11 id="modalTitle" class="modal-title">Search Error </h11>
-                        <button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => CancelSaveUser(SelectedUser))">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <b>@SearchErrorText</b> was Not Found
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="@( () => CloseModal())" data-dismiss="modal">OK</button>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" onclick="@( () => CancelSaveUser(SelectedUser))" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="@( () => SaveUser(SelectedUser))">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+    }
+<div class="container mt-sm-4">
+    <div class="modal" id="searchError">
+        <div class="modal-dialog modal-sm modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:lightgray;">
+                    <h11 id="modalTitle" class="modal-title">Search Error </h11>
+                    <button type="button" aria-label="Close" class="close" data-dismiss="modal" onclick="@( () => CancelSaveUser(SelectedUser))">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <b>@SearchErrorText</b> was Not Found
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="@( () => CloseModal())" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <Gender ref="GenderComponent">
+                MaleCountString="@MaleCount"
+                FemaleCountString="@FemaleCount"
+            </Gender>
+            <BloodType ref="BloodTypeComponent">
+                MaleBloodTypes=@maleBloodTypes
+                FemaleBloodTypes=@femaleBloodTypes
+            </BloodType>
+            <CreditCard ref="CreditCardComponent">
+                MaleCardTypes=@maleCardTypes
+                FemaleCardTypes=@femaleCardTypes
+            </CreditCard>
+        </div>
+    </div>
+    
+</div>
 
-    @functions {
-        [Parameter] EventCallback<string> OnSortLinkClicked { get; set; }
-        [Parameter] EventCallback<string> OnSearchError { get; set; }
-        [Parameter] EventCallback<string> OnUserCount { get; set; }
-        [Parameter] EventCallback<string> OnSearchText { get; set; }
-        private int currentPage  { get; set; } = 1;
-        private int pageSize = 30;
+@functions {
+    private Gender GenderComponent = new Gender();
+    private BloodType BloodTypeComponent = new BloodType();
+    private CreditCard CreditCardComponent = new CreditCard();
 
-        private List<User> users = new List<User>();
-        private List<User> displayUsers = new List<User>();
-        private User UnModifiedUser = new User();
-        private User SelectedUser = new User();
+    [Parameter] EventCallback<string> OnSortLinkClicked { get; set; }
+    [Parameter] EventCallback<string> OnSearchError { get; set; }
+    [Parameter] EventCallback<string> OnUserCount { get; set; }
+    [Parameter] EventCallback<string> OnSearchText { get; set; }
 
-        private bool SortDesc { get; set; }
-        private string SurnameSort { get; set; }
-        private string GivenNameSort { get; set; }
-        private string StreetAddressSort { get; set; }
-        private string CitySort { get; set; }
-        private string StateSort { get; set; }
-        private string ZipCodeSort { get; set; }
-        private string TelephoneNumberSort { get; set; }
-        private string SearchErrorText { get; set; }
-        private string LoaderDisplayType { get; set; } = "block;";
-        private int TotalPages { get; set; }
-        //private int namesCount  { get; set; } = 0;
+    List<BloodType.BloodTypes> femaleBloodTypes = new List<BloodType.BloodTypes>();
+    List<BloodType.BloodTypes> maleBloodTypes = new List<BloodType.BloodTypes>();
 
-        private int _namesCount = 0;
-        public int namesCount
+    List<CreditCard.CardTypes> maleCardTypes = new List<CreditCard.CardTypes>();
+    List<CreditCard.CardTypes> femaleCardTypes = new List<CreditCard.CardTypes>();
+
+    private int currentPage  { get; set; } = 1;
+    private int pageSize = 12;
+
+    private List<User> users = new List<User>();
+    private List<User> displayUsers = new List<User>();
+    private List<User> displayUsersSource = new List<User>();
+    private User UnModifiedUser = new User();
+    private User SelectedUser = new User();
+
+    private bool SortDesc { get; set; }
+    private string SurnameSort { get; set; }
+    private string GivenNameSort { get; set; }
+    private string StreetAddressSort { get; set; }
+    private string CitySort { get; set; }
+    private string StateSort { get; set; }
+    private string ZipCodeSort { get; set; }
+    private string TelephoneNumberSort { get; set; }
+    private string SearchErrorText { get; set; }
+    private string LoaderDisplayType { get; set; } = "block;";
+    private int TotalPages { get; set; }
+
+    public string MaleCount { get; set; } = "0";
+    public string FemaleCount { get; set; } = "0";
+
+    private int _namesCount = 0;
+    public int namesCount
+    {
+        get { return _namesCount; }
+        set
         {
-            get { return _namesCount; }
-            set
-            {
-                if (value != 0)
-                {
-                    ToggleSpinner(true);
-                   
-                    if (value != _namesCount)
-                    {
-                        OnUserCount.InvokeAsync(value.ToString());
-                    }
-                    _namesCount = value; 
-                    ToggleSpinner(false);
-                }
-            }
-        }
-        private List<int> btnlist = new List<int>();
-
-        public string _SearchString { get; set; }
-        [Parameter]
-        public string SearchString
-        {
-            get { return _SearchString; }
-            set
-            {
-                if (value != "" && value != null)
-                {
-                    ToggleSpinner(true);
-                    _SearchString = value;
-                    SearchData(value);
-                    //ToggleSpinner(false);
-                }
-            }
-        }
-
-        public string _SortField { get; set; } = "Surname";
-        [Parameter]
-        public string SortField
-        {
-            get { return _SortField; }
-            set
-            {
-                if (value != "" && value != null && users.Count > 0)
-                {
-                    ToggleSpinner(true);
-                    _SortField = value;
-                    SortData(value);
-                    //ToggleSpinner(false);
-                }
-            }
-        }
-
-        /// I changed this to OnInit from OnInit Async
-        /// since I start populating the Users once the Index page has loaded
-        /// Once you reach this page the users are in a List of Users.
-
-        protected override void OnInit()
-        {
-            ToggleSpinner(true);
-        }
-        protected override async Task OnInitAsync()
-        {
-            //ToggleSpinner(true);
-            SortDesc = true;
-            var tmp = await Task.FromResult(UserService.GetNamesData(SortField == "" ? "Surname" : SortField, SortDesc));
-            namesCount = UserService.UsersCount;
-            recalcPageButtons(namesCount);
-            await OnSortLinkClicked.InvokeAsync("Surname");
-            users = tmp;
-            //await OnUserCount.InvokeAsync(namesCount.ToString());
-            ToggleSpinner(false);
-
-        }
-
-
-        private void ForceRecordCountChange(string RecordsToChange)
-        {
-            ToggleSpinner(true);
-            displayUsers.Clear();
-            users.Clear();
-
-            users = UserService.GetNamesData(SortField = SortField == null ? "Id" : SortField, SortDesc);
-            namesCount = users.Count;
-
-            displayUsers = users.OrderByDescending(s => s.GetType()
-            .GetProperty(SortField)
-            .GetValue(s))
-            .Skip((currentPage - 1) * pageSize)
-            .Take(pageSize).ToList();
-            recalcPageButtons(users.Count);
-
-            ToggleSpinner(false);
-        }
-
-        private string ToggleSpinner(bool spinnerOn)
-        {
-            LoaderDisplayType = (spinnerOn) ? "block;" : "none;";
-            return LoaderDisplayType;
-        }
-        void ChangePage(int newPage)
-        {
-            currentPage = newPage;
-            OnSortLinkClicked.InvokeAsync(SortField);
-        }
-
-        void SortLinkClicked(string dataToSend)
-        {
-            ToggleSpinner(true);
-            SortDesc = !SortDesc;
-            OnSortLinkClicked.InvokeAsync(dataToSend);
-        }
-        void NotifyParent(string dataToSend)
-        {
-            OnSortLinkClicked.InvokeAsync(SortField);
-        }
-        async Task SearchError()
-        {
-            await Task.FromResult(
-                OnSearchError.InvokeAsync(SearchErrorText));
-            SearchString = "";
-        }
-        async Task UserCountUpdate(int myCount)
-        {
-            await Task.FromResult
-                (
-                    OnUserCount.InvokeAsync(myCount.ToString())
-                );
-        }
-
-        public void SortData(string SortField)
-        {
-            if (users.Count > 0)
+            if (value != 0)
             {
                 ToggleSpinner(true);
-                CalcIconDirection(SortField);
 
+                if (value != _namesCount)
+                {
+                    OnUserCount.InvokeAsync(value.ToString());
+                }
+                _namesCount = value;
+                ToggleSpinner(false);
+            }
+        }
+    }
+    private List<int> btnlist = new List<int>();
+
+    public string _SearchString { get; set; }
+    [Parameter]
+    public string SearchString
+    {
+        get { return _SearchString; }
+        set
+        {
+            if (value != null)
+            {
+                _SearchString = value;
+                SearchData(value);
+            }
+        }
+    }
+
+    public string _SortField { get; set; } = "Surname";
+    [Parameter]
+    public string SortField
+    {
+        get { return _SortField; }
+        set
+        {
+            if (value != "" && value != null && users.Count > 0)
+            {
+                _SortField = value;
+                SortData(value);
+            }
+        }
+    }
+    private int checkPageInt(int iCount)
+    {
+        int intReturn = -1;
+        int[] tmpCount = new int[] {10, 20, 30, 40,50,60,70,80,100,200,500,750,1000,1500};
+        foreach (var item in tmpCount)
+        {
+            if (item == iCount)
+            {
+                intReturn = iCount;
+                break;
+            }
+        }
+        return intReturn;
+    }
+
+
+    protected override void OnInit()
+    {
+        SortDesc = true;
+        ToggleSpinner(true);
+
+    }
+    protected override void OnAfterRender()
+    {
+        if (users.Count == 0)
+        {
+            users = UserService.GetNamesData(SortField == "" ? "Surname" : SortField, SortDesc);
+            ShowBloodCount("users");
+            ShowGenderCount("users");
+            ShowCardCount("users");
+            SortLinkClicked("Surname");
+
+
+
+            ToggleSpinner(false);
+        }
+    }
+    private void ShowBloodCount(string szSender)
+    {
+        if (szSender == "users")
+        {
+            BloodTypeComponent.FemaleBloodTypes = UserService.users.Where(x => x.Gender.ToLower() == "female")
+                .GroupBy(x => x.BloodType)
+                .Select(r => new BloodType.BloodTypes
+                {
+                    BloodType = r.Key,
+                    BloodTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.BloodType).ToList();
+
+            BloodTypeComponent.MaleBloodTypes = UserService.users.Where(x => x.Gender.ToLower() == "male")
+                .GroupBy(x => x.BloodType)
+                .Select(r => new BloodType.BloodTypes
+                {
+                    BloodType = r.Key,
+                    BloodTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.BloodType).ToList();
+        }
+        else
+        {
+            BloodTypeComponent.FemaleBloodTypes = displayUsersSource.Where(x => x.Gender.ToLower() == "female")
+                .GroupBy(x => x.BloodType)
+                .Select(r => new BloodType.BloodTypes
+                {
+                    BloodType = r.Key,
+                    BloodTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.BloodType).ToList();
+
+            BloodTypeComponent.MaleBloodTypes = displayUsersSource.Where(x => x.Gender.ToLower() == "male")
+                .GroupBy(x => x.BloodType)
+                .Select(r => new BloodType.BloodTypes
+                {
+                    BloodType = r.Key,
+                    BloodTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.BloodType).ToList();
+        }
+        ShouldRender();
+    }
+    private void ShowGenderCount (string szSender)
+    {
+        if (szSender == "users")
+        {
+            GenderComponent.FemaleCountString = UserService.users.Where(x => x.Gender.ToLower() == "female").Count().ToString();
+            GenderComponent.MaleCountString = UserService.users.Where(x => x.Gender.ToLower() == "male").Count().ToString();
+            ShowBloodCount("users");
+            ShowCardCount("users");
+        }
+        else
+        {
+            GenderComponent.FemaleCountString = displayUsersSource.Where(x => x.Gender.ToLower() == "female").Count().ToString();
+            GenderComponent.MaleCountString = displayUsersSource.Where(x => x.Gender.ToLower() == "male").Count().ToString();
+            ShowBloodCount("displayUsers");
+            ShowCardCount("displayUsers");
+        }
+        ShouldRender();
+    }
+    private void ShowCardCount(string szSender)
+    {
+        if (szSender == "users")
+        {
+            CreditCardComponent.FemaleCardTypes = UserService.users.Where(x => x.Gender.ToLower() == "female")
+                .GroupBy(x => x.CCType)
+                .Select(r => new CreditCard.CardTypes
+                {
+                    CardType = r.Key,
+                    CardTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.CardType).ToList();
+
+            CreditCardComponent.MaleCardTypes = UserService.users.Where(x => x.Gender.ToLower() == "male")
+                .GroupBy(x => x.CCType)
+                .Select(r => new CreditCard.CardTypes
+                {
+                    CardType = r.Key,
+                    CardTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.CardType).ToList();
+        }
+        else
+        {
+            CreditCardComponent.FemaleCardTypes = displayUsersSource.Where(x => x.Gender.ToLower() == "female")
+                .GroupBy(x => x.CCType)
+                .Select(r => new CreditCard.CardTypes
+                {
+                    CardType = r.Key,
+                    CardTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.CardType).ToList();
+
+            CreditCardComponent.MaleCardTypes = displayUsersSource.Where(x => x.Gender.ToLower() == "male")
+                .GroupBy(x => x.CCType)
+                .Select(r => new CreditCard.CardTypes
+                {
+                    CardType = r.Key,
+                    CardTypeTotalCount = r.Count()
+                }).OrderBy(r=>r.CardType).ToList();
+        }
+        ShouldRender();
+    }
+    private void ForceRecordCountChange(string RecordsToChange)
+    {
+        ToggleSpinner(true);
+        displayUsersSource.Clear();
+        users.Clear();
+
+        //users = UserService.GetNamesData(SortField = SortField == null ? "Number" : SortField, SortDesc);
+        users = UserService.users;
+        namesCount = users.Count;
+
+        displayUsers = UserService.users.OrderByDescending(s => s.GetType()
+        .GetProperty(SortField)
+        .GetValue(s))
+        .Skip((currentPage - 1) * pageSize)
+        .Take(pageSize).ToList();
+        recalcPageButtons(users.Count);
+        ShowGenderCount("users");
+        ToggleSpinner(false);
+    }
+
+    private string ToggleSpinner(bool spinnerOn)
+    {
+        LoaderDisplayType = (spinnerOn) ? "block;" : "none;";
+        return LoaderDisplayType;
+    }
+    void ChangePage(int newPage)
+    {
+        currentPage = newPage;
+        if (SearchString == "" || SearchString == null)
+        {
+            SortData(SortField);
+        }
+        else
+        {
+            SearchData(SearchString);
+            SortData(SortField);
+        }
+
+    }
+
+    void SortLinkClicked(string dataToSend)
+    {
+        ToggleSpinner(true);
+        SortDesc = !SortDesc;
+        OnSortLinkClicked.InvokeAsync(dataToSend);
+        //ShowGenderCount("users");
+        ToggleSpinner(false);
+    }
+
+    async Task SearchError()
+    {
+        await Task.FromResult(
+            OnSearchError.InvokeAsync(SearchErrorText));
+        SearchString = "";
+    }
+    async Task UserCountUpdate(int myCount)
+    {
+        await Task.FromResult
+            (
+                OnUserCount.InvokeAsync(myCount.ToString())
+            );
+    }
+
+    public void SortData(string SortField)
+    {
+        ToggleSpinner(true);
+        if (UserService.users.Count > 0 && (SearchString == "" || SearchString == null))
+        {
+            ToggleSpinner(true);
+            CalcIconDirection(SortField);
+
+            if (SortDesc)
+            {
+                displayUsers = UserService.users
+                .OrderByDescending(x => x.GetType().GetProperty(SortField).GetValue(x)
+                .ToString())
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+            }
+            else
+            {
+                displayUsers = UserService.users
+                .OrderBy(x => x.GetType().GetProperty(SortField).GetValue(x)
+                .ToString())
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+            }
+            displayUsersSource = UserService.users
+                .OrderBy(x => x.GetType().GetProperty(SortField).GetValue(x)
+                .ToString())
+                .ToList();
+        }
+        if (SearchString != "" && SearchString != null)
+        {
+            namesCount = UserService.users.Where(s => s.GetType()
+                    .GetProperty(SortField).GetValue(s).ToString().ToLower()
+                    .StartsWith(SearchString.ToLower())).Count();
+            recalcPageButtons(namesCount);
+        }
+        if ((SearchString == "" || SearchString == null) && users.Count > 0)
+        {
+            recalcPageButtons(UserService.users.Count);
+            namesCount = users.Count;
+        }
+
+        ToggleSpinner(false);
+
+    }
+    public async Task ShowError(string errMessage)
+    {
+        await Task.FromResult(JSRuntime.InvokeAsync<string>(
+                     "appFunctions.showModal", "searchError", "Search Text: " +
+                     SearchString + " was not found"));
+
+    }
+    public List<int> recalcPageButtons(int TotalRecords)
+    {
+        int _myCount = 0;
+        if (TotalRecords > 0)
+        {
+            _myCount = TotalRecords > 0 ? (int)Math.Ceiling(decimal.Divide(TotalRecords, pageSize)) : 0;
+            btnlist.Clear();
+            for (int i = 1; i < _myCount + 1; i++)
+            {
+                btnlist.Add(i);
+            }
+        }
+        return btnlist;
+    }
+    public void SearchData(string SearchString)
+    {
+        int displayCount = 0;
+        if (users.Count > 0)
+        {
+            ToggleSpinner(true);
+            CalcIconDirection(SortField);
+
+            if (SearchString.Length > 0)
+            {
+                //currentPage = 1;
                 if (SortDesc)
                 {
-                    displayUsers = users
+                    List<User> tmp = UserService.users.Where(s => s.GetType()
+                    .GetProperty(SortField).GetValue(s).ToString().ToLower()
+                    .StartsWith(SearchString.ToLower()))
+                    .OrderByDescending(x => x.GetType()
+                    .GetProperty(SortField).GetValue(x)).ToList();
+                    if (tmp.Count > 0)
+                    {
+                        if ((currentPage - 1) * pageSize < tmp.Count())
+                        {
+                            displayUsers = tmp.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                        }
+                        else
+                        {
+                            currentPage = 1;
+                            displayUsers = tmp.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                        }
+                    }
+                }
+                else
+                {
+                    List<User> tmp = UserService.users.Where(s => s.GetType()
+                    .GetProperty(SortField).GetValue(s).ToString().ToLower()
+                    .StartsWith(SearchString.ToLower()))
+                    .OrderBy(x => x.GetType()
+                    .GetProperty(SortField).GetValue(x)).ToList();
+                    if (tmp.Count > 0)
+                    {
+                        if ((currentPage - 1) * pageSize < tmp.Count())
+                        {
+                            displayUsers = tmp.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                        }
+                        else
+                        {
+                            currentPage = 1;
+                            displayUsers = tmp.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                        }
+                    }
+                }
+                displayUsersSource = UserService.users.Where(s => s.GetType()
+                    .GetProperty(SortField).GetValue(s).ToString().ToLower()
+                    .StartsWith(SearchString.ToLower()))
+                    .OrderBy(x => x.GetType()
+                    .GetProperty(SortField).GetValue(x)).ToList();
+
+                namesCount = displayUsersSource.Count;
+                displayCount = displayUsersSource.Count();
+
+                ShowBloodCount("displayUsers");
+                ShowGenderCount("displayUsers");
+                ShowCardCount("displayUsers");
+            }
+            if (SearchString.Length == 0)
+            {
+                if (SortDesc)
+                {
+                    displayUsers = UserService.users
                     .OrderByDescending(x => x.GetType().GetProperty(SortField).GetValue(x)
                     .ToString())
                     .Skip((currentPage - 1) * pageSize)
                     .Take(pageSize)
                     .ToList();
-
                 }
                 else
                 {
-                    displayUsers = users
+                    displayUsers = UserService.users
                     .OrderBy(x => x.GetType().GetProperty(SortField).GetValue(x)
                     .ToString())
                     .Skip((currentPage - 1) * pageSize)
                     .Take(pageSize)
                     .ToList();
-                    //displayUsers = users
-                    //.OrderBy(x => x.GetType().GetProperty(SortField).GetValue(x)
-                    //.ToString()).ToList();
                 }
-
-            }
-            if (SearchString != "")
-            {
-                recalcPageButtons(users.Count);
-                //namesCount = users.Count;
-            }
-            if ((SearchString == "" || SearchString == null) && users.Count > 0)
-            {
-                recalcPageButtons(users.Count);
-                namesCount = users.Count;
-            }
-
-            ToggleSpinner(false);
-
-        }
-        public async Task ShowError(string errMessage)
-        {
-            await Task.FromResult(JSRuntime.InvokeAsync<string>(
-                         "appFunctions.showModal", "searchError", "Search Text: " +
-                         SearchString + " was not found"));
-
-        }
-        public List<int> recalcPageButtons(int TotalRecords)
-        {
-            int _myCount = 0;
-            if (TotalRecords > 0)
-            {
-                _myCount = TotalRecords > 0 ? (int)Math.Ceiling(decimal.Divide(TotalRecords, pageSize)) : 0;
-                btnlist.Clear();
-                for (int i = 1; i < _myCount + 1; i++)
-                {
-                    btnlist.Add(i);
-                }
-            }
-            return btnlist;
-        }
-        public void SearchData(string SearchString)
-        {
-            if (SearchString.Length > 0 && users.Count > 0)
-            {
-                ToggleSpinner(true);
-                CalcIconDirection(SortField);
-                if (SortDesc)
-                {
-                    displayUsers = users.Where(s => s.GetType()
-                    .GetProperty(SortField).GetValue(s).ToString().ToLower()
-                    .StartsWith(SearchString.ToLower()))
-                    .Skip((currentPage - 1) * pageSize)
-                    .Take(pageSize)
-                    .OrderByDescending(x => x.GetType()
-                    .GetProperty(SortField).GetValue(x)).ToList();
-                }
-                else
-                {
-                    displayUsers = users.Where(s => s.GetType()
-                    .GetProperty(SortField).GetValue(s).ToString().ToLower()
-                    .StartsWith(SearchString.ToLower()))
-                    .Skip((currentPage - 1) * pageSize)
-                    .Take(pageSize)
-                    .OrderBy(x => x.GetType()
-                    .GetProperty(SortField).GetValue(x)).ToList();
-                }
-                //namesCount = displayUsers.Count;
-                recalcPageButtons(displayUsers.Count);
-                ToggleSpinner(false);
-            }
-            if (SearchString.Length == 0)
-            {
-               // namesCount = users.Count;
-                recalcPageButtons(users.Count);
-                OnSortLinkClicked.InvokeAsync(SortField);
-            }
-            /*
-            if(SearchString.Length == 0  && users.Count > 0)
-            {
-                 OnSortLinkClicked.InvokeAsync(SortField);
-                recalcPageButtons(users.Count);
-            }
-            */
-            ToggleSpinner(false);
-        }
-        static string OrderCheck(bool SortDesc)
-        {
-            if (SortDesc)
-            {
-                return "oi oi-arrow-thick-bottom";
-            }
-            else
-            {
-                return "oi oi-arrow-thick-top";
+                displayCount = UserService.users.Count;
+                namesCount = displayCount;
+                ShowBloodCount("displayUsers");
+                ShowGenderCount("displayUsers");
+                ShowCardCount("displayUsers");
             }
         }
-        private string CalcIconDirection(string SortField)
+        recalcPageButtons(displayCount);
+        ToggleSpinner(false);
+    }
+    static string OrderCheck(bool SortDesc)
+    {
+        if (SortDesc)
         {
-            SurnameSort = SortField != "Surname" ? "" : SurnameSort;
-            GivenNameSort = SortField != "GivenName" ? "" : GivenNameSort;
-            StreetAddressSort = SortField != "StreetAddress" ? "" : StreetAddressSort;
-            CitySort = SortField != "City" ? "" : CitySort;
-            StateSort = SortField != "State" ? "" : StateSort;
-            TelephoneNumberSort = SortField != "TelephoneNumber" ? "" : TelephoneNumberSort;
-            ZipCodeSort = SortField != "ZipCode" ? "" : ZipCodeSort;
+            return "oi oi-arrow-thick-bottom";
+        }
+        else
+        {
+            return "oi oi-arrow-thick-top";
+        }
+    }
+    private string CalcIconDirection(string SortField)
+    {
+        SurnameSort = SortField != "Surname" ? "" : SurnameSort;
+        GivenNameSort = SortField != "GivenName" ? "" : GivenNameSort;
+        StreetAddressSort = SortField != "StreetAddress" ? "" : StreetAddressSort;
+        CitySort = SortField != "City" ? "" : CitySort;
+        StateSort = SortField != "State" ? "" : StateSort;
+        TelephoneNumberSort = SortField != "TelephoneNumber" ? "" : TelephoneNumberSort;
+        ZipCodeSort = SortField != "ZipCode" ? "" : ZipCodeSort;
 
-            switch (SortField)
-            {
-                case "Surname":
-                    //SortDesc = (SurnameSort != "" && SurnameSort != null) ? !SortDesc : SortDesc;
-                    SurnameSort = OrderCheck(SortDesc);
-                    return SurnameSort;
-                case "GivenName":
-                    //SortDesc = (GivenNameSort != "" && GivenNameSort != null) ? !SortDesc : SortDesc;
-                    GivenNameSort = OrderCheck(SortDesc);
-                    return GivenNameSort;
-                case "StreetAddress":
-                    //SortDesc = (StreetAddressSort != "" && StreetAddressSort != null) ? !SortDesc : SortDesc;
-                    StreetAddressSort = OrderCheck(SortDesc);
-                    return StreetAddressSort;
-                case "City":
-                    //SortDesc = (CitySort != "" && CitySort != null) ? !SortDesc : SortDesc;
-                    CitySort = OrderCheck(SortDesc);
-                    return CitySort;
-                case "State":
-                    //SortDesc = (StateSort != "" && StateSort != null) ? !SortDesc : SortDesc;
-                    StateSort = OrderCheck(SortDesc);
-                    return StateSort;
-                case "TelephoneNumber":
-                    //SortDesc = (TelephoneNumberSort != "" && TelephoneNumberSort != null) ? !SortDesc : SortDesc;
-                    TelephoneNumberSort = OrderCheck(SortDesc);
-                    return TelephoneNumberSort;
-                case "ZipCode":
-                    // SortDesc = (ZipCodeSort != "" && ZipCodeSort != null) ? !SortDesc : SortDesc;
-                    ZipCodeSort = OrderCheck(SortDesc);
-                    return ZipCodeSort;
-                default:
-                    return String.Empty;
-            }
-
+        switch (SortField)
+        {
+            case "Surname":
+                SurnameSort = OrderCheck(SortDesc);
+                return SurnameSort;
+            case "GivenName":
+                GivenNameSort = OrderCheck(SortDesc);
+                return GivenNameSort;
+            case "StreetAddress":
+                StreetAddressSort = OrderCheck(SortDesc);
+                return StreetAddressSort;
+            case "City":
+                CitySort = OrderCheck(SortDesc);
+                return CitySort;
+            case "State":
+                StateSort = OrderCheck(SortDesc);
+                return StateSort;
+            case "TelephoneNumber":
+                TelephoneNumberSort = OrderCheck(SortDesc);
+                return TelephoneNumberSort;
+            case "ZipCode":
+                ZipCodeSort = OrderCheck(SortDesc);
+                return ZipCodeSort;
+            default:
+                return String.Empty;
         }
 
-        /// <summary>
-        /// Modal Section
-        /// </summary>
-        /// <param name="myUser"></param>
-        #region Modal
-        private async void EditUser(User myUser)
-        {
-            SelectedUser = myUser;
-            UnModifiedUser = Comparer.DeepCopy<User>(SelectedUser);
+    }
 
-            await JSRuntime.InvokeAsync<string>(
-                     "appFunctions.showModal", "editUserModal", "");
+    /// <summary>
+    /// Modal Section
+    /// </summary>
+    /// <param name="myUser"></param>
+    #region Modal
+    private async void EditUser(User myUser)
+    {
+        SelectedUser = myUser;
+        UnModifiedUser = Comparer.DeepCopy<User>(SelectedUser);
 
-            ChangeTab("User");
-        }
-        private async void ShowMap(User SelectedUser)
+        await JSRuntime.InvokeAsync<string>(
+                 "appFunctions.showModal", "editUserModal", "");
+
+        ChangeTab("User");
+    }
+    private async void ShowMap(User SelectedUser)
+    {
+        string szAddress = SelectedUser.StreetAddress + " " +
+            SelectedUser.City + ", " + SelectedUser.ZipCode;
+        string[] CoordinateArray = new string[]
         {
-            string szAddress = SelectedUser.StreetAddress + " " +
-                SelectedUser.City + ", " + SelectedUser.ZipCode;
-            string[] CoordinateArray = new string[]
-            {
-            SelectedUser.Longitude,
-            SelectedUser.Latitude,
+            SelectedUser.Longitude.ToString(),
+            SelectedUser.Latitude.ToString(),
             szAddress
-            };
-            await JSRuntime.InvokeAsync<string>(
-                      "appFunctions.showMap", CoordinateArray);
-        }
-        private async void ChangeTab(string tab)
+        };
+        await JSRuntime.InvokeAsync<string>(
+                  "appFunctions.showMap", CoordinateArray);
+    }
+    private async void ChangeTab(string tab)
+    {
+        await JSRuntime.InvokeAsync<string>(
+                 "appFunctions.changeTabs", tab);
+        if (tab == "mapDisplay")
         {
-            await JSRuntime.InvokeAsync<string>(
-                     "appFunctions.changeTabs", tab);
-            if (tab == "mapDisplay")
+            decimal[] CoordinateArray = new decimal[]
             {
-                decimal[] CoordinateArray = new decimal[]
-                {
                 Convert.ToDecimal(SelectedUser.Longitude),
                 Convert.ToDecimal(SelectedUser.Latitude)
-                                };
-                await JSRuntime.InvokeAsync<string>(
-                      "appFunctions.showMap", CoordinateArray);
-
-            }
-        }
-        private async Task<List<User>> SaveUser(User SelectedUser)
-        {
-            //await JSRuntime.InvokeAsync<string>(
-            //    "appfunctions.saveConfirmation", "");
-
-            //await JSRuntime.InvokeAsync<string>(
-            //    "appFunctions.hideEditUserModal", "");
-
-            users = await UserService.SaveUserAsync(SortField, SortDesc, users, SelectedUser);
-
+                            };
             await JSRuntime.InvokeAsync<string>(
-                    "appFunctions.hideModal", "editUserModal");
+                  "appFunctions.showMap", CoordinateArray);
 
-            //ToggleSpinner(false);
-            return users;
         }
-        private void CloseModal()
-        {
-            JSRuntime.InvokeAsync<string>(
-                "appFunctions.hideModal", "searchError");
-        }
-        private async Task<List<User>> CancelSaveUser(User SelectedUser)
-        {
-            if (!Comparer.DeepCompare(SelectedUser, UnModifiedUser))
-            {
-                users = await UserService.SaveUserAsync(SortField, SortDesc, users, UnModifiedUser);
-            }
-
-
-            SelectedUser = null;
-            UnModifiedUser = null;
-
-            await JSRuntime.InvokeAsync<string>(
-                "appFunctions.hideModal", "EditUserModal");
-
-            //ToggleSpinner(false);
-            return users;
-        }
-        #endregion
     }
+    private async Task<List<User>> SaveUser(User SelectedUser)
+    {
+        //await JSRuntime.InvokeAsync<string>(
+        //    "appfunctions.saveConfirmation", "");
+
+        //await JSRuntime.InvokeAsync<string>(
+        //    "appFunctions.hideEditUserModal", "");
+
+        users = await UserService.SaveUserAsync(SortField, SortDesc, users, SelectedUser);
+
+        await JSRuntime.InvokeAsync<string>(
+                "appFunctions.hideModal", "editUserModal");
+
+        //ToggleSpinner(false);
+        return users;
+    }
+    private void CloseModal()
+    {
+        JSRuntime.InvokeAsync<string>(
+            "appFunctions.hideModal", "searchError");
+    }
+    private async Task<List<User>> CancelSaveUser(User SelectedUser)
+    {
+        if (!Comparer.DeepCompare(SelectedUser, UnModifiedUser))
+        {
+            users = await UserService.SaveUserAsync(SortField, SortDesc, users, UnModifiedUser);
+        }
+
+
+        SelectedUser = null;
+        UnModifiedUser = null;
+
+        await JSRuntime.InvokeAsync<string>(
+            "appFunctions.hideModal", "EditUserModal");
+
+        //ToggleSpinner(false);
+        return users;
+    }
+    #endregion
+}
 

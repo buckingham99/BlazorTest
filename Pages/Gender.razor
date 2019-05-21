@@ -1,0 +1,77 @@
+@page "/gender"
+@using Microsoft.AspNetCore.Components;
+@using  System;
+
+<h1 style="display:none;">@ChildContent</h1>
+<div style="background-color:aqua;display:@DisplayType">
+    <div>
+        <label><b><u>Gender Data:</u></b></label>
+    </div>
+    <div>
+        <label>Females: @Convert.ToInt32(_FemaleCountString).ToString("#,##0")</label>
+        <label>Males  : @Convert.ToInt32(_MaleCountString).ToString("#,##0")</label>
+    </div>
+</div>
+
+@functions {
+
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+
+    private int Males { get; set; }
+    private int Females { get; set; }
+
+    public string _MaleCountString { get; set; }
+    [Parameter]
+    public string MaleCountString
+    {
+        get { return _MaleCountString; }
+        set
+        {
+            if (value != "" && value != null)
+            {
+                _MaleCountString = value;
+                OnSetMale(value);
+            }
+        }
+    }
+    public string _FemaleCountString { get; set; }
+    [Parameter]
+    public string FemaleCountString
+    {
+        get { return _FemaleCountString; }
+        set
+        {
+            if (value != "" && value != null)
+            {
+                _FemaleCountString = value;
+                OnSetFemale(value);
+            }
+        }
+    }
+
+    string OnSetMale(string maleCount)
+    {
+        ToggleDisplay(true);
+        return _MaleCountString;
+    }
+    string OnSetFemale(string femaleCount)
+    {
+        ToggleDisplay(true);
+        return _FemaleCountString;
+    }
+
+    string DisplayType { get; set; }
+    private string ToggleDisplay(bool spinnerOn)
+    {
+        DisplayType = (spinnerOn) ? "block;" : "none;";
+        return DisplayType;
+    }
+
+    protected override void OnInit()
+    {
+        ToggleDisplay(false);
+    }
+}
+
+

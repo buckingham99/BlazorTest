@@ -12,7 +12,18 @@ namespace BlazorTest.Services
 {
     public class UserService
     {
-        private const string FileNameCSV = "Data//FakeNames.csv";
+
+        public delegate void EventHandler(object sender, EventArgs args);
+        public event EventHandler ThrowEvent = delegate { users.Count(); };
+
+        public int SomethingHappened()
+        {
+            return users.Count();
+            //ThrowEvent(this, new EventArgs());
+        }
+
+        private const string FileNameCSV_small = "Data//FakeNames.csv";
+        private const string FileNameCSV = "Data//FakeNames_big.csv";
         private const string FileNameJSON = "Data//FakeNames.json";
         public int UsersCount {get;set;}
         public static List<User> users = new List<User>();
@@ -29,6 +40,7 @@ namespace BlazorTest.Services
                 users = await ReadCSVFileAsync();
                 UsersCount = users.Count;
                 users = await SortNamesDataAsync(SortField, SortDesc, users);
+            
                 return await Task.FromResult(users.ToList());
         }
 
@@ -82,7 +94,7 @@ namespace BlazorTest.Services
             
             foreach (var x in users)
             {
-                if (x.Id == SelectedUser.Id)
+                if (x.Number == SelectedUser.Number)
                 {
                     x.GivenName = SelectedUser.GivenName;
                     x.Age = SelectedUser.Age;
@@ -95,7 +107,7 @@ namespace BlazorTest.Services
                     x.City = SelectedUser.City;
                     x.Color = SelectedUser.Color;
                     x.Company = SelectedUser.Company;
-                    x.CountryCode = SelectedUser.CountryCode;
+                    x.Country = SelectedUser.Country;
                     x.CountryFull = SelectedUser.CountryFull;
                     x.CVV2 = SelectedUser.CVV2;
                     x.Domain = SelectedUser.Domain;
@@ -151,63 +163,72 @@ namespace BlazorTest.Services
         private List<User> ConvertCSVToUsers(string[] lines)
         {
             users.Clear();
-            List<string> list_lines = new List<string>(lines);
-            Parallel.ForEach(list_lines, line =>
+            foreach (var line in lines)
             {
                 var t = line.Split(',');
                 // Skip the First Line to leave the CSV file from FakeNames.Com intact
                 if (t[0] != "Number")
                 {
-                    User myUser = new User
+                    try
                     {
-                        Id = t[0],
-                        Gender = t[1],
-                        NameSet = t[2],
-                        Title = t[3],
-                        GivenName = t[4],
-                        MiddleInitial = t[5],
-                        Surname = t[6],
-                        StreetAddress = t[7],
-                        City = t[8],
-                        State = t[9],
-                        StateFull = t[10],
-                        ZipCode = (t[11].Length) == 5 ? t[11] : "0" + t[11],
-                        CountryCode = t[12],
-                        CountryFull = t[13],
-                        EmailAddress = t[14],
-                        Username = t[15],
-                        Password = t[16],
-                        TelephoneNumber = t[17],
-                        TelephoneCountryCode = t[18],
-                        MothersMaiden = t[19],
-                        Birthday = t[20],
-                        Age = t[21],
-                        TropicalZodiac = t[22],
-                        CCType = t[23],
-                        CCNumber = t[24],
-                        CVV2 = t[25],
-                        CCExpires = t[26],
-                        NationalID = t[27],
-                        UPS = t[28],
-                        WesternUnionMTCN = t[29],
-                        MoneyGramMTCN = t[30],
-                        Color = t[31],
-                        Occupation = t[32],
-                        Company = t[33],
-                        Vehicle = t[34],
-                        Domain = t[35],
-                        BloodType = t[36],
-                        Pounds = t[37],
-                        Kilograms = t[38],
-                        FeetInches = t[39],
-                        Centimeters = t[40],
-                        GUID = t[41],
-                        Latitude = t[42],
-                        Longitude = t[43]
-                    };
-                    users.Add(myUser);
+                        User myUser = new User
+                        {
+                            Number = Convert.ToInt32(t[0]),
+                            Gender = t[1],
+                            NameSet = t[2],
+                            Title = t[3],
+                            GivenName = t[4],
+                            MiddleInitial = t[5],
+                            Surname = t[6],
+                            StreetAddress = t[7],
+                            City = t[8],
+                            State = t[9],
+                            StateFull = t[10],
+                            ZipCode = t[11].Length < 5 ? "0"+t[11] : t[11],
+                            Country = t[12],
+                            CountryFull = t[13],
+                            EmailAddress = t[14],
+                            Username = t[15],
+                            Password = t[16],
+                            TelephoneNumber = t[17],
+                            TelephoneCountryCode = Convert.ToInt32(t[18]),
+                            MothersMaiden = t[19],
+                            Birthday = t[20],
+                            Age = Convert.ToInt32(t[21]),
+                            TropicalZodiac = t[22],
+                            CCType = t[23],
+                            CCNumber = t[24],
+                            CVV2 = Convert.ToInt32(t[25]),
+                            CCExpires = t[26],
+                            NationalID = t[27],
+                            UPS = t[28],
+                            WesternUnionMTCN = Convert.ToInt64(t[29]),
+                            MoneyGramMTCN = Convert.ToInt64(t[30]),
+                            Color = t[31],
+                            Occupation = t[32],
+                            Company = t[33],
+                            Vehicle = t[34],
+                            Domain = t[35],
+                            BloodType = t[36],
+                            Pounds = Convert.ToDouble(t[37]),
+                            Kilograms = Convert.ToDouble(t[38]),
+                            FeetInches = t[39],
+                            Centimeters = Convert.ToInt32(t[40]),
+                            GUID = t[41],
+                            Latitude = Convert.ToDouble(t[42]),
+                            Longitude = Convert.ToDouble(t[43])
+                        };
+                        users.Add(myUser);
+                        SomethingHappened();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error on Record {0} Message: {1}",
+                            t[0], ex.Message);
+                    }
                 }
-            });
+            }
+
 
             return users;
         }
@@ -219,11 +240,11 @@ namespace BlazorTest.Services
             {
                 var t = line.Split(',');
                 // Skip the First Line to leave the CSV file from FakeNames.Com intact
-                if (t[0] != "Number")
+                try
                 {
                     User myUser = new User
                     {
-                        Id = t[0],
+                        Number = Convert.ToInt32(t[0]),
                         Gender = t[1],
                         NameSet = t[2],
                         Title = t[3],
@@ -234,41 +255,46 @@ namespace BlazorTest.Services
                         City = t[8],
                         State = t[9],
                         StateFull = t[10],
-                        ZipCode = t[11].Length == 5 ? t[11] : t[11].PadLeft(5 - t[11].Length, '0'),
-                        CountryCode = t[12],
+                        ZipCode = t[11].Length < 5 ? "0" + t[11] : t[11],
+                        Country = t[12],
                         CountryFull = t[13],
                         EmailAddress = t[14],
                         Username = t[15],
                         Password = t[16],
                         TelephoneNumber = t[17],
-                        TelephoneCountryCode = t[18],
+                        TelephoneCountryCode = Convert.ToInt32(t[18]),
                         MothersMaiden = t[19],
                         Birthday = t[20],
-                        Age = t[21],
+                        Age = Convert.ToInt32(t[21]),
                         TropicalZodiac = t[22],
                         CCType = t[23],
                         CCNumber = t[24],
-                        CVV2 = t[25],
+                        CVV2 = Convert.ToInt32(t[25]),
                         CCExpires = t[26],
                         NationalID = t[27],
                         UPS = t[28],
-                        WesternUnionMTCN = t[29],
-                        MoneyGramMTCN = t[30],
+                        WesternUnionMTCN = Convert.ToInt32(t[29]),
+                        MoneyGramMTCN = Convert.ToInt32(t[30]),
                         Color = t[31],
                         Occupation = t[32],
                         Company = t[33],
                         Vehicle = t[34],
                         Domain = t[35],
                         BloodType = t[36],
-                        Pounds = t[37],
-                        Kilograms = t[38],
+                        Pounds = Convert.ToInt32(t[37]),
+                        Kilograms = Convert.ToDouble(t[38]),
                         FeetInches = t[39],
-                        Centimeters = t[40],
+                        Centimeters = Convert.ToInt32(t[40]),
                         GUID = t[41],
-                        Latitude = t[42],
-                        Longitude = t[43]
+                        Latitude = Convert.ToDouble(t[42]),
+                        Longitude = Convert.ToDouble(t[43])
                     };
                     users.Add(myUser);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error on Record {0} Message: {1}",
+                        t[0], ex.Message);
                 }
             });
             UsersCount = users.Count;

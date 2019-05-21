@@ -9,29 +9,40 @@
 @inject IJSRuntime JSRuntime;
 
     <div class="container">
-        <div class="row">
-            <h3>Test User Data Page</h3>
-            <p>This component demonstrates fetching & editing data from a service via local CSV or JSON file using a HTML Grid.</p>
-            <p>Click on a user to edit data and view an OpenLayers Map of their location. </p>
-            <p>
-                Please note that your data will not be persisted between sessions, but a Database can easily be attached
-                to the UserService Class.
-            </p>
+        <div class="row" style="font-size:small">
+            <div>
+                <h5>Test User Data Page</h5>
+            </div>
+            <div>
+                <p>This component demonstrates fetching & editing about 20,000 users and their data from a service via local CSV or JSON file using a HTML Grid.</p>
+                <p>Click on a user to edit data and view an OpenLayers Map of their location. </p>
+                <p>
+                    Keep in mind that this is Fake Data so the Street names and City's will be correct but the
+                    House number in the street address is a random number.
+                </p>
+                <p>
+                    Please note that your data will not be persisted between sessions, but a Database can easily be attached
+                    to the UserService Class.
+                </p>
+            </div>
         </div>
         <div class="container" style="border: 1px solid black;">
             <div class="container">
                 <div class="row">
-                    <h5>Parent Component</h5> &nbsp; &nbsp; <label>  UserCount = @UsersCount </label>
+                    <h5>Parent Component</h5> &nbsp; &nbsp; <label>  UserCount = @UsersCount.ToString("#,##0") </label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-group input-group-md" style="line-height: 0.5">
                     <form class="form-group">
-                        <div class="input-group-sm">
-                            <input type="search" class="form-control form-control-sm" id="SearchText"
-                                   name="SearchText" bind-value-oninput="@ParentSearch"
-                                   aria-label="search" aria-describedby="basic-addon1"
-                                   placeholder="@PlaceHolderSort" />
+                        
+                        <div class="input-group input-group-sm">
+                            <fieldset>
+                                <input type="search" class="form-control form-control-sm" id="SearchText"
+                                       name="SearchText" bind-value-oninput="@ParentSearch"
+                                       aria-label="search" aria-describedby="basic-addon1"
+                                       placeholder="@PlaceHolderSort" />
+                            </fieldset>
                         </div>
                         <div>
                             <br />
@@ -40,37 +51,37 @@
                             <fieldset>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="lastName"
-                                           name="searchGroup" checked="@(SurnameChecked == 1)" onchange="@(() => ParentSort = "Surname")" />
+                                            name="searchGroup" checked="@(SurnameChecked == 1)" onchange="@(() => ParentSort = "Surname")" />
                                     <label class="radio-inline" for="lastName">Last Name</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="givenName"
-                                           name="searchGroup" checked=@(GivenNameChecked == 1) onchange="@(() => ParentSort = "GivenName")" />
+                                            name="searchGroup" checked=@(GivenNameChecked == 1) onchange="@(() => ParentSort = "GivenName")" />
                                     <label class="radio-inline" for="givenName">First Name</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="address"
-                                           name="searchGroup" checked=@(StreetAddressChecked == 1) onchange="@(() => ParentSort = "StreetAddress")" />
+                                            name="searchGroup" checked=@(StreetAddressChecked == 1) onchange="@(() => ParentSort = "StreetAddress")" />
                                     <label class="radio-inline" for="address">Address</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="city"
-                                           name="searchGroup" checked=@(CityChecked == 1) onchange="@(() => ParentSort = "City")" />
+                                            name="searchGroup" checked=@(CityChecked == 1) onchange="@(() => ParentSort = "City")" />
                                     <label class="radio-inline" for="city">City</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="state"
-                                           name="searchGroup" checked=@(StateChecked == 1) onchange="@(() => ParentSort = "State")" />
+                                            name="searchGroup" checked=@(StateChecked == 1) onchange="@(() => ParentSort = "State")" />
                                     <label class="radio-inline" for="state">State</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="zip"
-                                           name="searchGroup" checked=@(ZipCodeChecked == 1) onchange="@(() => ParentSort = "ZipCode")" />
+                                            name="searchGroup" checked=@(ZipCodeChecked == 1) onchange="@(() => ParentSort = "ZipCode")" />
                                     <label class="radio-inline" for="zip">Zip Code</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="phone"
-                                           name="searchGroup" checked=@(TelephoneNumberChecked == 1) onchange="@(() => ParentSort = "TelephoneNumber")" />
+                                            name="searchGroup" checked=@(TelephoneNumberChecked == 1) onchange="@(() => ParentSort = "TelephoneNumber")" />
                                     <label class="radio-inline" for="phone">Phone</label>
                                 </div>
                             </fieldset>
@@ -88,10 +99,12 @@
             OnUserCount="@UserCountChange"
             SearchString="@_ParentSearch">
         </DataGrid>
+
+
     </div>
     @functions {
-
-        private int SurnameChecked { get; set; }
+        
+        int SurnameChecked { get; set; }
         private int GivenNameChecked { get; set; }
         private int StreetAddressChecked { get; set; }
         private int CityChecked { get; set; }
@@ -103,7 +116,10 @@
         public int UsersCount { get; set; }
         public string PlaceHolderSort { get; set; } = "Search Last Name ...";
 
+        //extern int UserService.ThrowEvent += MyEventHandler();
 
+        //int tmpInt = userService.SomethingHappened();
+        
         public string _ParentSort { get; set; } = "Surname";
 
         public string ParentSort
@@ -161,11 +177,12 @@
                     PlaceHolderSort = "Search Zip Code ...";
                     break;
                 case "TelephoneNumber":
-                    PlaceHolderSort = "Search Telephone Number ...";
+                    PlaceHolderSort = "Search Phone Number ...";
                     break;
                 default:
                     break;
             }
+            ShouldRender();
             return PlaceHolderSort;
 
         }
@@ -178,7 +195,7 @@
             StateChecked = 0;
             TelephoneNumberChecked = 0;
             ZipCodeChecked = 0;
-
+            ShouldRender();
             switch (returnedString)
             {
                 case "Surname":
@@ -209,9 +226,10 @@
         }
         void OnSortClick(string newSort)
         {
-            ClickListButton(newSort);
-            ChangeSearchPlaceHolder();
             _ParentSort = newSort;
+            ChangeSearchPlaceHolder();
+            ClickListButton(newSort);
+
         }
 
         void SearchErrorClear(string SearchError)
@@ -229,6 +247,16 @@
         {
             UsersCount = Convert.ToInt32(_userCount.ToString());
             return UsersCount;
+        }
+
+        void SubscribeToEvent(UserService theInstance)
+        {
+            theInstance.ThrowEvent += this.MyEventHandler;
+        }
+
+        void MyEventHandler(object sender, EventArgs args)
+        {
+            //return 0;
         }
 
 

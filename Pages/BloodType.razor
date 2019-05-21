@@ -1,0 +1,120 @@
+@page "/bloodtype"
+@using Microsoft.AspNetCore.Components;
+@using  System;
+
+<h1 style="display:none;">@ChildContent</h1>
+<div style="background-color:lightpink;display:@DisplayType">
+    <div>
+        <label><b><u>Blood Type Data:</u></b></label>
+    </div>
+    <div style="font-size:xx-small">
+        <table class="table table-hover table-condensed table-bordered table-sm" style="font-size:xx-small">
+            <tbody>
+                <tr>
+                    <td><b>Female</b></td>
+                </tr>
+                @if (@_FemaleBloodTypes.Count > 0)
+                {
+                    <tr>
+                        @foreach (var u in @_FemaleBloodTypes)
+                        {
+                            <td><b>@u.BloodType.Trim()</b></td>
+                        }
+                    </tr>
+                    <tr>
+                        @foreach (var u in @_FemaleBloodTypes)
+                        {
+                            <td>@u.BloodTypeTotalCount.ToString("#,##0")</td>
+                        }
+                    </tr>
+                }
+                <tr>
+                    <td><b>Male</b></td>
+                </tr>
+                @if (@_MaleBloodTypes.Count > 0)
+                {
+                    <tr>
+                        @foreach (var u in _MaleBloodTypes)
+                        {
+                        <td><b>@u.BloodType.Trim()</b></td>
+                        }
+                    </tr>
+                    <tr>
+                        @foreach (var u in @_MaleBloodTypes)
+                        {
+                            <td>@u.BloodTypeTotalCount.ToString("#,##0")</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    [Serializable]
+    public class BloodTypes
+    {
+        public string BloodType { get; set; }
+        public int BloodTypeTotalCount { get; set; }
+    }
+    public List<BloodTypes> bloodTypes = new List<BloodTypes>();
+
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+
+    List<BloodTypes> _FemaleBloodTypes = new List<BloodTypes>();
+    [Parameter]
+    public IReadOnlyList<BloodTypes> FemaleBloodTypes
+    {
+        get { return _FemaleBloodTypes; }
+        set
+        {
+            if (value.Count > 0)
+            {
+                _FemaleBloodTypes = value.ToList();
+                onFemaleBloodTypes();
+            }
+        }
+    }
+    List<BloodTypes> _MaleBloodTypes = new List<BloodTypes>();
+    [Parameter]
+    public IReadOnlyList<BloodTypes> MaleBloodTypes
+    {
+        get { return _MaleBloodTypes; }
+        set
+        {
+            if (value.Count > 0)
+            {
+                _MaleBloodTypes = value.ToList();
+                onMaleBloodTypes();
+            }
+        }
+    }
+
+    List<BloodTypes> onMaleBloodTypes()
+    {
+        ToggleDisplay(true);
+        return _MaleBloodTypes.ToList();
+    }
+    List<BloodTypes> onFemaleBloodTypes()
+    {
+        ToggleDisplay(true);
+        return _FemaleBloodTypes.ToList();
+    }
+
+    string DisplayType { get; set; }
+
+    private string ToggleDisplay(bool spinnerOn)
+    {
+        DisplayType = (spinnerOn) ? "block;" : "none;";
+        return DisplayType;
+    }
+
+    protected override void OnInit()
+    {
+        ToggleDisplay(false);
+    }
+}
+
+

@@ -391,7 +391,10 @@ C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\aspnetcorev2_inpr
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.csproj.CoreCompileInputs.cache
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.RazorComponent.input.cache
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\App.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\Pages\BloodType.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\Pages\CreditCard.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\Pages\DataGrid.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\Pages\Gender.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\Pages\UserData.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\RazorDeclaration\Pages\_Imports.razor.g.cs
@@ -403,7 +406,10 @@ C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.TagHel
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.TagHelpers.output.cache
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.RazorCoreGenerate.cache
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\App.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\Pages\BloodType.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\Pages\CreditCard.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\Pages\DataGrid.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\Pages\Gender.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\Pages\Index.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\Pages\UserData.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\Razor\Pages\_Imports.razor.g.cs
@@ -421,4 +427,3 @@ C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.Views.
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.csproj.CopyComplete
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.dll
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\win-x64\BlazorTest.pdb
-C:\Develop\GitHub\BlazorTest\bin\Release\netcoreapp3.0\win-x64\Data\FakeNames_bak1.json
