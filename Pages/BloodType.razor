@@ -10,41 +10,36 @@
     <div style="font-size:xx-small">
         <table class="table table-hover table-condensed table-bordered table-sm" style="font-size:xx-small">
             <tbody>
-                <tr>
-                    <td><b>Female</b></td>
-                </tr>
-                @if (@_FemaleBloodTypes.Count > 0)
+                @if (@bloodTypesList.Count > 0)
                 {
-                    <tr>
-                        @foreach (var u in @_FemaleBloodTypes)
-                        {
-                            <td><b>@u.BloodType.Trim()</b></td>
-                        }
-                    </tr>
-                    <tr>
-                        @foreach (var u in @_FemaleBloodTypes)
-                        {
-                            <td>@u.BloodTypeTotalCount.ToString("#,##0")</td>
-                        }
-                    </tr>
-                }
-                <tr>
-                    <td><b>Male</b></td>
-                </tr>
-                @if (@_MaleBloodTypes.Count > 0)
-                {
-                    <tr>
-                        @foreach (var u in _MaleBloodTypes)
-                        {
-                        <td><b>@u.BloodType.Trim()</b></td>
-                        }
-                    </tr>
-                    <tr>
-                        @foreach (var u in @_MaleBloodTypes)
-                        {
-                            <td>@u.BloodTypeTotalCount.ToString("#,##0")</td>
-                        }
-                    </tr>
+                    @foreach (var u in GenderName)
+                    {
+                        <tr>
+                            @for (int i = 0; i < @bloodTypesList.Where(x => x.Gender == @u.Gender).Count(); i++)
+                            {
+                                @if (i == 0)
+                                {
+                                    <td><b><u>@u.Gender.ToUpper().Trim()</u></b></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+                        </tr>
+                        <tr>
+                            @for (int i = 0; i < @bloodTypesList.Where(x => x.Gender == @u.Gender).Count(); i++)
+                            {
+                                <td><b>@bloodTypesList.Where(x => x.Gender == @u.Gender).Skip(i).Take(1).FirstOrDefault().BloodType.Trim()</b></td>
+                            }
+                        </tr>
+                        <tr>
+                            @for (int i = 0; i < @bloodTypesList.Where(x => x.Gender == @u.Gender).Count(); i++)
+                            {
+                                <td>@bloodTypesList.Where(x => x.Gender == @u.Gender).Skip(i).Take(1).FirstOrDefault().BloodTypeTotalCount.ToString("#,##0")</td>
+                            }
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
@@ -55,53 +50,48 @@
     [Serializable]
     public class BloodTypes
     {
+        public string Gender { get; set; }
         public string BloodType { get; set; }
         public int BloodTypeTotalCount { get; set; }
     }
-    public List<BloodTypes> bloodTypes = new List<BloodTypes>();
+
+    private List<BloodTypes> GenderName = new List<BloodTypes>();
+
+    public List<BloodTypes> _bloodTypesList = new List<BloodTypes>();
 
     [Parameter]
     private RenderFragment ChildContent { get; set; }
 
-    List<BloodTypes> _FemaleBloodTypes = new List<BloodTypes>();
+
     [Parameter]
-    public IReadOnlyList<BloodTypes> FemaleBloodTypes
+    public IReadOnlyList<BloodTypes> bloodTypesList
     {
-        get { return _FemaleBloodTypes; }
+        get { return _bloodTypesList; }
         set
         {
             if (value.Count > 0)
             {
-                _FemaleBloodTypes = value.ToList();
-                onFemaleBloodTypes();
-            }
-        }
-    }
-    List<BloodTypes> _MaleBloodTypes = new List<BloodTypes>();
-    [Parameter]
-    public IReadOnlyList<BloodTypes> MaleBloodTypes
-    {
-        get { return _MaleBloodTypes; }
-        set
-        {
-            if (value.Count > 0)
-            {
-                _MaleBloodTypes = value.ToList();
-                onMaleBloodTypes();
+                
+                _bloodTypesList = value.ToList();
+
+                GenderName = _bloodTypesList.GroupBy(x => new { x.Gender })
+                .Select(r => new BloodTypes
+                {
+                    Gender = r.Key.Gender
+                })
+                .OrderBy(r => r.Gender).ToList();
+                ToggleDisplay(true);
+                onBloodTypes();
             }
         }
     }
 
-    List<BloodTypes> onMaleBloodTypes()
+    List<BloodTypes> onBloodTypes()
     {
         ToggleDisplay(true);
-        return _MaleBloodTypes.ToList();
+        return _bloodTypesList.ToList();
     }
-    List<BloodTypes> onFemaleBloodTypes()
-    {
-        ToggleDisplay(true);
-        return _FemaleBloodTypes.ToList();
-    }
+
 
     string DisplayType { get; set; }
 

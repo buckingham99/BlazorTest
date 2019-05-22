@@ -292,12 +292,10 @@
     <div>
         <div>
             <Gender ref="GenderComponent">
-                MaleCountString="@MaleCount"
-                FemaleCountString="@FemaleCount"
+                genderTypesList=@GenderTypesList
             </Gender>
             <BloodType ref="BloodTypeComponent">
-                MaleBloodTypes=@maleBloodTypes
-                FemaleBloodTypes=@femaleBloodTypes
+                bloodTypesList=@BloodTypesList
             </BloodType>
             <CreditCard ref="CreditCardComponent">
                 MaleCardTypes=@maleCardTypes
@@ -317,6 +315,10 @@
     [Parameter] EventCallback<string> OnSearchError { get; set; }
     [Parameter] EventCallback<string> OnUserCount { get; set; }
     [Parameter] EventCallback<string> OnSearchText { get; set; }
+
+    List<Gender.GenderTypes> GenderTypesList = new List<Gender.GenderTypes>();
+    List<BloodType.BloodTypes> BloodTypesList = new List<BloodType.BloodTypes>();
+
 
     List<BloodType.BloodTypes> femaleBloodTypes = new List<BloodType.BloodTypes>();
     List<BloodType.BloodTypes> maleBloodTypes = new List<BloodType.BloodTypes>();
@@ -430,66 +432,57 @@
             ShowCardCount("users");
             SortLinkClicked("Surname");
 
-
-
             ToggleSpinner(false);
         }
+    }
+
+    private void ShowGenderCount (string szSender)
+    {
+        if (szSender == "users")
+        {
+            GenderComponent.genderTypesList = UserService.users.GroupBy(x => x.Gender)
+                .Select(r => new Gender.GenderTypes
+                {
+                    GenderType = r.Key,
+                    GenderTypeTotalCount = r.Count()
+                }).OrderBy(r => r.GenderType).ToList();
+        }
+        else
+        {
+            GenderComponent.genderTypesList = displayUsersSource.GroupBy(x => x.Gender)
+                .Select(r => new Gender.GenderTypes
+                {
+                    GenderType = r.Key,
+                    GenderTypeTotalCount = r.Count()
+                }).OrderBy(r => r.GenderType).ToList();
+        }
+        ShouldRender();
     }
     private void ShowBloodCount(string szSender)
     {
         if (szSender == "users")
         {
-            BloodTypeComponent.FemaleBloodTypes = UserService.users.Where(x => x.Gender.ToLower() == "female")
-                .GroupBy(x => x.BloodType)
+            BloodTypeComponent.bloodTypesList = UserService.users.GroupBy(x => new { x.Gender, x.BloodType })
                 .Select(r => new BloodType.BloodTypes
                 {
-                    BloodType = r.Key,
+                    BloodType = r.Key.BloodType.ToUpper().Trim(),
+                    Gender = r.Key.Gender.ToUpper().Trim(),
                     BloodTypeTotalCount = r.Count()
-                }).OrderBy(r=>r.BloodType).ToList();
-
-            BloodTypeComponent.MaleBloodTypes = UserService.users.Where(x => x.Gender.ToLower() == "male")
-                .GroupBy(x => x.BloodType)
-                .Select(r => new BloodType.BloodTypes
-                {
-                    BloodType = r.Key,
-                    BloodTypeTotalCount = r.Count()
-                }).OrderBy(r=>r.BloodType).ToList();
+                })
+                .OrderBy(r => r.Gender)
+                .OrderBy(r => r.BloodType).ToList();
         }
         else
         {
-            BloodTypeComponent.FemaleBloodTypes = displayUsersSource.Where(x => x.Gender.ToLower() == "female")
-                .GroupBy(x => x.BloodType)
+            BloodTypeComponent.bloodTypesList = displayUsersSource.GroupBy(x => new { x.Gender, x.BloodType })
                 .Select(r => new BloodType.BloodTypes
                 {
-                    BloodType = r.Key,
+                    BloodType = r.Key.BloodType,
+                    Gender = r.Key.Gender,
                     BloodTypeTotalCount = r.Count()
-                }).OrderBy(r=>r.BloodType).ToList();
-
-            BloodTypeComponent.MaleBloodTypes = displayUsersSource.Where(x => x.Gender.ToLower() == "male")
-                .GroupBy(x => x.BloodType)
-                .Select(r => new BloodType.BloodTypes
-                {
-                    BloodType = r.Key,
-                    BloodTypeTotalCount = r.Count()
-                }).OrderBy(r=>r.BloodType).ToList();
-        }
-        ShouldRender();
-    }
-    private void ShowGenderCount (string szSender)
-    {
-        if (szSender == "users")
-        {
-            GenderComponent.FemaleCountString = UserService.users.Where(x => x.Gender.ToLower() == "female").Count().ToString();
-            GenderComponent.MaleCountString = UserService.users.Where(x => x.Gender.ToLower() == "male").Count().ToString();
-            ShowBloodCount("users");
-            ShowCardCount("users");
-        }
-        else
-        {
-            GenderComponent.FemaleCountString = displayUsersSource.Where(x => x.Gender.ToLower() == "female").Count().ToString();
-            GenderComponent.MaleCountString = displayUsersSource.Where(x => x.Gender.ToLower() == "male").Count().ToString();
-            ShowBloodCount("displayUsers");
-            ShowCardCount("displayUsers");
+                })
+                .OrderBy(r => r.Gender)
+                .OrderBy(r => r.BloodType).ToList();
         }
         ShouldRender();
     }
@@ -539,7 +532,6 @@
         displayUsersSource.Clear();
         users.Clear();
 
-        //users = UserService.GetNamesData(SortField = SortField == null ? "Number" : SortField, SortDesc);
         users = UserService.users;
         namesCount = users.Count;
 
@@ -549,6 +541,9 @@
         .Skip((currentPage - 1) * pageSize)
         .Take(pageSize).ToList();
         recalcPageButtons(users.Count);
+
+        ShowBloodCount("users");
+        ShowCardCount("users");
         ShowGenderCount("users");
         ToggleSpinner(false);
     }
@@ -570,7 +565,6 @@
             SearchData(SearchString);
             SortData(SortField);
         }
-
     }
 
     void SortLinkClicked(string dataToSend)
@@ -578,7 +572,6 @@
         ToggleSpinner(true);
         SortDesc = !SortDesc;
         OnSortLinkClicked.InvokeAsync(dataToSend);
-        //ShowGenderCount("users");
         ToggleSpinner(false);
     }
 
@@ -632,11 +625,20 @@
             namesCount = UserService.users.Where(s => s.GetType()
                     .GetProperty(SortField).GetValue(s).ToString().ToLower()
                     .StartsWith(SearchString.ToLower())).Count();
+
+            ShowBloodCount("displayUsers");
+            ShowCardCount("displayUsers");
+            ShowGenderCount("displayUsers");
             recalcPageButtons(namesCount);
         }
         if ((SearchString == "" || SearchString == null) && users.Count > 0)
         {
             recalcPageButtons(UserService.users.Count);
+
+            ShowBloodCount("users");
+            ShowCardCount("users");
+            ShowGenderCount("users");
+
             namesCount = users.Count;
         }
 
@@ -674,7 +676,6 @@
 
             if (SearchString.Length > 0)
             {
-                //currentPage = 1;
                 if (SortDesc)
                 {
                     List<User> tmp = UserService.users.Where(s => s.GetType()
@@ -750,9 +751,9 @@
                 }
                 displayCount = UserService.users.Count;
                 namesCount = displayCount;
-                ShowBloodCount("displayUsers");
-                ShowGenderCount("displayUsers");
-                ShowCardCount("displayUsers");
+                ShowBloodCount("users");
+                ShowGenderCount("users");
+                ShowCardCount("users");
             }
         }
         recalcPageButtons(displayCount);

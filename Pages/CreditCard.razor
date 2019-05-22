@@ -18,7 +18,7 @@
                     <tr>
                         @foreach (var u in @_FemaleCardTypes)
                         {
-                            <td><b>@u.CardType.Trim()</b></td>
+                            <td><b>@u.CardType.Trim().ToUpper()</b></td>
                         }
                     </tr>
                     <tr>

@@ -8,8 +8,14 @@
         <label><b><u>Gender Data:</u></b></label>
     </div>
     <div>
-        <label>Females: @Convert.ToInt32(_FemaleCountString).ToString("#,##0")</label>
-        <label>Males  : @Convert.ToInt32(_MaleCountString).ToString("#,##0")</label>
+        @if (@_GenderTypesList.Count > 0)
+        {
+            @foreach (var u in @_GenderTypesList)
+            {
+                <label><b>@u.GenderType.Trim().ToUpper(): </b></label>
+                <label>@u.GenderTypeTotalCount.ToString("#,##0") </label>
+            }
+        }
     </div>
 </div>
 
@@ -18,47 +24,32 @@
     [Parameter]
     private RenderFragment ChildContent { get; set; }
 
-    private int Males { get; set; }
-    private int Females { get; set; }
-
-    public string _MaleCountString { get; set; }
-    [Parameter]
-    public string MaleCountString
+    [Serializable]
+    public class GenderTypes
     {
-        get { return _MaleCountString; }
-        set
-        {
-            if (value != "" && value != null)
-            {
-                _MaleCountString = value;
-                OnSetMale(value);
-            }
-        }
+        public string GenderType { get; set; }
+        public int GenderTypeTotalCount { get; set; }
     }
-    public string _FemaleCountString { get; set; }
+
+    List<GenderTypes> _GenderTypesList = new List<GenderTypes>();
     [Parameter]
-    public string FemaleCountString
+    public IReadOnlyList<GenderTypes> genderTypesList
     {
-        get { return _FemaleCountString; }
+        get { return _GenderTypesList; }
         set
         {
-            if (value != "" && value != null)
+            if (value.Count > 0)
             {
-                _FemaleCountString = value;
-                OnSetFemale(value);
+                _GenderTypesList = value.ToList();
+                onGenderTypes();
             }
         }
     }
 
-    string OnSetMale(string maleCount)
+    List<GenderTypes> onGenderTypes()
     {
         ToggleDisplay(true);
-        return _MaleCountString;
-    }
-    string OnSetFemale(string femaleCount)
-    {
-        ToggleDisplay(true);
-        return _FemaleCountString;
+        return _GenderTypesList.ToList();
     }
 
     string DisplayType { get; set; }

@@ -2,6 +2,7 @@ C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.csproj.CoreCompi
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.RazorComponent.input.cache
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\App.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\BloodType.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\CreditCard.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\DataGrid.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\Gender.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\Index.razor.g.cs
@@ -16,6 +17,7 @@ C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.TagHelpers.outpu
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.RazorCoreGenerate.cache
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\App.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\BloodType.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\CreditCard.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\DataGrid.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\Gender.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\Index.razor.g.cs
@@ -82,6 +84,4 @@ C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.Views.pdb
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.csproj.CopyComplete
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.dll
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.pdb
-C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\RazorDeclaration\Pages\CreditCard.razor.g.cs
-C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\Razor\Pages\CreditCard.razor.g.cs
 C:\Develop\GitHub\BlazorTest\obj\Debug\netcoreapp3.0\BlazorTest.csprojAssemblyReference.cache
