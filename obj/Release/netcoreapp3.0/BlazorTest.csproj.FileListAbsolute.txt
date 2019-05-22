@@ -85,3 +85,5 @@ C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\BlazorTest.Views.pdb
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\BlazorTest.csproj.CopyComplete
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\BlazorTest.dll
 C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\BlazorTest.pdb
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\RazorDeclaration\Pages\Zodiac.razor.g.cs
+C:\Develop\GitHub\BlazorTest\obj\Release\netcoreapp3.0\Razor\Pages\Zodiac.razor.g.cs

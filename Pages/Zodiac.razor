@@ -1,0 +1,110 @@
+@page "/zodiac"
+@using Microsoft.AspNetCore.Components;
+@using  System;
+
+<h1 style="display:none;">@ChildContent</h1>
+<div style="background-color:lightyellow;display:@DisplayType">
+    <div>
+        <label><b><u>Zodiac Component:</u></b></label>
+    </div>
+    <div style="font-size:xx-small">
+        <table class="table table-hover table-condensed table-bordered table-sm" style="font-size:xx-small">
+            <tbody>
+                @if (@zodiacTypesList.Count > 0)
+                {
+                    @foreach (var u in GenderName)
+                    {
+                        <tr>
+                            @for (int i = 0; i < @zodiacTypesList.Where(x => x.Gender == @u.Gender).Count(); i++)
+                            {
+                                @if (i == 0)
+                                {
+                                    <td><b><u>@u.Gender.ToUpper().Trim()</u></b></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+                        </tr>
+                        <tr>
+                            @for (int i = 0; i < @zodiacTypesList.Where(x => x.Gender == @u.Gender).Count(); i++)
+                            {
+                                <td><b>@zodiacTypesList.Where(x => x.Gender == @u.Gender).Skip(i).Take(1).FirstOrDefault().TropicalZodiac.Trim()</b></td>
+                            }
+                        </tr>
+                        <tr>
+                            @for (int i = 0; i < @zodiacTypesList.Where(x => x.Gender == @u.Gender).Count(); i++)
+                            {
+                                <td>@zodiacTypesList.Where(x => x.Gender == @u.Gender).Skip(i).Take(1).FirstOrDefault().ZodiacTypeTotalCount.ToString("#,##0")</td>
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    [Serializable]
+    public class ZodiacTypes
+    {
+        public string Gender { get; set; }
+        public string TropicalZodiac { get; set; }
+        public int ZodiacTypeTotalCount { get; set; }
+    }
+
+    private List<ZodiacTypes> GenderName = new List<ZodiacTypes>();
+
+    public List<ZodiacTypes> _zodiacTypesList = new List<ZodiacTypes>();
+
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+
+
+    [Parameter]
+    public IReadOnlyList<ZodiacTypes> zodiacTypesList
+    {
+        get { return _zodiacTypesList; }
+        set
+        {
+            if (value.Count > 0)
+            {
+                
+                _zodiacTypesList = value.ToList();
+
+                GenderName = _zodiacTypesList.GroupBy(x => new { x.Gender })
+                .Select(r => new ZodiacTypes
+                {
+                    Gender = r.Key.Gender
+                })
+                .OrderBy(r => r.Gender).ToList();
+                ToggleDisplay(true);
+                onZodiacTypes();
+            }
+        }
+    }
+
+    List<ZodiacTypes> onZodiacTypes()
+    {
+        ToggleDisplay(true);
+        return _zodiacTypesList.ToList();
+    }
+
+
+    string DisplayType { get; set; }
+
+    private string ToggleDisplay(bool spinnerOn)
+    {
+        DisplayType = (spinnerOn) ? "block;" : "none;";
+        return DisplayType;
+    }
+
+    protected override void OnInit()
+    {
+        ToggleDisplay(false);
+    }
+}
+
+

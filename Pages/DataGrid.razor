@@ -134,16 +134,16 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <label for="address">Street Address</label>
                                     <input type="text" name="address" id="streetAddress" class="form-control input-sm" bind-value-onchange="@SelectedUser.StreetAddress" placeholder="Street Address" />
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-sm-6">
                                     <label for="city">City</label>
                                     <input type="text" name="city" id="city" class="form-control input-sm" bind-value-onchange="@SelectedUser.City" placeholder="City" />
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-sm-6">
                                     <label for="state">State</label>
                                     <input type="text" name="state" id="state" class="form-control input-sm" bind-value-onchange="@SelectedUser.State" placeholder="State" />
@@ -152,15 +152,11 @@
                                     <label for="zipCode">Zip Code</label>
                                     <input type="text" name="zipCode" id="zipCode" class="form-control input-sm" bind-value-onchange="@SelectedUser.ZipCode" placeholder="Zip Code" />
                                 </div>
-                                <div class="col-sm-6">
-                                    <label for="telephone">Telephone</label>
-                                    <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind-value-onchange="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <label for="zodiacSign">Zodiac Sign</label>
-                                    <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind-value-onchange="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
+                                    <label for="telephone">Telephone</label>
+                                    <input type="tel" name="telephone" id="telephone" class="form-control input-sm" bind-value-onchange="@SelectedUser.TelephoneNumber" placeholder="Telephone #" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="birthdate">Birth Day</label>
@@ -169,97 +165,108 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <label for="momMaiden">Mothers Maiden Name</label>
-                                    <input type="text" name="momMaiden" id="momMaiden" class="form-control input-sm" bind-value-onchange="@SelectedUser.MothersMaiden" placeholder="Mother's Maiden Name" />
+                                    <label for="birthdate">Gender</label>
+                                    <input type="text" name="gender" id="gender" class="form-control input-sm" bind-value-onchange="@SelectedUser.Gender" placeholder="Gender" />
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="age">Age</label>
-                                    <input type="text" name="age" id="age" class="form-control input-sm" bind-value-onchange="@SelectedUser.Age" placeholder="Age" />
+                                    <label for="zodiacSign">Zodiac Sign</label>
+                                    <input type="text" name="zodiacSign" id="zodiacSign" class="form-control input-sm" bind-value-onchange="@SelectedUser.TropicalZodiac" placeholder="Zodiac Sign" />
+                                </div>
+
+                            </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="momMaiden">Mothers Maiden Name</label>
+                                        <input type="text" name="momMaiden" id="momMaiden" class="form-control input-sm" bind-value-onchange="@SelectedUser.MothersMaiden" placeholder="Mother's Maiden Name" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="age">Age</label>
+                                        <input type="text" name="age" id="age" class="form-control input-sm" bind-value-onchange="@SelectedUser.Age" placeholder="Age" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="bloodType">Blood Type</label>
+                                        <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind-value-onchange="@SelectedUser.BloodType" placeholder="Blood Type" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="pounds">Weight</label>
+                                        <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind-value-onchange="@SelectedUser.Pounds" placeholder="Weight" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="username">User Name</label>
+                                        <input type="text" name="username" id="username" class="form-control input-sm" bind-value-onchange="@SelectedUser.Username" placeholder="User Name" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="password">Password</label>
+                                        <input type="text" name="password" id="password" class="form-control input-sm" bind-value-onchange="@SelectedUser.Password" placeholder="Password" />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="bloodType">Blood Type</label>
-                                    <input type="text" name="bloodType" id="bloodType" class="form-control input-sm" bind-value-onchange="@SelectedUser.BloodType" placeholder="Blood Type" />
+
+                            <div id="CreditData" class="tab-pane container">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="CCType">Credit Card Type</label>
+                                        <input type="text" name="CCType" id="CCType" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCType" placeholder="Credit Card Type" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="CCNumber">Credit Card Number</label>
+                                        <input type="text" name="CCNumber" id="CCNumber" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCNumber" placeholder="Credit Card Number" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="CVV2">CVV2</label>
+                                        <input type="text" name="CVV2" id="CVV2" class="form-control input-sm" bind-value-onchange="@SelectedUser.CVV2" placeholder="CVV2" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="CCExpires">CCExpires</label>
+                                        <input type="text" name="CCExpires" id="CCExpires" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCExpires" placeholder="CCExpires" />
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <label for="pounds">Weight</label>
-                                    <input type="text" name="pounds" id="pounds" class="form-control input-sm" bind-value-onchange="@SelectedUser.Pounds" placeholder="Weight" />
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="WesternUnionMTCN">Western Union Tracking Number</label>
+                                        <input type="text" name="WesternUnionMTCN" id="WesternUnionMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.WesternUnionMTCN" placeholder="Western Union Tracking Number" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="MoneyGramMTCN">MoneyGram Tracking Number</label>
+                                        <input type="text" name="MoneyGramMTCN" id="MoneyGramMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.MoneyGramMTCN" placeholder="MoneyGram Tracking Number" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="Employment" class="tab-pane container">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="company">Company</label>
+                                        <input type="text" name="company" id="company" class="form-control input-sm" bind-value-onchange="@SelectedUser.Company" placeholder="Company" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="occupation">Occupation</label>
+                                        <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind-value-onchange="@SelectedUser.Occupation" placeholder="Occupation" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="vehicle">Vehicle</label>
+                                        <input type="text" name="vehicle" id="vehicle" class="form-control input-sm" bind-value-onchange="@SelectedUser.Vehicle" placeholder="Vehicle" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="color">Vehicle Color</label>
+                                        <input type="text" name="color" id="color" class="form-control input-sm" bind-value-onchange="@SelectedUser.Color" placeholder="Vehicle Color" />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="username">User Name</label>
-                                    <input type="text" name="username" id="username" class="form-control input-sm" bind-value-onchange="@SelectedUser.Username" placeholder="User Name" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="password">Password</label>
-                                    <input type="text" name="password" id="password" class="form-control input-sm" bind-value-onchange="@SelectedUser.Password" placeholder="Password" />
-                                </div>
+                            <div id="mapDisplay" class="tab-pane container">
+                                <label>The Street is correct but the House / Apartment number is random!</label>
+                                <div id="map" class="map"></div>
                             </div>
                         </div>
-
-                        <div id="CreditData" class="tab-pane container">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="CCType">Credit Card Type</label>
-                                    <input type="text" name="CCType" id="CCType" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCType" placeholder="Credit Card Type" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="CCNumber">Credit Card Number</label>
-                                    <input type="text" name="CCNumber" id="CCNumber" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCNumber" placeholder="Credit Card Number" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="CVV2">CVV2</label>
-                                    <input type="text" name="CVV2" id="CVV2" class="form-control input-sm" bind-value-onchange="@SelectedUser.CVV2" placeholder="CVV2" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="CCExpires">CCExpires</label>
-                                    <input type="text" name="CCExpires" id="CCExpires" class="form-control input-sm" bind-value-onchange="@SelectedUser.CCExpires" placeholder="CCExpires" />
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="WesternUnionMTCN">Western Union Tracking Number</label>
-                                    <input type="text" name="WesternUnionMTCN" id="WesternUnionMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.WesternUnionMTCN" placeholder="Western Union Tracking Number" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="MoneyGramMTCN">MoneyGram Tracking Number</label>
-                                    <input type="text" name="MoneyGramMTCN" id="MoneyGramMTCN" class="form-control input-sm" bind-value-onchange="@SelectedUser.MoneyGramMTCN" placeholder="MoneyGram Tracking Number" />
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div id="Employment" class="tab-pane container">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="company">Company</label>
-                                    <input type="text" name="company" id="company" class="form-control input-sm" bind-value-onchange="@SelectedUser.Company" placeholder="Company" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="occupation">Occupation</label>
-                                    <input type="text" name="occupation" id="occupation" class="form-control input-sm" bind-value-onchange="@SelectedUser.Occupation" placeholder="Occupation" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="vehicle">Vehicle</label>
-                                    <input type="text" name="vehicle" id="vehicle" class="form-control input-sm" bind-value-onchange="@SelectedUser.Vehicle" placeholder="Vehicle" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="color">Vehicle Color</label>
-                                    <input type="text" name="color" id="color" class="form-control input-sm" bind-value-onchange="@SelectedUser.Color" placeholder="Vehicle Color" />
-                                </div>
-                            </div>
-                        </div>
-                        <div id="mapDisplay" class="tab-pane container">
-                            <label>The Street is correct but the House / Apartment number is random!</label>
-                            <div id="map" class="map"></div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" onclick="@( () => CancelSaveUser(SelectedUser))" data-dismiss="modal">Cancel</button>
@@ -294,6 +301,9 @@
             <Gender ref="GenderComponent">
                 genderTypesList=@GenderTypesList
             </Gender>
+            <Zodiac ref="ZodiacComponent">
+                zodiacTypesList=@ZodiacTypesList
+            </Zodiac>
             <BloodType ref="BloodTypeComponent">
                 bloodTypesList=@BloodTypesList
             </BloodType>
@@ -310,6 +320,8 @@
     private Gender GenderComponent = new Gender();
     private BloodType BloodTypeComponent = new BloodType();
     private CreditCard CreditCardComponent = new CreditCard();
+    private Zodiac ZodiacComponent = new Zodiac();
+
 
     [Parameter] EventCallback<string> OnSortLinkClicked { get; set; }
     [Parameter] EventCallback<string> OnSearchError { get; set; }
@@ -318,7 +330,7 @@
 
     List<Gender.GenderTypes> GenderTypesList = new List<Gender.GenderTypes>();
     List<BloodType.BloodTypes> BloodTypesList = new List<BloodType.BloodTypes>();
-
+    List<Zodiac.ZodiacTypes> ZodiacTypesList = new List<Zodiac.ZodiacTypes>();
 
     List<BloodType.BloodTypes> femaleBloodTypes = new List<BloodType.BloodTypes>();
     List<BloodType.BloodTypes> maleBloodTypes = new List<BloodType.BloodTypes>();
@@ -430,7 +442,19 @@
             ShowBloodCount("users");
             ShowGenderCount("users");
             ShowCardCount("users");
+            ShowZodiacCount("users");
             SortLinkClicked("Surname");
+
+            var zodiac = UserService.users.GroupBy(x => new { x.Gender, x.TropicalZodiac })
+                .Select(r => new
+                {
+                    TropicalZodiac = r.Key.TropicalZodiac.ToUpper().Trim(),
+                    Gender = r.Key.Gender.ToUpper().Trim(),
+                    Count = r.Count()
+                })
+                .OrderBy(r => r.Gender)
+                .OrderBy(r => r.TropicalZodiac).ToList();
+
 
             ToggleSpinner(false);
         }
@@ -526,6 +550,36 @@
         }
         ShouldRender();
     }
+
+    private void ShowZodiacCount(string szSender)
+    {
+        if (szSender == "users")
+        {
+            ZodiacComponent.zodiacTypesList = UserService.users.GroupBy(x => new { x.Gender, x.TropicalZodiac })
+                .Select(r => new Zodiac.ZodiacTypes
+                {
+                    Gender = r.Key.Gender.ToUpper().Trim(),
+                    TropicalZodiac = r.Key.TropicalZodiac.ToUpper().Trim(),
+                    ZodiacTypeTotalCount = r.Count()
+                })
+                .OrderBy(r => r.Gender)
+                .OrderBy(r => r.TropicalZodiac).ToList();
+        }
+        else
+        {
+            ZodiacComponent.zodiacTypesList = displayUsersSource.GroupBy(x => new { x.Gender, x.TropicalZodiac })
+                .Select(r => new Zodiac.ZodiacTypes
+                {
+                    TropicalZodiac = r.Key.TropicalZodiac.ToUpper().Trim(),
+                    Gender = r.Key.Gender.ToUpper().Trim(),
+                    ZodiacTypeTotalCount = r.Count()
+                })
+                .OrderBy(r => r.Gender)
+                .OrderBy(r => r.TropicalZodiac).ToList();
+        }
+        ShouldRender();
+    }
+
     private void ForceRecordCountChange(string RecordsToChange)
     {
         ToggleSpinner(true);
@@ -545,6 +599,7 @@
         ShowBloodCount("users");
         ShowCardCount("users");
         ShowGenderCount("users");
+        ShowZodiacCount("users");
         ToggleSpinner(false);
     }
 
@@ -629,6 +684,7 @@
             ShowBloodCount("displayUsers");
             ShowCardCount("displayUsers");
             ShowGenderCount("displayUsers");
+            ShowZodiacCount("displayUsers");
             recalcPageButtons(namesCount);
         }
         if ((SearchString == "" || SearchString == null) && users.Count > 0)
@@ -638,7 +694,7 @@
             ShowBloodCount("users");
             ShowCardCount("users");
             ShowGenderCount("users");
-
+            ShowZodiacCount("users");
             namesCount = users.Count;
         }
 
@@ -728,6 +784,7 @@
                 ShowBloodCount("displayUsers");
                 ShowGenderCount("displayUsers");
                 ShowCardCount("displayUsers");
+                ShowZodiacCount("displayUsers");
             }
             if (SearchString.Length == 0)
             {
@@ -754,6 +811,7 @@
                 ShowBloodCount("users");
                 ShowGenderCount("users");
                 ShowCardCount("users");
+                ShowZodiacCount("users");
             }
         }
         recalcPageButtons(displayCount);

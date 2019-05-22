@@ -5,13 +5,13 @@
 <h1 style="display:none;">@ChildContent</h1>
 <div style="background-color:lightblue;display:@DisplayType">
     <div>
-        <label><b><u>Credit Card Data:</u></b></label>
+        <label><b><u>Credit Card Component:</u></b></label>
     </div>
     <div style="font-size:xx-small">
         <table class="table table-hover table-condensed table-bordered table-sm" style="font-size:xx-small">
             <tbody>
                 <tr>
-                    <td><b>Female</b></td>
+                    <td><b><u>Female</u></b></td>
                 </tr>
                 @if (@_FemaleCardTypes.Count > 0)
                 {
@@ -29,14 +29,14 @@
                     </tr>
                 }
                 <tr>
-                    <td><b>Male</b></td>
+                    <td><b><u>Male</u></b></td>
                 </tr>
                 @if (@_MaleCardTypes.Count > 0)
                 {
                     <tr>
                         @foreach (var u in _MaleCardTypes)
                         {
-                        <td><b>@u.CardType.Trim()</b></td>
+                        <td><b>@u.CardType.Trim().ToUpper()</b></td>
                         }
                     </tr>
                     <tr>
